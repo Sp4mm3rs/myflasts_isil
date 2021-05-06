@@ -360,19 +360,19 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Inquilinos</h1>
 
                     
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="listalbl m-0 font-weight-bold text-primary">Lista de inquilinos</h6>
+                                <h6 class="listainqh m-0 font-weight-bold text-primary">Lista de inquilinos</h6>
 
                                 <form 
-                                    class="buscarinp">
+                                    class="buscarinq">
                                     <div class="input-group">
-                                        <input type="text" id="buscar" onkeyup="myFunction()" class="searchc form-control  border-0 small" placeholder="Buscar"
+                                        <input type="text" id="buscari" onkeyup="myFunction()" class=" form-control  border-0 small" placeholder="Buscar"
                                             aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -400,7 +400,7 @@
                                             </tr>
                                         </thead>
                                        
-                                        <tbody id="tbody">
+                                        <tbody>
                                             <tr>
                                                 <td>37831231</td>
                                                 <td>Aucho Paz Luz</td>
@@ -518,7 +518,7 @@
     <script>
     function myFunction(){
         var input, filter,table,tr,td,i,txt;
-        input = document.getElementById("buscar");
+        input = document.getElementById("buscari");
         filter=input.value.toUpperCase();
         table= document.getElementById("dataTable");
         tr=table.getElementsByTagName("tr");

@@ -360,137 +360,71 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Habitaciones</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Historial</h1>
 
                     
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3 titlesearchhab" >
-                                <h6 class="listahabh m-0 font-weight-bold text-primary">Lista de habitaciones</h6>
+                            <div class="card-header py-3 titlesearch ">
+                                <h6 class="histservh m-0 font-weight-bold text-primary">Historial de pagos servicios</h6>
 
                                 <form 
-                                    class="buscarhab">
-                                    <div class="input-group">
-                                        <input type="text" id="buscarh" onkeyup="buscarHab()" class="form-control  border-0 small" placeholder="Buscar"
-                                            aria-label="Search" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                            <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    class="descreporte">
+                                    <button type="button" id="descargarrpt">Descargar reporte</button>
                                 </form>
                             </div>
 
                         
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Habitación</th>
-                                                <th>Piso</th>
-                                                <th>Inquilino</th>
-                                                <th>Cable</th>
-                                                <th>Internet</th>
-                                                <th>Fecha termino contrato</th>
-                                                <th>Precio</th>
-                                                <th>Estado</th>
+                                                <th>Servicio</th>
+                                                <th>Monto</th>
+                                                <th>Vencimiento</th>
+                                                <th>Fecha de pago</th>
+                                               
                                             </tr>
                                         </thead>
                                        
-                                        <tbody>
+                                        <tbody >
                                             <tr>
-                                                <td>H. 101</td>
-                                                <td>P. 01</td>
-                                                <td>Lucho Paz Luz</td>
-                                                <td>Sí</td>
-                                                <td>No</td>
-                                                <td>12/04/2021</td>
-                                                <td>S/. 350.00</td>
-                                                <td>Ocupado</td>
+                                                <td>Luz</td>
+                                                <td>345</td>
+                                                <td>12/03/21</td>
+                                                <td>12/03/21</td>
+                                               
                                             </tr>    
                                             <tr>
-                                                <td>H. 102</td>
-                                                <td>P. 01</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>Disponible</td>
+                                                <td>Agua</td>
+                                                <td>234</td>
+                                                <td>12/03/21</td>
+                                                <td>12/03/21</td>
+                                               
                                             </tr>                                     
                                             <tr>
-                                                <td>H. 103</td>
-                                                <td>P. 01</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>Disponible</td>
+                                                <td>542</td>
+                                                <td>454</td>
+                                                <td>12/03/21</td>
+                                                <td>12/03/21</td>
+                                                
                                             </tr>  
                                             <tr>
-                                                <td>H. 201</td>
-                                                <td>P. 02</td>
-                                                <td></td>
-                                                <td>Sí</td>
-                                                <td>Sí</td>
-                                                <td>02/01/21</td>
-                                                <td>S/. 400.00</td>
-                                                <td>Ocupado</td>
+                                                <td>234</td>
+                                                <td>324</td>
+                                                <td>12/03/21</td>
+                                                <td>12/03/21</td>
+                                               
                                             </tr>  
                                             <tr>
-                                                <td>H. 202</td>
-                                                <td>P. 02</td>
-                                                <td>Lucho Paz Luz</td>
-                                                <td>No</td>
-                                                <td>No</td>
-                                                <td>05/08/2022</td>
-                                                <td>S/. 400.00</td>
-                                                <td>Ocupado</td>
-                                            </tr>
-                                            <tr>
-                                                <td>H. 203</td>
-                                                <td>P. 02</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>S/. 400.00</td>
-                                                <td>Disponible</td>
+                                                <td>542</td>
+                                                <td>423</td>
+                                                <td>12/03/21</td>
+                                                <td>12/03/21</td>
+                                             
                                             </tr>  
-                                            <tr>
-                                                <td>H. 301</td>
-                                                <td>P. 03</td>
-                                                <td>Lucho Paz Luz</td>
-                                                <td>No</td>
-                                                <td>Sí</td>
-                                                <td>03/04/2022</td>
-                                                <td>S/. 400.00</td>
-                                                <td>Ocupado</td>
-                                            </tr>
-                                            <tr>
-                                                <td>H. 302</td>
-                                                <td>P. 03</td>
-                                                <td>Lucho Paz Luz</td>
-                                                <td>No</td>
-                                                <td>No</td>
-                                                <td>05/08/2022</td>
-                                                <td>S/. 400.00</td>
-                                                <td>Ocupado</td>
-                                            </tr>
-                                            <tr>
-                                                <td>H. 303</td>
-                                                <td>P. 03</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>S/. 400.00</td>
-                                                <td>Disponible</td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -555,27 +489,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-    <script>
-        function buscarHab(){
-        var input, filter,table,tr,td,i,txt;
-        input = document.getElementById("buscarh");
-        filter=input.value.toUpperCase();
-        table= document.getElementById("tablehab");
-        tr=table.getElementsByTagName("tr");
-
-        for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if(td){
-            txt = td.textContent || td.innerText;
-            if (txt.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-            }
-    }   }
-
-    </script>
+    
 
 </body>
 
