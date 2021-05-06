@@ -366,13 +366,13 @@
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Lista de inquilinos</h6>
+                            <div class="card-header py-3 titlesearch ">
+                                <h6 class="listalbl m-0 font-weight-bold text-primary">Lista de inquilinos</h6>
 
                                 <form 
-                                    class="leftt">
+                                    class="buscarinp">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar"
+                                        <input type="text" id="buscar" onkeyup="myFunction()" class="searchc form-control  border-0 small" placeholder="Buscar"
                                             aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -389,6 +389,7 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
+                                                <th>DNI</th>
                                                 <th>Inquilino</th>
                                                 <th>Habitacion</th>
                                                 <th>Celular</th>
@@ -399,9 +400,10 @@
                                             </tr>
                                         </thead>
                                        
-                                        <tbody>
+                                        <tbody id="tbody">
                                             <tr>
-                                                <td>Lucho Paz Luz</td>
+                                                <td>37831231</td>
+                                                <td>Aucho Paz Luz</td>
                                                 <td>12</td>
                                                 <td>932543213</td>
                                                 <td>12/06/21</td>
@@ -410,7 +412,8 @@
                                                 <td> <a href="#">Ver</a> </td>
                                             </tr>    
                                             <tr>
-                                                <td>Lucho Paz Luz</td>
+                                                <td>32441131</td>
+                                                <td>Lucho cueva Luz</td>
                                                 <td>12</td>
                                                 <td>987654786</td>
                                                 <td>12/01/21</td>
@@ -419,7 +422,8 @@
                                                 <td> <a href="#">Ver</a> </td>
                                             </tr>                                     
                                             <tr>
-                                                <td>Lucho Paz Luz</td>
+                                                <td>54123311</td>
+                                                <td>Pepe Paz Luz</td>
                                                 <td>1</td>
                                                 <td>986754323</td>
                                                 <td>12/02/21</td>
@@ -428,7 +432,8 @@
                                                 <td> <a href="#">Ver</a> </td>
                                             </tr>  
                                             <tr>
-                                                <td>Lucho Paz Luz</td>
+                                                <td>541234</td>
+                                                <td>Lucia Paz Mendez</td>
                                                 <td>4</td>
                                                 <td>987546423</td>
                                                 <td>12/08/21</td>
@@ -437,7 +442,8 @@
                                                 <td> <a href="#">Ver</a> </td>
                                             </tr>  
                                             <tr>
-                                                <td>Lucho Paz Luz</td>
+                                                <td>5123311</td>
+                                                <td>Ana Luiza Peres</td>
                                                 <td>5</td>
                                                 <td>987546423</td>
                                                 <td>12/01/21</td>
@@ -509,6 +515,26 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script>
+    function myFunction(){
+        var input, filter,table,tr,td,i,txt;
+        input = document.getElementById("buscar");
+        filter=input.value.toUpperCase();
+        table= document.getElementById("dataTable");
+        tr=table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if(td){
+            txt = td.textContent || td.innerText;
+            if (txt.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }
+    }   }
+    </script>
 
 </body>
 
