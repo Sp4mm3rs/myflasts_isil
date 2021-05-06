@@ -359,110 +359,146 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="mb-4 text-gray-800">Ingresar inquilino</h1>
-                    <h3>Datos inquilino</h3>
+                    <h1 class="h3 mb-4 text-gray-800">Ingresar inquilino</h1>
                     <form>       
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="inputEmail4">Nombres</label>
-                                    <input type="text" class="form-control" id="inputEmail4" placeholder="Ingresa nombres">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Datos inquilino</h6>
+                        </div>
+                        <div class="card-body">
+                           <div class="row">
+                                <div class="col-md-10">
+                                    <div class="row">
+                                       <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Nombres</label>
+                                            <input type="text" class="form-control" id="inputEmail4" placeholder="Ingresa nombres">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Apellidos</label>
+                                            <input type="text" class="form-control" id="inputPassword4" placeholder="Ingresa apellidos">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">DNI</label>
+                                            <input type="number" class="form-control" id="inputEmail4" placeholder="Ingresa DNI">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPassword4">Celular</label>
+                                            <input type="number" class="form-control" id="inputPassword4" placeholder="Ingresa celular">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Email</label>
+                                            <input type="email" class="form-control" id="inputEmail4" placeholder="Ingresa email">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputState">Cantidad inquilinos</label>
+                                            <select id="inputState" class="form-control">
+                                                <option selected>1</option>
+                                                <option>2</option>
+                                            </select>
+                                        </div>  
+                                        <div class="form-group col-md-12">
+                                            <label for="exampleFormControlTextarea1">Observaciones</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Apellidos</label>
-                                    <input type="text" class="form-control" id="inputPassword4" placeholder="Ingresa apellidos">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <img src="img/default.jpg" class="img-fluid" alt="Responsive image">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="inputEmail4">DNI</label>
-                                    <input type="number" class="form-control" id="inputEmail4" placeholder="Ingresa DNI">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Celular</label>
-                                    <input type="number" class="form-control" id="inputPassword4" placeholder="Ingresa celular">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="inputEmail4">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Ingresa email">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputState">Cantidad inquilinos</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>1</option>
-                                        <option>2</option>
-                                    </select>
-                                </div>
-                                <div class="custom-file col-md-4">
-                                     <label class="custom-file-label" for="customFile">Seleccionar foto</label>
-                                     <input type="file" class="custom-file-input" id="customFile">
-                                   
-                                </div> 
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-8">
-                                    <label for="exampleFormControlTextarea1">Observaciones</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </div>
-                                
-                            </div>      
-                            <h3>Habitaciones</h3>
-                            <div class="form-group row">
-                                <div class="col-md-3">
-                                    <p>Habitación 01</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p>Buen estado</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p>S/. 350.00</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <button type="button" class="btn btn-success">Disponible</button>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <img src="img/default.jpg" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                    <div class="custom-file">
+                                         <label class="custom-file-label" for="customFile">Seleccionar foto</label>
+                                         <input type="file" class="custom-file-input" id="customFile">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-md-3">
-                                    <p>Habitación 02</p>
+                       </div>
+                    </div>     
+                    <!-- Page Heading -->
+                    <h3 class="h3 mb-4 text-gray-800"></h3>
+                            
+
+                                <!-- DataTales Example -->
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Habitaciones</h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Habitación</th>
+                                                        <th>Estado</th>
+                                                        <th>Precio</th>
+                                                        <th>Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Habitación</th>
+                                                        <th>Estado</th>
+                                                        <th>Precio</th>
+                                                        <th>Acción</th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Habitación 1</td>
+                                                        <td>Buen estado</td>
+                                                        <td>S/350.00</td>
+                                                        <td><button type="button" class="btn btn-success">Disponible</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Habitación 1</td>
+                                                        <td>Buen estado</td>
+                                                        <td>S/350.00</td>
+                                                        <td><button type="button" class="btn btn-success">Disponible</button></td>
+                                                    </tr>
+                                                   
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <p>Buen estado</p>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Fecha</h6>
                                 </div>
-                                <div class="col-md-3">
-                                    <p>S/. 350.00</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <button type="button" class="btn btn-success">Disponible</button>
+                                <div class="card-body">
+                                    <div class="row">
+                                         <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Fecha ingreso</label>
+                                            <input class="form-control" type="date" value="2011-08-19" id="date-input-ingreso">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Fecha fin</label>
+                                            <input class="form-control" type="date" value="2011-08-19" id="date-fin">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <h3>Fecha</h3>
-                            <div class="form-group row">
-                                <label for="example-date-input" class="col-2 col-form-label">Fecha ingreso</label>
-                                <div class="col-4">
-                                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Servicios</h6>
                                 </div>
-                                <label for="example-date-input" class="col-2 col-form-label">Fecha fin</label>
-                                <div class="col-4">
-                                  <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-                                </div>
-                            </div> 
-                            <h3>Servicios</h3>                        
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> Internet
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Cable
-                                </label>
-                            </div>
-                           <div>   
+                                <div class="card-body">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                      <label class="form-check-label" for="defaultCheck1">
+                                        Internet
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                                      <label class="form-check-label" for="defaultCheck2">
+                                        Cable
+                                      </label>
+                                    </div>
+                               </div>
+                            </div>       
+                           
+                            <div class="mb-4">   
                                 <button type="button" class="btn btn-primary">Agregar</button>
                                 <button type="button" class="btn btn-secondary">Cancelar</button>
                             </div>
