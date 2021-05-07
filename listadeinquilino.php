@@ -372,12 +372,12 @@
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="listalbl m-0 font-weight-bold text-primary">Lista de inquilinos</h6>
+                                <h6 class="titlelist m-0 font-weight-bold text-primary">Lista de inquilinos</h6>
 
                                 <form 
-                                    class="buscarinp">
+                                    class="buscarinput">
                                     <div class="input-group">
-                                        <input type="text" id="buscar" onkeyup="myFunction()" class="searchc form-control  border-0 small" placeholder="Buscar"
+                                        <input type="text" id="buscari" onkeyup="myFunction()" class="searchc form-control  border-0 small" placeholder="Buscar"
                                             aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -405,7 +405,7 @@
                                             </tr>
                                         </thead>
                                        
-                                        <tbody id="tbody">
+                                        <tbody>
                                             <tr>
                                                 <td>37831231</td>
                                                 <td>Aucho Paz Luz</td>
