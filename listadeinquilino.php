@@ -365,7 +365,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Inquilinos</h1>
 
                     
                     <div class="container-fluid">                     
@@ -523,7 +523,7 @@
     <script>
     function myFunction(){
         var input, filter,table,tr,td,i,txt;
-        input = document.getElementById("buscar");
+        input = document.getElementById("buscari");
         filter=input.value.toUpperCase();
         table= document.getElementById("dataTable");
         tr=table.getElementsByTagName("tr");
