@@ -6,7 +6,6 @@
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -369,19 +368,19 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Inquilinos</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Habitaciones</h1>
 
                     
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3 titlesearch ">
-                                <h6 class="titlelist m-0 font-weight-bold text-primary">Lista de inquilinos</h6>
+                            <div class="card-header py-3 titlesearch" >
+                                <h6 class="titlelist m-0 font-weight-bold text-primary">Lista de habitaciones</h6>
 
                                 <form 
                                     class="buscarinput">
                                     <div class="input-group">
-                                        <input type="text" id="buscari" onkeyup="myFunction()" class="searchc form-control  border-0 small" placeholder="Buscar"
+                                        <input type="text" id="buscarh" onkeyup="buscarHab()" class="form-control  border-0 small" placeholder="Buscar"
                                             aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -395,37 +394,111 @@
                         
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>DNI</th>
+                                                <th>Habitación</th>
+                                                <th>Piso</th>
                                                 <th>Inquilino</th>
-                                                <th>Habitacion</th>
-                                                <th>Celular</th>
-                                                <th>Fecha Inicio</th>
-                                                <th>Fecha Fin</th>
-                                                <th>Contrato</th>
-                                                <th>Detalle</th>
+                                                <th>Cable</th>
+                                                <th>Internet</th>
+                                                <th>Fecha termino contrato</th>
+                                                <th>Precio</th>
+                                                <th>Estado</th>
                                             </tr>
                                         </thead>
                                        
                                         <tbody>
-
-                                            <?php 
-
-                                            foreach ($resultado as $registro) {                                                
-                                            ?>
                                             <tr>
-                                                <td><?php echo $registro['dni'] ?></td>
-                                                <td><?php echo $registro['nombre'] ?> <?php echo $registro['apellido'] ?></td>
+                                                <td>H. 101</td>
+                                                <td>P. 01</td>
+                                                <td>Lucho Paz Luz</td>
+                                                <td>Sí</td>
+                                                <td>No</td>
+                                                <td>12/04/2021</td>
+                                                <td>S/. 350.00</td>
+                                                <td>Ocupado</td>
+                                            </tr>    
+                                            <tr>
+                                                <td>H. 102</td>
+                                                <td>P. 01</td>
                                                 <td></td>
-                                                <td><?php echo $registro['celular'] ?></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><a href="#">Ver</a></td>
-                                                <td> <a href="#">Ver</a> </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Disponible</td>
+                                            </tr>                                     
+                                            <tr>
+                                                <td>H. 103</td>
+                                                <td>P. 01</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Disponible</td>
+                                            </tr>  
+                                            <tr>
+                                                <td>H. 201</td>
+                                                <td>P. 02</td>
+                                                <td></td>
+                                                <td>Sí</td>
+                                                <td>Sí</td>
+                                                <td>02/01/21</td>
+                                                <td>S/. 400.00</td>
+                                                <td>Ocupado</td>
+                                            </tr>  
+                                            <tr>
+                                                <td>H. 202</td>
+                                                <td>P. 02</td>
+                                                <td>Lucho Paz Luz</td>
+                                                <td>No</td>
+                                                <td>No</td>
+                                                <td>05/08/2022</td>
+                                                <td>S/. 400.00</td>
+                                                <td>Ocupado</td>
                                             </tr>
-                                            <?php } ?>
+                                            <tr>
+                                                <td>H. 203</td>
+                                                <td>P. 02</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>S/. 400.00</td>
+                                                <td>Disponible</td>
+                                            </tr>  
+                                            <tr>
+                                                <td>H. 301</td>
+                                                <td>P. 03</td>
+                                                <td>Lucho Paz Luz</td>
+                                                <td>No</td>
+                                                <td>Sí</td>
+                                                <td>03/04/2022</td>
+                                                <td>S/. 400.00</td>
+                                                <td>Ocupado</td>
+                                            </tr>
+                                            <tr>
+                                                <td>H. 302</td>
+                                                <td>P. 03</td>
+                                                <td>Lucho Paz Luz</td>
+                                                <td>No</td>
+                                                <td>No</td>
+                                                <td>05/08/2022</td>
+                                                <td>S/. 400.00</td>
+                                                <td>Ocupado</td>
+                                            </tr>
+                                            <tr>
+                                                <td>H. 303</td>
+                                                <td>P. 03</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>S/. 400.00</td>
+                                                <td>Disponible</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -491,11 +564,11 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <script>
-    function myFunction(){
+        function buscarHab(){
         var input, filter,table,tr,td,i,txt;
-        input = document.getElementById("buscari");
+        input = document.getElementById("buscarh");
         filter=input.value.toUpperCase();
-        table= document.getElementById("dataTable");
+        table= document.getElementById("tablehab");
         tr=table.getElementsByTagName("tr");
 
         for (i = 0; i < tr.length; i++) {
@@ -509,6 +582,7 @@
             }
             }
     }   }
+
     </script>
 
 </body>
