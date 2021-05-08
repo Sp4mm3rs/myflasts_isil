@@ -1,9 +1,14 @@
 <?php
     include 'config/conection.php';
 
-    $consulta = "SELECT * FROM inquilinos";
-    $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    $consulta = "SELECT * FROM inquilinos inq
+                        INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id
+";
 
+    
+
+    $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    
 ?>
 
 <!DOCTYPE html>
@@ -370,7 +375,9 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Habitaciones</h1>
 
-                    
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                          Launch demo modal
+                        </button>
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
@@ -409,102 +416,86 @@
                                         </thead>
                                        
                                         <tbody>
+                                            <?php 
+
+                                            foreach ($resultado as $registro) {
+
+                                                // echo "<pre>";
+                                                // echo print_r($registro);
+                                                // echo "</pre>";
+
+                                            ?>
                                             <tr>
-                                                <td>H. 101</td>
-                                                <td>P. 01</td>
-                                                <td>Lucho Paz Luz</td>
-                                                <td>Sí</td>
-                                                <td>No</td>
-                                                <td>12/04/2021</td>
-                                                <td>S/. 350.00</td>
-                                                <td>Ocupado</td>
-                                            </tr>    
-                                            <tr>
-                                                <td>H. 102</td>
-                                                <td>P. 01</td>
+                                                <td><?php echo $registro['nro_habitacion'] ?></td>
+                                                <td><?php echo $registro['nro_piso'] ?></td>
+                                                <td><?php echo $registro['nombre'] ?> <?php echo $registro['apellido'] ?></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
+                                                <td><?php echo $registro['precio'] ?></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td>Disponible</td>
-                                            </tr>                                     
-                                            <tr>
-                                                <td>H. 103</td>
-                                                <td>P. 01</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>Disponible</td>
-                                            </tr>  
-                                            <tr>
-                                                <td>H. 201</td>
-                                                <td>P. 02</td>
-                                                <td></td>
-                                                <td>Sí</td>
-                                                <td>Sí</td>
-                                                <td>02/01/21</td>
-                                                <td>S/. 400.00</td>
-                                                <td>Ocupado</td>
-                                            </tr>  
-                                            <tr>
-                                                <td>H. 202</td>
-                                                <td>P. 02</td>
-                                                <td>Lucho Paz Luz</td>
-                                                <td>No</td>
-                                                <td>No</td>
-                                                <td>05/08/2022</td>
-                                                <td>S/. 400.00</td>
-                                                <td>Ocupado</td>
                                             </tr>
-                                            <tr>
-                                                <td>H. 203</td>
-                                                <td>P. 02</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>S/. 400.00</td>
-                                                <td>Disponible</td>
-                                            </tr>  
-                                            <tr>
-                                                <td>H. 301</td>
-                                                <td>P. 03</td>
-                                                <td>Lucho Paz Luz</td>
-                                                <td>No</td>
-                                                <td>Sí</td>
-                                                <td>03/04/2022</td>
-                                                <td>S/. 400.00</td>
-                                                <td>Ocupado</td>
-                                            </tr>
-                                            <tr>
-                                                <td>H. 302</td>
-                                                <td>P. 03</td>
-                                                <td>Lucho Paz Luz</td>
-                                                <td>No</td>
-                                                <td>No</td>
-                                                <td>05/08/2022</td>
-                                                <td>S/. 400.00</td>
-                                                <td>Ocupado</td>
-                                            </tr>
-                                            <tr>
-                                                <td>H. 303</td>
-                                                <td>P. 03</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>S/. 400.00</td>
-                                                <td>Disponible</td>
-                                            </tr>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-    
+                        
+
+                        <!-- Button trigger modal -->
+                        
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </div>
+                                 <div class="modal-body">
+                                    <form class="habitacion" action="insert_habitacion.php" method="POST">
+                                       <div class="form-group row">
+                                          <div class="form-group col-md-12">
+                                             <label for="hab_piso">Nro. Piso</label>
+                                             <select id="hab_piso" name="hab_piso" class="form-control">
+                                                <option selected>Seleccionar</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                             </select>
+                                          </div>
+                                          <div class="form-group col-md-12">
+                                             <label for="hab_nro">Nro. Habitación</label>
+                                             <select id="hab_nro" name="hab_nro" class="form-control">
+                                                <option selected>Seleccionar</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                             </select>
+                                          </div>
+                                          <div class="form-group col-md-12">
+                                             <label for="hab_precio">Precio habitación</label>
+                                             <input type="number" class="form-control" id="hab_precio" name="hab_precio" placeholder="Ingresar monto">
+                                          </div>
+                                       </div>
+                                       <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                 </div>
+                                    </form>
+                                 </div>
+                                 
+                              </div>
+                           </div>
+                        </div>
+
+
                     </div>
 
                 </div>
