@@ -360,127 +360,136 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1>Acciones</h1>
-                    <form>
-                        <div class="row align-items-center">
-                            <tr>
-                                <div class="col">
-                                    <th><strong><input class="btn btn-success" type="button"; style="color:balck; background-color:rgb(255, 123, 0); border-color:rgb(255, 123, 0);"   value="⠀VER CONTRATO⠀">⠀</strong></th>       
-                                </div>
-                                <div class="col">
-                                    <th><strong><input class="btn btn-success" type="button"; style="color:balck; background-color:rgb(0, 255, 42); border-color:rgb(0, 255, 42);position: absolute;right:27%;"   value="⠀Editar⠀">⠀</strong></th>
-                                </div>  
-                                <div class="col">
-                                    <th><strong><input class="btn btn-success" type="button"; style="color:balck; background-color:rgb(149, 216, 169); border-color:rgb(149, 216, 169);position: absolute;right:20%;"   value="⠀Actualizar⠀">⠀</strong></th>
-                                </div> 
-                                <div class="col">
-                                    <th><strong><input class="btn btn-success" type="button"; style="color:balck; background-color:rgb(255, 0, 0); border-color:rgb(255, 0, 0); position: absolute;right:10%;"   value="⠀Finalizar contrato⠀">⠀</strong></th> 
-                                </div>
-
-                            </tr>
-
+                    <h1 class="h3 mb-4 text-gray-800">Detalle inquilino</h1>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Acciones</h6>
                         </div>
-                    </form><br>
-                    <h3>Detalle inquilino</h3>
-                    <form>       
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="inputEmail4">Nombres</label>
-                                    <label type="text" class="form-control" id="inputEmail4">Jose Martin</label>
+                        <div class="card-body">
+                           <div class="row">
+                                <div class="col-md-3 d-flex justify-content-around">
+                                    <button type="button" class="btn btn-outline-info">Ver contrato</button>                                    
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Apellidos</label>
-                                    <label type="text" class="form-control" id="inputPassword4">Rodrigues Mendes</label>
+                                <div class="col-md-3 d-flex justify-content-around">
+                                    <button type="button" class="btn btn-outline-warning">Editar inquilino</button>                        
+                                </div>  
+                                <div class="col-md-3 d-flex justify-content-around">
+                                    <button type="button" class="btn btn-outline-success">Actualizar</button>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <img src="img/default.jpg" class="img-fluid" alt="Responsive image" style="position: absolute;right:27%;" >
-                                </div>
-
-                                <div class="form-group col-md-4">
-                                    <label for="inputEmail4">DNI</label>
-                                    <label type="number" class="form-control" id="inputEmail4">78915780</label>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">Celular</label>
-                                    <label type="number" class="form-control" id="inputPassword4">998254672</label>
+                                <div class="col-md-3 d-flex justify-content-around">
+                                    <button type="button" class="btn btn-outline-danger">Finalizar contrato</button>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="inputEmail4">Email</label>
-                                    <label type="email" class="form-control" id="inputEmail4">JoseMRM_54@gmail.com</label>
-                                    
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputState">Cantidad inquilinos</label>
-                                    <label type="number" class="form-control" id="inputState">3</label>
+                       </div>
+                    </div>                      
+                    <form>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Detalle inquilino</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputEmail4">Nombres</label>
+                                                <label type="text" class="form-control" id="inputEmail4">Jose Martin</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputPassword4">Apellidos</label>
+                                                <label type="text" class="form-control" id="inputPassword4">Rodrigues Mendes</label>
+                                            </div>
 
+                                            <div class="form-group col-md-6">
+                                                <label for="inputEmail4">DNI</label>
+                                                <label type="number" class="form-control" id="inputEmail4">78915780</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputPassword4">Celular</label>
+                                                <label type="number" class="form-control" id="inputPassword4">998254672</label>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputEmail4">Email</label>
+                                                <label type="email" class="form-control" id="inputEmail4">JoseMRM_54@gmail.com</label>
+                                                
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputState">Cantidad inquilinos</label>
+                                                <label type="number" class="form-control" id="inputState">3</label>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label for="exampleFormControlTextarea1">Observaciones</label>
+                                                    <textarea readonly class="form-control" id="exampleFormControlTextarea1" rows="3">Jose Martin Rofriguez Mendes tiene quejas de los demas inquilinos por fiestas ruidosas a altas horas de la noche.
+                                                    El inquilino mantiene el la habitacion ordenada y sin daños materiales
+                                                    </textarea>
+                                            </div>
+                                        </div>
+                                            
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <img src="img/default.jpg" class="img-fluid" alt="Responsive image">
+                                        </div>
+                                    </div>
+
+                                </div>  
+                            </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Habitación</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <div class="col-md-3">
+                                        <p>Habitación 01</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p>Buen estado</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p>S/. 350.00</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <table class="btn btn-success">
+                                            <tbody>
+                                                <tr><th>Disponible</th></tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-8">
-                                    <label for="exampleFormControlTextarea1">Observaciones</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Jose Martin Rofriguez Mendes tiene quejas de los demas inquilinos por fiestas ruidosas a altas horas de la noche.
-El inquilino mantiene el la habitacion ordenada y sin daños materiales
-                                        </textarea>
-
-                                </div>
-                                
-                            </div><br>    
-                            <h3>Habitaciones</h3>
-                            <div class="form-group row">
-                                <div class="col-md-3">
-                                    <p>Habitación 01</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p>Buen estado</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p>S/. 350.00</p>
-                                </div>
-                                <div class="col-md-3">
-                                    <table border="2" class="btn btn-success">
+                        </div> 
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Fecha y Servicios</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha ingreso</th>
+                                                <th>Fecha fin</th>
+                                                <th>Internet</th>
+                                                <th>Cable</th>
+                                            </tr>
+                                        </thead>
+                                        
                                         <tbody>
-                                            <tr><th>Disponible</th></tr>
+                                            <tr>
+                                                <td><label class="form-control" type="date" id="example-date-input" value="2011-08-19">18/05/2017</label>  </td>
+                                                <td><label class="form-control" type="date" id="example-date-input" value="2011-08-19">10/02/2022</label></td>
+                                                <td><input type="checkbox" id="" checked disabled/></td>
+                                                <td><input type="checkbox" id=""  disabled/></td>
+                                            </tr>                                           
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-
-                            <h3>Fecha</h3>
-                            <div class="form-group row">
-                                <label for="example-date-input" class="col-2 col-form-label">Fecha ingreso</label>
-                                <div class="col-4">
-                                <label class="form-control" type="date" id="example-date-input" value="2011-08-19">18/05/2017</label>  
-                                </div>
-                                <label for="example-date-input" class="col-2 col-form-label">Fecha fin</label>
-                                <div class="col-4">
-                                    <label class="form-control" type="date" id="example-date-input" value="2011-08-19">10/02/2022</label>
-                                </div>
-                            </div> 
-                            <h3>Servicios</h3>                        
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" checked="checked"  disabled> Internet
-                                </label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <label class="form-check-label">
-                                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"  disabled> Cable
-                                </label>
-                                
-                            </div>
-
-                            
-                    </form>
- 
-                                 
-                               
-                            
+                        </div>
+                    </form>    
                     
-                    
-
-
                 </div>
                 <!-- /.container-fluid -->
 
