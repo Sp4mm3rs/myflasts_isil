@@ -37,17 +37,12 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-<<<<<<< HEAD
-                <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i ></i>
-                    <span>Inquilinos</span>
-=======
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-inquilino"
+
+                <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#menu-inquilino"
                     aria-expanded="true" aria-controls="menu-inquilino">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Inquilinos</span>
->>>>>>> 5d5c48e44f6eb999a078085c5638d10fa5167e37
+                    
+                    <span class="opciones">Inquilinos</span>
+         
                 </a>
                 <div id="menu-inquilino" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -61,8 +56,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-habitacion"
                     aria-expanded="true" aria-controls="menu-habitacion">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Habitacion</span>
+                    
+                    <span class="opciones">Habitacion</span>
                 </a>
                 <div id="menu-habitacion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -75,9 +70,8 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-servicio"
-                    aria-expanded="true" aria-controls="menu-servicio">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Servicio</span>
+                    aria-expanded="true" aria-controls="menu-servicio">                   
+                    <span class="opciones">Servicio</span>
                 </a>
                 <div id="menu-servicio" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
