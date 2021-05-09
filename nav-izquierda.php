@@ -29,16 +29,46 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-inquilino"
+                    aria-expanded="true" aria-controls="menu-inquilino">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Inquilinos</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="menu-inquilino" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                         <a class="collapse-item" href="listadeinquilino.php">Lista de inquilinos</a>
                         <a class="collapse-item" href="ingresar-inquilino.php">Ingresar inquilino</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-habitacion"
+                    aria-expanded="true" aria-controls="menu-habitacion">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Habitacion</span>
+                </a>
+                <div id="menu-habitacion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                        <a class="collapse-item" href="listadehabitaciones.php">Lista de Habitaciones</a>
+                        <!--<a class="collapse-item" href="ingresar-habitacion.php">Ingresar Habitacion</a>-->
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-servicio"
+                    aria-expanded="true" aria-controls="menu-servicio">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Servicio</span>
+                </a>
+                <div id="menu-servicio" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
+                        <a class="collapse-item" href="#">Lista de Servicios</a>
+                        <a class="collapse-item" href="#">Ingresar Servicio</a>
                     </div>
                 </div>
             </li>
