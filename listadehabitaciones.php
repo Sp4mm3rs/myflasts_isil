@@ -68,7 +68,7 @@
                                 <h6 class="titlelist m-0 font-weight-bold text-primary">Lista de habitaciones</h6>
 
                                 <form 
-                                    class="buscarinput">
+                                    class="buscarinputh">
                                     <div class="input-group">
                                         <input type="text" id="buscarh" onkeyup="buscarHab()" class="form-control  border-0 small" placeholder="Buscar"
                                             aria-label="Search" aria-describedby="basic-addon2">
@@ -78,20 +78,14 @@
                                             </button>
                                         </div>
                                     </div>
+                                    
                                 </form>
-                            </div>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                <button id="adhab" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                             Agregar Habitación
-                                        </button>
-                                    </div>
-                                </div>    
+                                </button>
                             </div>
-
-                        
-                            <div class="card-body">
+                                                   
+                            <div class="card-body maincontent">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
                                         <thead>
