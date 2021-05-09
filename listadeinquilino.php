@@ -107,7 +107,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td><a href="contrato/?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
-                                                <td><a href="#">Ver</a></td>
+                                                <td><a href="detalle-inquilino.php?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>
