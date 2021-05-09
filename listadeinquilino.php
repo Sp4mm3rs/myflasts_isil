@@ -1,7 +1,10 @@
 <?php
     include 'config/conection.php';
     
-    $consulta = "SELECT * FROM inquilinos";
+    $consulta = "SELECT * FROM inquilinos inq
+                INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
+    ";
+
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
 ?>
@@ -97,17 +100,21 @@
 
                                             <?php 
 
-                                            foreach ($resultado as $registro) {                                                
+                                            foreach ($resultado as $registro) {   
+
+                                            // echo "<pre>";                                             
+                                            // echo print_r($registro);                                             
+                                            // echo "</pre>";                                             
                                             ?>
                                             <tr class="item" id="<?php echo $registro['dni'] ?>">
                                                 <td><?php echo $registro['dni'] ?></td>
                                                 <td><?php echo $registro['nombre'] ?> <?php echo $registro['apellido'] ?></td>
-                                                <td></td>
+                                                <td>Habitación <?php echo $registro['nro_habitacion'] ?></td>
                                                 <td><?php echo $registro['celular'] ?></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td><a href="contrato/?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
-                                                <td><a href="detalle-inquilino.php?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
+                                                <td><?php echo $registro['fecha_inicio'] ?></td>
+                                                <td><?php echo $registro['fecha_fin'] ?></td>
+                                                <td class="text-center"><a class="btn btn-outline-info" href="contrato/?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
+                                                <td class="text-center"><a class="btn btn-outline-warning" href="detalle-inquilino.php?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>

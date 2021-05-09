@@ -3,12 +3,10 @@
     $dni = $_GET['dni'];
     
     $consulta = "SELECT * FROM inquilinos inq
-                        INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id
-                        WHERE dni = $dni
+                INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
+                WHERE dni = $dni
 ";
-    // echo $consulta;
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-    // echo print_r($resultado);
 
 ?>
 
@@ -38,6 +36,8 @@
 </head>
 <?php 
     foreach ($resultado as $inquilino) {
+
+        
 ?>
 <body id="page-top">
 
@@ -73,17 +73,22 @@
                                      <td><a class="btn btn-outline-info" href="contrato/?dni=<?php echo $inquilino['dni'] ?>">Ver contrato</a></td>                              
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-around">
-                                    <button type="button" class="btn btn-outline-warning">Editar inquilino</button>                        
+                                    <button class="btn btn-outline-warning btn-editar">Editar inquilino</button>                        
                                 </div>  
                                 <div class="col-md-3 d-flex justify-content-around">
-                                    <button type="button" class="btn btn-outline-success">Actualizar</button>
+                                    <button class="btn btn-outline-success btn-actualizar" disabled>Actualizar</button>
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-around">
-                                    <button type="button" class="btn btn-outline-danger">Finalizar contrato</button>
+                                    <td><a class="btn btn-outline-danger" href="delete-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">Finalizar contrato</a></td>      
                                 </div>
                             </div>
                        </div>
-                    </div>                      
+                    </div>   
+                    <?php 
+                    echo "<pre>";
+        echo print_r($inquilino);
+        echo "</pre>";
+                    ?>                   
                     <form>
                         
                         <div class="card shadow mb-4">
@@ -122,7 +127,7 @@
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="exampleFormControlTextarea1">Observaciones</label>
-                                                    <textarea readonly class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $inquilino['observaciones'] ?></textarea>
+                                                    <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $inquilino['observaciones'] ?></textarea>
                                             </div>
                                         </div>
                                             
@@ -180,10 +185,10 @@
                                         
                                         <tbody>
                                             <tr>
-                                                <td><label class="form-control" type="date" id="example-date-input" value="2011-08-19">18/05/2017</label>  </td>
-                                                <td><label class="form-control" type="date" id="example-date-input" value="2011-08-19">10/02/2022</label></td>
-                                                <td><input type="checkbox" id="" checked disabled/></td>
-                                                <td><input type="checkbox" id=""  disabled/></td>
+                                                <td><input class="form-control" type="date" name="fechaInicio" value="<?php echo $inquilino['fecha_inicio'] ?>" id="date-input-ingreso" disabled></td>
+                                                <td><input class="form-control" type="date" name="fechaFin" value="<?php echo $inquilino['fecha_fin'] ?>" id="date-input-ingreso" disabled></td>
+                                                <td><input type="checkbox" name="serInternet" <?php if (isset($inquilino['serv_internet']) && $inquilino['serv_internet'] == "1") echo "checked"; ?> disabled></td>
+                                                <td><input type="checkbox" name="serCable" <?php if (isset($inquilino['serv_cable']) && $inquilino['serv_cable'] == "1") echo "checked"; ?> disabled></td>
                                             </tr>                                           
                                         </tbody>
                                     </table>
@@ -252,6 +257,19 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script type="text/javascript">
+        
+        $(document).ready(function(){
+            $(".btn-editar").click(function() {
+                $('form input').prop("disabled", false);
+                $('form textarea').prop("disabled", false);
+                $('.btn-actualizar').prop("disabled", false);
+            });
+
+        });
+
+    </script>
 
 </body>
 

@@ -1,6 +1,17 @@
 <?php
     include 'config/conection.php';
 
+
+    $sql_habitaciones = "SELECT * FROM habitaciones WHERE id_inquilino IS NULL";
+    $res_habitaciones = mysqli_query( $conexion, $sql_habitaciones ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+
+    // Fecha de hoy
+    $month = date('m');
+    $day = date('d');
+    $year = date('Y');
+
+    $hoy = $year . '-' . $month . '-' . $day;
+
 ?>
 
 
@@ -74,7 +85,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inq_celular">Celular</label>
-                                            <input type="number" class="form-control" id="inq_celular" name="inq_celular" placeholder="Ingresa celular">
+                                            <input type="text" class="form-control" id="inq_celular" name="inq_celular" placeholder="Ingresa celular">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inq_email">Email</label>
@@ -122,16 +133,25 @@
                                                         <th>Habitación</th>
                                                         <th>Piso</th>
                                                         <th>Precio</th>
-                                                        <!-- <th>Acción</th> -->
+                                                        <th>Seleccionar</th>
                                                     </tr>
                                                 </thead>
                                                 
                                                 <tbody>
+                                                    <?php 
+                                                        foreach ($res_habitaciones as $habitacion) {
+                                                            echo "<pre>";
+                                                            echo print_r($habitacion);
+                                                            echo "<pre>";
+
+                                                    ?>
                                                     <tr>
-                                                        <td> <input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa número de habitación"> </td>
-                                                        <td><input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa piso"></td>
-                                                        <td><input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa precio"></td>
-                                                    </tr>                                                                                                  
+                                                        <td>Habitación <?php echo $habitacion['nro_habitacion'] ?></td>
+                                                        <td>Piso <?php echo $habitacion['nro_piso'] ?></td>
+                                                        <td>S/ <?php echo $habitacion['precio'] ?></td>
+                                                        <td><input type="radio" name="habitacion[]" value="<?php echo $habitacion['id_hab'] ?>"></td>
+                                                    </tr>
+                                                    <?php } ?>                                                                                                  
                                                 </tbody>
                                             </table>
                                         </div>
@@ -145,11 +165,11 @@
                                     <div class="row">
                                          <div class="form-group col-md-6">
                                             <label for="inputEmail4">Fecha ingreso</label>
-                                            <input class="form-control" type="date" value="2011-08-19" id="date-input-ingreso">
+                                            <input class="form-control" type="date" name="fechaInicio" value="<?php echo $hoy; ?>" id="date-input-ingreso">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Fecha fin</label>
-                                            <input class="form-control" type="date" value="2011-08-19" id="date-fin">
+                                            <input class="form-control" type="date" name="fechaFin" value="<?php echo $hoy; ?>" id="date-input-fin">
                                         </div>
                                     </div>
                                 </div>
@@ -160,22 +180,18 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        Internet
-                                      </label>
+                                      <input class="form-check-input" name="serInternet" type="checkbox" value="1" id="ser_internet">
+                                      <label class="form-check-label" for="ser_internet">Internet</label>
                                     </div>
                                     <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-                                      <label class="form-check-label" for="defaultCheck2">
-                                        Cable
-                                      </label>
+                                      <input class="form-check-input" name="serCable" type="checkbox" value="1" id="ser_cable">
+                                      <label class="form-check-label" for="ser_cable">Cable</label>
                                     </div>
                                </div>
                             </div>       
                            
                             <div class="mb-4">   
-                                <button type="submit" class="btn btn-primary">Agregar</button>
+                                <button type="submit" name="rInquilino" class="btn btn-primary">Agregar</button>
                                 <button type="button" class="btn btn-secondary">Cancelar</button>
                             </div>
                             

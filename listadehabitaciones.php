@@ -2,11 +2,8 @@
     include 'config/conection.php';
 
     $consulta = "SELECT * FROM inquilinos inq
-                        INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id
+                        INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
 ";
-
-    
-
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
     
 ?>
@@ -112,20 +109,20 @@
 
                                             foreach ($resultado as $registro) {
 
-                                                // echo "<pre>";
-                                                // echo print_r($registro);
-                                                // echo "</pre>";
+                                                echo "<pre>";
+                                                echo print_r($registro);
+                                                echo "</pre>";
 
                                             ?>
                                             <tr>
                                                 <td><?php echo $registro['nro_habitacion'] ?></td>
                                                 <td><?php echo $registro['nro_piso'] ?></td>
                                                 <td><?php echo $registro['nombre'] ?> <?php echo $registro['apellido'] ?></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td><?php if (isset($registro['serv_cable']) && $registro['serv_cable'] == "1") echo "Tiene"; ?></td>
+                                                <td><?php if (isset($registro['serv_internet']) && $registro['serv_internet'] == "1") echo "Tiene"; ?></td>
+                                                <td><?php echo $registro['fecha_fin'] ?></td>
                                                 <td><?php echo $registro['precio'] ?></td>
-                                                <td></td>
+                                                <td><?php if (isset($registro['id_inquilino']) && $registro['id_inquilino'] == NULL) echo "Disponible"; ?></td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>

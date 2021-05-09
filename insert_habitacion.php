@@ -1,7 +1,7 @@
 <?php
     include 'config/conection.php';
 
-     $get_piso = $_POST['hab_piso'];
+    $get_piso = $_POST['hab_piso'];
     $get_nro = $_POST['hab_nro'];
     $get_precio = $_POST['hab_precio'];
 
