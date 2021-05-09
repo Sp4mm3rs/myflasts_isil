@@ -107,9 +107,9 @@
 
                                             foreach ($resultado as $registro) {
 
-                                                echo "<pre>";
-                                                echo print_r($registro);
-                                                echo "</pre>";
+                                                // echo "<pre>";
+                                                // echo print_r($registro);
+                                                // echo "</pre>";
 
                                             ?>
                                             <tr>

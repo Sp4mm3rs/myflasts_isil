@@ -76,11 +76,7 @@
                                     <button class="btn btn-outline-warning btn-editar">Editar inquilino</button>                        
                                 </div>  
                                 <div class="col-md-3 d-flex justify-content-around">
-<<<<<<< HEAD
                                     <button class="btn btn-outline-success btn-actualizar" disabled>Actualizar</button>
-=======
-                                    <button type="button" class="btn btn-outline-success" disabled>Actualizar</button>
->>>>>>> d6d94fdcb13858e5964bf4f67d47e5ea40700970
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-around">
                                     <td><a class="btn btn-outline-danger" href="delete-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">Finalizar contrato</a></td>      
@@ -89,9 +85,9 @@
                        </div>
                     </div>   
                     <?php 
-                    echo "<pre>";
-        echo print_r($inquilino);
-        echo "</pre>";
+        //             echo "<pre>";
+        // echo print_r($inquilino);
+        // echo "</pre>";
                     ?>                   
                     <form>
                         
@@ -189,17 +185,10 @@
                                         
                                         <tbody>
                                             <tr>
-<<<<<<< HEAD
                                                 <td><input class="form-control" type="date" name="fechaInicio" value="<?php echo $inquilino['fecha_inicio'] ?>" id="date-input-ingreso" disabled></td>
                                                 <td><input class="form-control" type="date" name="fechaFin" value="<?php echo $inquilino['fecha_fin'] ?>" id="date-input-ingreso" disabled></td>
                                                 <td><input type="checkbox" name="serInternet" <?php if (isset($inquilino['serv_internet']) && $inquilino['serv_internet'] == "1") echo "checked"; ?> disabled></td>
                                                 <td><input type="checkbox" name="serCable" <?php if (isset($inquilino['serv_cable']) && $inquilino['serv_cable'] == "1") echo "checked"; ?> disabled></td>
-=======
-                                                <td><input class="form-control" type="date" id="example-date-input"></td>
-                                                <td><input class="form-control" type="date" id="example-date-input" ></td>
-                                                <td><input type="checkbox" id="" checked disabled/></td>
-                                                <td><input type="checkbox" id=""  disabled/></td>
->>>>>>> d6d94fdcb13858e5964bf4f67d47e5ea40700970
                                             </tr>                                           
                                         </tbody>
                                     </table>

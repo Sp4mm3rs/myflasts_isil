@@ -140,9 +140,9 @@
                                                 <tbody>
                                                     <?php 
                                                         foreach ($res_habitaciones as $habitacion) {
-                                                            echo "<pre>";
-                                                            echo print_r($habitacion);
-                                                            echo "<pre>";
+                                                            // echo "<pre>";
+                                                            // echo print_r($habitacion);
+                                                            // echo "<pre>";
 
                                                     ?>
                                                     <tr>
