@@ -36,7 +36,9 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
-
+<?php 
+    foreach ($resultado as $inquilino) {
+?>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -68,7 +70,7 @@
                         <div class="card-body">
                            <div class="row">
                                 <div class="col-md-3 d-flex justify-content-around">
-                                    <button type="button" class="btn btn-outline-info">Ver contrato</button>                                    
+                                     <td><a class="btn btn-outline-info" href="contrato/?dni=<?php echo $inquilino['dni'] ?>">Ver contrato</a></td>                              
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-around">
                                     <button type="button" class="btn btn-outline-warning">Editar inquilino</button>                        
@@ -83,9 +85,7 @@
                        </div>
                     </div>                      
                     <form>
-                        <?php 
-                            foreach ($resultado as $inquilino) {
-                        ?>
+                        
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">Detalle inquilino</h6>
