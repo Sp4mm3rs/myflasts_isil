@@ -39,11 +39,17 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
+<<<<<<< HEAD
 
         <?php 
             include 'nav-izquierda.php';
         ?>
 
+=======
+        <?php 
+            include 'nav-izquierda.php';
+        ?>
+>>>>>>> b6f602f8660649b1c31fb0100beb1b4bcbc24fc7
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
