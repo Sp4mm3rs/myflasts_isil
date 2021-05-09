@@ -115,14 +115,14 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Habitaciones</h6>
                                     </div>
                                     <div class="card-body">
-                                        <!-- <div class="table-responsive">
+                                        <div class="table-responsive">
                                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                                 <thead>
                                                     <tr>
                                                         <th>Habitación</th>
-                                                        <th>Estado</th>
+                                                        <th>Piso</th>
                                                         <th>Precio</th>
-                                                        <th>Acción</th>
+                                                        <!-- <th>Acción</th> -->
                                                     </tr>
                                                 </thead>
                                                 
@@ -132,25 +132,18 @@
                                                         <td>Buen estado</td>
                                                         <td>S/350.00</td>
                                                         <td><button type="button" class="btn btn-success">Disponible</button></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Habitación 1</td>
-                                                        <td>Buen estado</td>
-                                                        <td>S/350.00</td>
-                                                        <td><button type="button" class="btn btn-success">Disponible</button></td>
-                                                    </tr>
-                                                   
+                                                    </tr>                                                                                                  
                                                 </tbody>
                                             </table>
-                                        </div> -->
-                                        <div class="row">
+                                        </div>
+                                        <!-- <div class="row">
                                             <div class="col-md-2">
                                                 <label for="inq_habitacion">Habitación</label>
                                             </div>
                                             <div class="col-md-10">
                                                 <input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa número de habitación">
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             <div class="card shadow mb-4">

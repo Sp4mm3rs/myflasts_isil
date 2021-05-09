@@ -1,6 +1,6 @@
 <?php
     include 'config/conection.php';
-
+    
     $consulta = "SELECT * FROM inquilinos";
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
