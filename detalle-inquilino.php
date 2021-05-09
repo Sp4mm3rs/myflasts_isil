@@ -141,17 +141,38 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Habitación</h6>
                             </div>
                             <div class="card-body">
-                                <div class="form-group row">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Habitación</th>
+                                                        <th>Piso</th>
+                                                        <th>Precio</th>
+                                                        <!-- <th>Acción</th> -->
+                                                    </tr>
+                                                </thead>
+                                                
+                                                <tbody>
+                                                    <tr>
+                                                        <td> <input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" value="Habitación <?php echo $inquilino['nro_habitacion'] ?>"> </td>
+                                                        <td><input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa piso"></td>
+                                                        <td><input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa precio"></td>
+                                                    </tr>                                                                                                  
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                <!-- <div class="form-group row">
                                     <div class="col-md-3">
-                                        <p><?php echo $inquilino['nro_habitacion'] ?></p>
+                                        <p>Habitación <?php echo $inquilino['nro_habitacion'] ?></p>
                                     </div>
                                     <div class="col-md-3">
-                                        <p><?php echo $inquilino['nro_piso'] ?></p>
+                                        <p>Piso <?php echo $inquilino['nro_piso'] ?></p>
                                     </div>
                                     <div class="col-md-3">
-                                        <p><?php echo $inquilino['precio'] ?></p>
+                                        <p>S/ <?php echo $inquilino['precio'] ?></p>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div> 
                         <div class="card shadow mb-4">

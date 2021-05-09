@@ -128,10 +128,9 @@
                                                 
                                                 <tbody>
                                                     <tr>
-                                                        <td>Habitación 1</td>
-                                                        <td>Buen estado</td>
-                                                        <td>S/350.00</td>
-                                                        <td><button type="button" class="btn btn-success">Disponible</button></td>
+                                                        <td> <input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa número de habitación"> </td>
+                                                        <td><input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa piso"></td>
+                                                        <td><input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa precio"></td>
                                                     </tr>                                                                                                  
                                                 </tbody>
                                             </table>
