@@ -19,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Lista de habitaciones - My Flats</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,7 +65,7 @@
                                 <h6 class="titlelist m-0 font-weight-bold text-primary">Lista de habitaciones</h6>
 
                                 <form 
-                                    class="buscarinput">
+                                    class="buscarinputh">
                                     <div class="input-group">
                                         <input type="text" id="buscarh" onkeyup="buscarHab()" class="form-control  border-0 small" placeholder="Buscar"
                                             aria-label="Search" aria-describedby="basic-addon2">
@@ -75,20 +75,18 @@
                                             </button>
                                         </div>
                                     </div>
+                                    
                                 </form>
                             </div>
-                            <div class="container">
+                            <div class="container ">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col ">
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                             Agregar Habitación
-                                        </button>
-                                    </div>
-                                </div>    
+                                </button>
                             </div>
-
-                        
-                            <div class="card-body">
+                                                   
+                            <div class="card-body maincontent">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
                                         <thead>
@@ -136,11 +134,11 @@
                         
 
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Nueva habitación</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
@@ -155,17 +153,21 @@
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
-                                                <option>4</option>
                                              </select>
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label for="hab_nro">Nro. Habitación</label>
                                              <select id="hab_nro" name="hab_nro" class="form-control">
                                                 <option selected>Seleccionar</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
+                                                <option>101</option>
+                                                <option>102</option>
+                                                <option>103</option>
+                                                <option>201</option>
+                                                <option>202</option>
+                                                <option>203</option>
+                                                <option>301</option>
+                                                <option>302</option>
+                                                <option>303</option>
                                              </select>
                                           </div>
                                           <div class="form-group col-md-12">
@@ -174,8 +176,8 @@
                                           </div>
                                        </div>
                                        <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
                                  </div>
                                     </form>
                                  </div>
@@ -197,7 +199,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; My Flats 2021</span>
                     </div>
                 </div>
             </footer>

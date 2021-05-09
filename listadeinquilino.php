@@ -11,7 +11,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -21,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Lista de inquilinos - My Flats</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -61,7 +61,7 @@
                     
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
+                        <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
                                 <h6 class="titlelist m-0 font-weight-bold text-primary">Lista de inquilinos</h6>
 
@@ -80,7 +80,7 @@
                             </div>
 
                         
-                            <div class="card-body">
+                            <div class="card-body maincontent">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -135,7 +135,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; My Flats 2021</span>
                     </div>
                 </div>
             </footer>
