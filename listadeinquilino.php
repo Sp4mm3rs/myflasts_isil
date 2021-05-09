@@ -1,6 +1,6 @@
 <?php
     include 'config/conection.php';
-
+    
     $consulta = "SELECT * FROM inquilinos";
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
@@ -99,15 +99,15 @@
 
                                             foreach ($resultado as $registro) {                                                
                                             ?>
-                                            <tr>
+                                            <tr class="item" id="<?php echo $registro['dni'] ?>">
                                                 <td><?php echo $registro['dni'] ?></td>
                                                 <td><?php echo $registro['nombre'] ?> <?php echo $registro['apellido'] ?></td>
                                                 <td></td>
                                                 <td><?php echo $registro['celular'] ?></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><a href="#">Ver</a></td>
-                                                <td> <a href="detalle-inquilino.php?dni=<?php echo $registro['dni'] ?>">Ver</a> </td>
+                                                <td><a href="contrato/?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
+                                                <td><a href="detalle-inquilino.php?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>
