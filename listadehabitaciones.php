@@ -39,17 +39,9 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-<<<<<<< HEAD
-
         <?php 
             include 'nav-izquierda.php';
         ?>
-
-=======
-        <?php 
-            include 'nav-izquierda.php';
-        ?>
->>>>>>> b6f602f8660649b1c31fb0100beb1b4bcbc24fc7
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -66,9 +58,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Habitaciones</h1>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                          Launch demo modal
-                        </button>
+                    
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
@@ -87,6 +77,15 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            Agregar Habitación
+                                        </button>
+                                    </div>
+                                </div>    
                             </div>
 
                         
