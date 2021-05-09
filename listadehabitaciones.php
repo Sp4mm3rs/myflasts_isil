@@ -60,9 +60,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Habitaciones</h1>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                          Launch demo modal
-                        </button>
+                    
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
@@ -81,6 +79,15 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                            Agregar Habitación
+                                        </button>
+                                    </div>
+                                </div>    
                             </div>
 
                         
