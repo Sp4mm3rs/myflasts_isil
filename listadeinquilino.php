@@ -58,7 +58,7 @@
                     
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
-                        <div class="card shadow mb-4">
+                        <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
                                 <h6 class="titlelist m-0 font-weight-bold text-primary">Lista de inquilinos</h6>
 
@@ -77,7 +77,7 @@
                             </div>
 
                         
-                            <div class="card-body">
+                            <div class="card-body maincontent">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>

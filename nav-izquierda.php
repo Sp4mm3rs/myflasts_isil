@@ -1,12 +1,20 @@
+        <head>
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        </head>
+        
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon ">
+                    <img src="img/iconmf.png" width="60px" heigth="60px" alt="im">
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3 maintitle">My Flats</div>
             </a>
 
             <!-- Divider -->
@@ -29,10 +37,12 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-inquilino"
+
+                <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#menu-inquilino"
                     aria-expanded="true" aria-controls="menu-inquilino">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Inquilinos</span>
+                    
+                    <span class="opciones">Inquilinos</span>
+         
                 </a>
                 <div id="menu-inquilino" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -46,8 +56,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-habitacion"
                     aria-expanded="true" aria-controls="menu-habitacion">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Habitacion</span>
+                    
+                    <span class="opciones">Habitacion</span>
                 </a>
                 <div id="menu-habitacion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -60,9 +70,8 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-servicio"
-                    aria-expanded="true" aria-controls="menu-servicio">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Servicio</span>
+                    aria-expanded="true" aria-controls="menu-servicio">                   
+                    <span class="opciones">Servicio</span>
                 </a>
                 <div id="menu-servicio" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
