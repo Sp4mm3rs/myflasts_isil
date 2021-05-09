@@ -141,38 +141,25 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Habitación</h6>
                             </div>
                             <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Habitación</th>
-                                                        <th>Piso</th>
-                                                        <th>Precio</th>
-                                                        <!-- <th>Acción</th> -->
-                                                    </tr>
-                                                </thead>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Habitación</th>
+                                                <th>Piso</th>
+                                                <th>Precio</th>
+                                            </tr>
+                                        </thead>
                                                 
-                                                <tbody>
-                                                    <tr>
-                                                        <td> <input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" value="Habitación <?php echo $inquilino['nro_habitacion'] ?>"> </td>
-                                                        <td><input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa piso"></td>
-                                                        <td><input type="number" class="form-control" id="inq_habitacion" name="inq_habitacion" placeholder="Ingresa precio"></td>
-                                                    </tr>                                                                                                  
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                <!-- <div class="form-group row">
-                                    <div class="col-md-3">
-                                        <p>Habitación <?php echo $inquilino['nro_habitacion'] ?></p>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p>Piso <?php echo $inquilino['nro_piso'] ?></p>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <p>S/ <?php echo $inquilino['precio'] ?></p>
-                                    </div>
-                                </div> -->
+                                        <tbody>
+                                            <tr>
+                                                <td> <input type="text" class="form-control" id="inq_habitacion" name="inq_habitacion" value="Habitación <?php echo $inquilino['nro_habitacion'] ?>" disabled> </td>
+                                                <td><input type="text" class="form-control" id="inq_habitacion" name="inq_habitacion" value="Piso <?php echo $inquilino['nro_piso'] ?>" disabled></td>
+                                                <td><input type="text" class="form-control" id="inq_habitacion" name="inq_habitacion" value="S/ <?php echo $inquilino['precio'] ?>" disabled></td>
+                                            </tr>                                                                                                  
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div> 
                         <div class="card shadow mb-4">
