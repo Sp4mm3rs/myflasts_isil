@@ -14,7 +14,7 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -24,7 +24,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>Detalle de inquilinos - My Flats</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -76,7 +76,7 @@
                                     <button type="button" class="btn btn-outline-warning">Editar inquilino</button>                        
                                 </div>  
                                 <div class="col-md-3 d-flex justify-content-around">
-                                    <button type="button" class="btn btn-outline-success">Actualizar</button>
+                                    <button type="button" class="btn btn-outline-success" disabled>Actualizar</button>
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-around">
                                     <button type="button" class="btn btn-outline-danger">Finalizar contrato</button>
@@ -180,8 +180,8 @@
                                         
                                         <tbody>
                                             <tr>
-                                                <td><label class="form-control" type="date" id="example-date-input" value="2011-08-19">18/05/2017</label>  </td>
-                                                <td><label class="form-control" type="date" id="example-date-input" value="2011-08-19">10/02/2022</label></td>
+                                                <td><input class="form-control" type="date" id="example-date-input"></td>
+                                                <td><input class="form-control" type="date" id="example-date-input" ></td>
                                                 <td><input type="checkbox" id="" checked disabled/></td>
                                                 <td><input type="checkbox" id=""  disabled/></td>
                                             </tr>                                           
@@ -206,7 +206,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; My Flats 2021</span>
                     </div>
                 </div>
             </footer>
