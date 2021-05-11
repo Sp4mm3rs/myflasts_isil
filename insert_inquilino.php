@@ -32,7 +32,7 @@
             } while ($conexion->next_result());
         }
 
-       header("Refresh:1; url=tuputamadre.php");
+       header("Refresh:1; url=listadeinquilino.php");
 
 }
  
