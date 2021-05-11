@@ -269,6 +269,15 @@
 
         });
 
+        $(document).ready(function(){
+            $(".btn-actualizar").click(function() {
+                $('form input').prop("disabled", true);
+                $('form textarea').prop("disabled", true);
+                $('.btn-actualizar').prop("disabled", true);
+            });
+
+        });
+
     </script>
 
 </body>
