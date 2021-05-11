@@ -64,7 +64,7 @@
                     <h1 class="h3 mb-4 text-gray-800">Ingresar inquilino</h1>
                     <form action="insert_inquilino.php" method="POST">       
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <div class="card-header py-3 titlesearch">
                             <h6 class="m-0 font-weight-bold text-primary">Datos inquilino</h6>
                         </div>
                         <div class="card-body">
@@ -122,7 +122,7 @@
 
                                 <!-- DataTales Example -->
                                 <div class="card shadow mb-4">
-                                    <div class="card-header py-3">
+                                    <div class="card-header py-3 titlesearch">
                                         <h6 class="m-0 font-weight-bold text-primary">Habitaciones</h6>
                                     </div>
                                     <div class="card-body">
@@ -158,7 +158,7 @@
                                     </div>
                                 </div>
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
+                                <div class="card-header py-3 titlesearch">
                                     <h6 class="m-0 font-weight-bold text-primary">Fecha</h6>
                                 </div>
                                 <div class="card-body">
@@ -175,7 +175,7 @@
                                 </div>
                             </div>
                             <div class="card shadow mb-4">
-                                <div class="card-header py-3">
+                                <div class="card-header py-3 titlesearch">
                                     <h6 class="m-0 font-weight-bold text-primary">Servicios</h6>
                                 </div>
                                 <div class="card-body">

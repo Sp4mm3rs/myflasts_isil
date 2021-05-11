@@ -64,7 +64,7 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Detalle inquilino</h1>
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <div class="card-header py-32 titlesearch">
                             <h6 class="m-0 font-weight-bold text-primary">Acciones</h6>
                         </div>
                         <div class="card-body">
@@ -92,7 +92,7 @@
                     <form>
                         
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3">
+                            <div class="card-header py-3 titlesearch" >
                                 <h6 class="m-0 font-weight-bold text-primary">Detalle inquilino</h6>
                             </div>
                             <div class="card-body">
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3">
+                            <div class="card-header py-3 titlesearch">
                                 <h6 class="m-0 font-weight-bold text-primary">Habitación</h6>
                             </div>
                             <div class="card-body">
@@ -168,7 +168,7 @@
                             </div>
                         </div> 
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3">
+                            <div class="card-header py-3 titlesearch">
                                 <h6 class="m-0 font-weight-bold text-primary">Fecha y Servicios</h6>
                             </div>
                             <div class="card-body">
