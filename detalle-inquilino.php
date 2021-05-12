@@ -76,7 +76,7 @@
                                     <button class="btn btn-outline-warning btn-editar">Editar inquilino</button>                        
                                 </div>  
                                 <div class="col-md-3 d-flex justify-content-around">
-                                    <button class="btn btn-outline-success btn-actualizar" disabled>Actualizar</button>
+                                    <button class="btn btn-outline-success btn-actualizar" href="actualizar-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>" disabled>Actualizar</button>
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-around">
                                     <td><a class="btn btn-outline-danger" href="delete-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">Finalizar contrato</a></td>      
