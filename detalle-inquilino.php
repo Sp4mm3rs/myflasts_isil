@@ -123,7 +123,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_cantidad">Cantidad inquilinos</label>
-                                                <input type="number" class="form-control" id="inq_cantidad" name="inq_cantidad" disabled>
+                                                <input type="number" class="form-control" id="inq_cantidad" name="inq_cantidad" value="<?php echo $inquilino['cant_inquilino'] ?>" disabled>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="exampleFormControlTextarea1">Observaciones</label>
