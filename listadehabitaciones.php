@@ -1,10 +1,11 @@
 <?php
     include 'config/conection.php';
 
-    $consulta = "SELECT * FROM inquilinos inq
-                        INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
-";
-    $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+//     $consulta = "SELECT * FROM inquilinos inq
+//                         INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
+// ";
+   $consulta = "SELECT * FROM habitaciones";
+   $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
     
 ?>
 
@@ -102,24 +103,43 @@
                                         <tbody>
                                             <?php 
 
-                                            foreach ($resultado as $registro) {
+                                            foreach ($resultado as $habitacion) {
 
-                                                // echo "<pre>";
-                                                // echo print_r($registro);
-                                                // echo "</pre>";
+                                                $con_inquilino = "SELECT * FROM inquilinos";
+                                                $res_inquilino = mysqli_query( $conexion, $con_inquilino ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
+                                                foreach ($res_inquilino as $inquilino) {
                                             ?>
                                             <tr>
-                                                <td><?php echo $registro['nro_habitacion'] ?></td>
-                                                <td><?php echo $registro['nro_piso'] ?></td>
-                                                <td><?php echo $registro['nombre'] ?> <?php echo $registro['apellido'] ?></td>
-                                                <td><?php if (isset($registro['serv_cable']) && $registro['serv_cable'] == "1") echo "Tiene"; ?></td>
-                                                <td><?php if (isset($registro['serv_internet']) && $registro['serv_internet'] == "1") echo "Tiene"; ?></td>
-                                                <td><?php echo $registro['fecha_fin'] ?></td>
-                                                <td><?php echo $registro['precio'] ?></td>
-                                                <td><?php if (isset($registro['id_inquilino']) && $registro['id_inquilino'] == NULL) echo "Disponible"; ?></td>
+                                                <td><?php echo $habitacion['nro_habitacion'] ?></td>
+                                                <td><?php echo $habitacion['nro_piso'] ?></td>
+
+                                                <?php 
+                                                if ($inquilino['id_inq'] == $habitacion['id_inquilino']) {
+                                                   ?>
+                                                    <td><?php echo $inquilino['nombre'] ?> <?php echo $inquilino['apellido'] ?></td>
+                                                   <?php
+                                                }else{ ?>
+                                                    <td></td>
+                                                <?php }
+                                                ?>
+                                                <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "Tiene"; ?></td>
+                                                <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "Tiene"; ?></td>
+                                                <td><?php echo $habitacion['fecha_fin'] ?></td>
+                                                <td><?php echo $habitacion['precio'] ?></td>
+                                                <?php if (isset($habitacion['id_inquilino']) && $habitacion['id_inquilino'] == "0"){ ?>
+                                                <td>Disponible</td>
+                                                <?php }else { ?>
+                                                <td>Ocupado</td>
+                                                <?php } ?>
                                             </tr>
-                                            <?php } ?>
+                                        
+                                            <?php 
+
+                                                }
+                                            } 
+
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
