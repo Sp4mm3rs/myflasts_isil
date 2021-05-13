@@ -94,8 +94,11 @@
                                         <div class="form-group col-md-6">
                                             <label for="inq_cant">Cantidad inquilinos</label>
                                             <select id="inq_cant" name="inq_cant" class="form-control">
-                                                <option selected>1</option>
-                                                <option>2</option>
+                                                <option selected>Seleccionar</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
                                             </select>
                                         </div>  
                                         <div class="form-group col-md-12">
@@ -140,10 +143,6 @@
                                                 <tbody>
                                                     <?php 
                                                         foreach ($res_habitaciones as $habitacion) {
-                                                            // echo "<pre>";
-                                                            // echo print_r($habitacion);
-                                                            // echo "<pre>";
-
                                                     ?>
                                                     <tr>
                                                         <td>Habitación <?php echo $habitacion['nro_habitacion'] ?></td>

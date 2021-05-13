@@ -51,7 +51,7 @@ $data = '';
 $mpdf->AddPage();
 
 $data .= '<div class="page-contrato" style="padding-top: 10pt;">';
-$data .= '<h2 style="text-align:center;color:#555555;font-size:13pt;"><u>CONTRATO DE ARRENDAMIENTO DE UNA HABITACIÓN</u></h2>';
+$data .= '<h2 style="text-align:center;font-size:13pt;"><u>CONTRATO DE ARRENDAMIENTO DE UNA HABITACIÓN</u></h2>';
 	$data .= '<div class="texto-contrado" style="padding-left:50pt;padding-right:50pt;">';
 		$data .= '<p style="text-align: justify;">Conste por el presente contrato de Arrendamiento que celebran de una parte don ……….., con D.N.I Nº ……… con domicilio en …………… en calidad de ARRENDADOR, y de otra parte don (a) '.$nombre.' '.$apellido.' con D.N.I. Nº '.$dni.' con domicilio en ………..en calidad de ARRENDATARIO, en los siguientes términos y condiciones:</p>';
 		$data .= '<p style="text-align: justify;"><b>PRIMERO.-</b> Por el presente Contrato el ARRENDADOR, da en arrendamiento a El ARRENDATARIO, una habitación ubicada en ……………….. Int………. Piso…………., para uso exclusivo de vivienda.</p>'; 

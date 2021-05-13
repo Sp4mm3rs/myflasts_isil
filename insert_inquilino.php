@@ -9,7 +9,8 @@
         $get_celular = $_POST['inq_celular'];
         $get_email = $_POST['inq_email'];
         $get_observacion = $_POST['inq_observacion'];
-
+        $get_cant = $_POST['inq_cant'];
+        
 
         $get_habitacion = $_POST['habitacion'];
 
@@ -22,7 +23,7 @@
 
         for ( $i = 0; $i < sizeof($get_habitacion); $i++) {  
             
-            $info_inquilino = array("INSERT INTO inquilinos (dni, nombre, apellido, celular, correo, observaciones) VALUES ('$get_dni', '$get_nombre', '$get_apellido', '$get_celular', '$get_email', '$get_observacion')", 
+            $info_inquilino = array("INSERT INTO inquilinos (dni, nombre, apellido, celular, correo,cant_inquilino, observaciones) VALUES ('$get_dni', '$get_nombre', '$get_apellido', '$get_celular', '$get_email', $get_cant, '$get_observacion')", 
             "UPDATE habitaciones SET id_inquilino = (SELECT id_inq FROM inquilinos WHERE dni = $get_dni), fecha_inicio = '$get_inicio', fecha_fin = '$get_fin', serv_internet = $get_internet, serv_cable = $get_cable WHERE id_hab = $get_habitacion[$i]");
         }
         if ($conexion->multi_query(implode(';', $info_inquilino))) {
