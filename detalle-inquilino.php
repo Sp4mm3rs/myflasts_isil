@@ -89,7 +89,7 @@
         // echo print_r($inquilino);
         // echo "</pre>";
                     ?>                   
-                    <form>
+                    <form class="form-actualizar" method="POST" action="actualizar-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">
                         
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 titlesearch" >
@@ -123,18 +123,18 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_cantidad">Cantidad inquilinos</label>
-                                                <input type="number" class="form-control" id="inq_cantidad" name="inq_cantidad" disabled>
+                                                <input type="number" class="form-control" id="inq_cantidad" name="inq_cantidad" value="<?php echo $inquilino['cant_inquilino'] ?>" disabled>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="exampleFormControlTextarea1">Observaciones</label>
-                                                    <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $inquilino['observaciones'] ?></textarea>
+                                                    <textarea disabled class="form-control" id="exampleFormControlTextarea1" name="inq_observacion" rows="3"><?php echo $inquilino['observaciones'] ?></textarea>
                                             </div>
                                         </div>
                                             
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <img src="img/default.jpg" class="img-fluid" alt="Responsive image">
+                                            <img src="<?php echo $inquilino['foto']?>"  class="img-fluid" alt="Responsive image" id="foto_inq" name="foto_inq">
                                         </div>
                                     </div>
 
@@ -267,6 +267,17 @@
                 $('.btn-actualizar').prop("disabled", false);
             });
 
+            $(".btn-actualizar").click(function() {
+                $(".form-actualizar").submit();
+            });
+
+        });
+        $(document).ready(function(){
+            $(".btn-actualizar").click(function() {
+                $('form input').prop("disabled", true);
+                $('form textarea').prop("disabled", true);
+                $('.btn-actualizar').prop("disabled", true);
+            });
         });
 
     </script>

@@ -62,7 +62,7 @@
                 <div class="container-fluid">
 
                     <h1 class="h3 mb-4 text-gray-800">Ingresar inquilino</h1>
-                    <form action="insert_inquilino.php" method="POST">       
+                    <form action="insert_inquilino.php" method="POST" enctype="multipart/form-data">       
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 titlesearch">
                             <h6 class="m-0 font-weight-bold text-primary">Datos inquilino</h6>
@@ -94,8 +94,11 @@
                                         <div class="form-group col-md-6">
                                             <label for="inq_cant">Cantidad inquilinos</label>
                                             <select id="inq_cant" name="inq_cant" class="form-control">
-                                                <option selected>1</option>
-                                                <option>2</option>
+                                                <option selected>Seleccionar</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
                                             </select>
                                         </div>  
                                         <div class="form-group col-md-12">
@@ -106,11 +109,13 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <img src="img/default.jpg" class="img-fluid" alt="Responsive image">
+                                        <img id="foto_inq" src="img/default.jpg" width="244px" height="244px" class="img-fluid" alt="Responsive image">
                                     </div>
                                     <div class="custom-file">
-                                         <label class="custom-file-label" for="customFile">Seleccionar foto</label>
-                                         <input type="file" class="custom-file-input" id="customFile">
+                                         <label id="elegirfoto" for="foto">Seleccionar foto</label>
+                                         <input type="file" name="fotoacargar" value="" class="custom-file-input" id="foto" onchange="CargarFoto()"> 
+                               
+                                                                          
                                     </div>
                                 </div>
                             </div>
@@ -140,10 +145,6 @@
                                                 <tbody>
                                                     <?php 
                                                         foreach ($res_habitaciones as $habitacion) {
-                                                            // echo "<pre>";
-                                                            // echo print_r($habitacion);
-                                                            // echo "<pre>";
-
                                                     ?>
                                                     <tr>
                                                         <td>Habitación <?php echo $habitacion['nro_habitacion'] ?></td>
@@ -253,6 +254,15 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script>
+    function CargarFoto(){
+        var image=document.getElementById('foto_inq');
+        image.src= URL.createObjectURL(event.target.files[0]);
+    }
+    </script>
+
+ 
 
 </body>
 
