@@ -32,11 +32,7 @@
             } while ($conexion->next_result());
         }
 
-<<<<<<< HEAD
-       header("Refresh:1; url=detalle-inquilino.php");
-=======
        header("Refresh:1; url=listadeinquilino.php");
->>>>>>> 23479be521dcdaac8ae21c3cf48d989a68dbd063
 
 }
  
