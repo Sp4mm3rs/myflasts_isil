@@ -32,7 +32,7 @@
         for ( $i = 0; $i < sizeof($get_habitacion); $i++) {  
             
 
-            $info_inquilino = array("INSERT INTO inquilinos (dni, nombre, apellido, celular, correo, observaciones,foto) VALUES ('$get_dni', '$get_nombre', '$get_apellido', '$get_celular', '$get_email', '$get_observacion','$folder')", 
+            $info_inquilino = array("INSERT INTO inquilinos (dni, nombre, apellido, celular, correo, observaciones,cant_inquilino,foto) VALUES ('$get_dni', '$get_nombre', '$get_apellido', '$get_celular', '$get_email', '$get_observacion','$get_cant','$folder')", 
 
 
             "UPDATE habitaciones SET id_inquilino = (SELECT id_inq FROM inquilinos WHERE dni = $get_dni), fecha_inicio = '$get_inicio', fecha_fin = '$get_fin', serv_internet = $get_internet, serv_cable = $get_cable WHERE id_hab = $get_habitacion[$i]");

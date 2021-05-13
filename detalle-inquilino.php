@@ -89,7 +89,7 @@
         // echo print_r($inquilino);
         // echo "</pre>";
                     ?>                   
-                    <form class="form-actualizar" method="POST" action="actualizar-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">
+                    <form class="form-actualizar" method="POST" enctype="multipart/form-data" action="actualizar-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">
                         
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 titlesearch" >
@@ -135,6 +135,8 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <img src="<?php echo $inquilino['foto']?>"  class="img-fluid" alt="Responsive image" id="foto_inq" name="foto_inq">
+                                            <label id="elegirfoto" for="actfoto">Seleccionar foto</label>
+                                            <input type="file" name="afoto" value="" class="custom-file-input inputfoto" id="actfoto" onchange="ActFoto()" disabled > 
                                         </div>
                                     </div>
 
@@ -265,6 +267,7 @@
                 $('form input').prop("disabled", false);
                 $('form textarea').prop("disabled", false);
                 $('.btn-actualizar').prop("disabled", false);
+                $('.inputfoto').prop("disabled", false);
             });
 
             $(".btn-actualizar").click(function() {
@@ -277,8 +280,14 @@
                 $('form input').prop("disabled", true);
                 $('form textarea').prop("disabled", true);
                 $('.btn-actualizar').prop("disabled", true);
+                $('.inputfoto').prop("disabled", true);
             });
         });
+
+        function ActFoto(){
+        var image=document.getElementById('foto_inq');
+        image.src= URL.createObjectURL(event.target.files[0]);
+    }
 
     </script>
 
