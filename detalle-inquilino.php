@@ -76,7 +76,7 @@
                                     <button class="btn btn-outline-warning btn-editar">Editar inquilino</button>                        
                                 </div>  
                                 <div class="col-md-3 d-flex justify-content-around">
-                                    <button class="btn btn-outline-success btn-actualizar" href="actualizar-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>" disabled>Actualizar</button>
+                                    <button class="btn btn-outline-success btn-actualizar" disabled>Actualizar</button>
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-around">
                                     <td><a class="btn btn-outline-danger" href="delete-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">Finalizar contrato</a></td>      
@@ -89,7 +89,7 @@
         // echo print_r($inquilino);
         // echo "</pre>";
                     ?>                   
-                    <form>
+                    <form class="form-actualizar" method="POST" action="actualizar-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">
                         
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 titlesearch" >
@@ -127,7 +127,7 @@
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="exampleFormControlTextarea1">Observaciones</label>
-                                                    <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3"><?php echo $inquilino['observaciones'] ?></textarea>
+                                                    <textarea disabled class="form-control" id="exampleFormControlTextarea1" name="inq_observacion" rows="3"><?php echo $inquilino['observaciones'] ?></textarea>
                                             </div>
                                         </div>
                                             
@@ -267,15 +267,17 @@
                 $('.btn-actualizar').prop("disabled", false);
             });
 
-        });
+            $(".btn-actualizar").click(function() {
+                $(".form-actualizar").submit();
+            });
 
+        });
         $(document).ready(function(){
             $(".btn-actualizar").click(function() {
                 $('form input').prop("disabled", true);
                 $('form textarea').prop("disabled", true);
                 $('.btn-actualizar').prop("disabled", true);
             });
-
         });
 
     </script>
