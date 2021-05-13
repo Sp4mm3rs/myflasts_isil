@@ -134,7 +134,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div class="form-group">
-                                            <img src="img/default.jpg" class="img-fluid" alt="Responsive image">
+                                            <img src="<?php echo $inquilino['foto']?>"  class="img-fluid" alt="Responsive image" id="foto_inq" name="foto_inq">
                                         </div>
                                     </div>
 
