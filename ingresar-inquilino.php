@@ -62,7 +62,7 @@
                 <div class="container-fluid">
 
                     <h1 class="h3 mb-4 text-gray-800">Ingresar inquilino</h1>
-                    <form action="insert_inquilino.php" method="POST">       
+                    <form action="insert_inquilino.php" method="POST" enctype="multipart/form-data">       
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 titlesearch">
                             <h6 class="m-0 font-weight-bold text-primary">Datos inquilino</h6>
@@ -109,11 +109,13 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <img src="img/default.jpg" class="img-fluid" alt="Responsive image">
+                                        <img id="foto_inq" src="img/default.jpg" width="244px" height="244px" class="img-fluid" alt="Responsive image">
                                     </div>
                                     <div class="custom-file">
-                                         <label class="custom-file-label" for="customFile">Seleccionar foto</label>
-                                         <input type="file" class="custom-file-input" id="customFile">
+                                         <label id="elegirfoto" for="foto">Seleccionar foto</label>
+                                         <input type="file" name="fotoacargar" value="" class="custom-file-input" id="foto" onchange="CargarFoto()"> 
+                               
+                                                                          
                                     </div>
                                 </div>
                             </div>
@@ -252,6 +254,15 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <script>
+    function CargarFoto(){
+        var image=document.getElementById('foto_inq');
+        image.src= URL.createObjectURL(event.target.files[0]);
+    }
+    </script>
+
+ 
 
 </body>
 
