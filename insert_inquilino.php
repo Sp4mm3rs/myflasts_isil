@@ -44,7 +44,7 @@
             } while ($conexion->next_result());
         }
 
-       header("Refresh:1; url=http://localhost/myflasts_isil/");
+        header("Refresh:1; url=listadeinquilino.php");
 
     
         
