@@ -73,28 +73,28 @@
                                     <div class="row">
                                        <div class="form-group col-md-6">
                                             <label for="inq_nombre">Nombres</label>
-                                            <input type="text" class="form-control" id="inq_nombre" name="inq_nombre" placeholder="Ingresa nombres">
+                                            <input type="text" class="form-control" id="inq_nombre" name="inq_nombre" placeholder="Ingresa nombres" required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inq_apellido">Apellidos</label>
-                                            <input type="text" class="form-control" id="inq_apellido" name="inq_apellido" placeholder="Ingresa apellidos">
+                                            <input type="text" class="form-control" id="inq_apellido" name="inq_apellido" placeholder="Ingresa apellidos"required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inq_dni">DNI</label>
-                                            <input type="text" class="form-control" id="inq_dni" name="inq_dni" placeholder="Ingresa DNI">
+                                            <input type="text" class="form-control" id="inq_dni" name="inq_dni" placeholder="Ingresa DNI"required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inq_celular">Celular</label>
-                                            <input type="text" class="form-control" id="inq_celular" name="inq_celular" placeholder="Ingresa celular">
+                                            <input type="text" class="form-control" id="inq_celular" name="inq_celular" placeholder="Ingresa celular"required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inq_email">Email</label>
-                                            <input type="email" class="form-control" id="inq_email" name="inq_email" placeholder="Ingresa email">
+                                            <input type="email" class="form-control" id="inq_email" name="inq_email" placeholder="Ingresa email"required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inq_cant">Cantidad inquilinos</label>
-                                            <select id="inq_cant" name="inq_cant" class="form-control">
-                                                <option selected>Seleccionar</option>
+                                            <select id="inq_cant" name="inq_cant" class="form-control" required>
+                                                <option selected>Seleccionar</option >
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -103,7 +103,7 @@
                                         </div>  
                                         <div class="form-group col-md-12">
                                             <label for="inq_observacion">Observaciones</label>
-                                            <textarea class="form-control" id="inq_observacion" name="inq_observacion" rows="3"></textarea>
+                                            <textarea class="form-control" id="inq_observacion" name="inq_observacion" rows="3"required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -113,9 +113,7 @@
                                     </div>
                                     <div class="custom-file">
                                          <label id="elegirfoto" for="foto">Seleccionar foto</label>
-                                         <input type="file" name="fotoacargar" value="" class="custom-file-input" id="foto" onchange="CargarFoto()"> 
-                               
-                                                                          
+                                         <input type="file" name="fotoacargar" value="" class="custom-file-input" id="foto" onchange="CargarFoto()" required>                                                                                                        
                                     </div>
                                 </div>
                             </div>
