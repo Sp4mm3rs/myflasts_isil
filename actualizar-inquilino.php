@@ -52,4 +52,4 @@
                     } while ($conexion->next_result());
                 }
 
-                header("Refresh:1; url=listadeinquilino.php");
+                header("Refresh:1; url=detalle-inquilino.php?dni=$get_dni");
