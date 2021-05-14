@@ -191,7 +191,7 @@
                            
                             <div class="mb-4">   
                                 <button type="submit" name="rInquilino" class="btn btn-primary">Agregar</button>
-                                <button type="button" class="btn btn-secondary">Cancelar</button>
+                                <a class="btn btn-secondary" href="listadeinquilino.php">Cancelar</a>
                             </div>
                             
                     </form>
