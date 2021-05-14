@@ -148,7 +148,7 @@
                                                         <td>Habitación <?php echo $habitacion['nro_habitacion'] ?></td>
                                                         <td>Piso <?php echo $habitacion['nro_piso'] ?></td>
                                                         <td>S/ <?php echo $habitacion['precio'] ?></td>
-                                                        <td><input type="radio" name="habitacion[]" value="<?php echo $habitacion['id_hab'] ?>"></td>
+                                                        <td><input type="radio" name="habitacion[]" value="<?php echo $habitacion['id_hab'] ?>" required></td>
                                                     </tr>
                                                     <?php } ?>                                                                                                  
                                                 </tbody>
