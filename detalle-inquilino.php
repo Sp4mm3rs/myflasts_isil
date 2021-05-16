@@ -147,7 +147,7 @@
                             <div class="card-header py-3 titlesearch">
                                 <h6 class="m-0 font-weight-bold text-primary">Habitación</h6>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body form-habitacion">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -266,8 +266,9 @@
             $(".btn-editar").click(function() {
                 $('form input').prop("disabled", false);
                 $('form textarea').prop("disabled", false);
+                $('.form-habitacion input').prop("disabled", true);
                 $('.btn-actualizar').prop("disabled", false);
-                $('.inputfoto').prop("disabled", false);
+                $('.inputfoto').prop("disabled", false); 
             });
 
             $(".btn-actualizar").click(function() {
@@ -291,6 +292,6 @@
 
     </script>
 
-</body>
+</body
 
 </html>

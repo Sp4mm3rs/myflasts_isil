@@ -1,11 +1,9 @@
 <?php
     include 'config/conection.php';
 
-        $filename=$_FILES["afoto"]["name"];
-        $tempname=$_FILES["afoto"]["tmp_name"];
-        $folder="img/".$filename;
-        move_uploaded_file($tempname,$folder);
-
+           
+            
+            
        $get_nombre = $_POST['inq_nombre'];
        $get_apellido = $_POST['inq_apellido'];
        $get_dni = $_POST['inq_dni'];
@@ -14,7 +12,7 @@
        $get_observacion = $_POST['inq_observacion'];
        $get_cantidad=$_POST['inq_cantidad'];
        
-
+      
        $get_inicio = date('Y-m-d',strtotime($_POST['fechaInicio']));
        $get_fin = date('Y-m-d',strtotime($_POST['fechaFin']));
 
@@ -24,6 +22,21 @@
        $get_inq = $_GET['inq'];
        $get_hab = $_GET['hab'];
 
+
+       $query="SELECT foto FROM inquilinos WHERE id_inq=$get_inq";
+       $result=mysqli_query($conexion,$query);
+       $row = mysqli_fetch_assoc($result); 
+       
+       $folder="";          
+       $filename=$_FILES["afoto"]["name"];
+       if(!empty($filename)){
+           $tempname=$_FILES["afoto"]["tmp_name"];   
+           $folder="img/".$filename;
+           move_uploaded_file($tempname,$folder);
+       }
+       else{
+           $folder= $row['foto'];
+       }
 
 
         $update_inq = array("UPDATE inquilinos 
@@ -39,4 +52,4 @@
                     } while ($conexion->next_result());
                 }
 
-        header("Refresh:1; url=http://localhost/myflasts_isil/");
+                header("Refresh:1; url=detalle-inquilino.php?dni=$get_dni");
