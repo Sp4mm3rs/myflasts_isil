@@ -11,7 +11,7 @@
     $resultado = mysqli_query($conexion, $sql ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     if ($resultado) {
-       header( 'Location: http://localhost/myflasts_isil/listadehabitaciones.php' ) ;
+       header( 'Location: http://localhost/myflasts_isil/' ) ;
     }
    // mysql_close($conexion);
 

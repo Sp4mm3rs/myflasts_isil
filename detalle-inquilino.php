@@ -84,11 +84,7 @@
                             </div>
                        </div>
                     </div>   
-                    <?php 
-        //             echo "<pre>";
-        // echo print_r($inquilino);
-        // echo "</pre>";
-                    ?>                   
+               
                     <form class="form-actualizar" method="POST" enctype="multipart/form-data" action="actualizar-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">
                         
                         <div class="card shadow mb-4">
@@ -189,8 +185,8 @@
                                             <tr>
                                                 <td><input class="form-control" type="date" name="fechaInicio" value="<?php echo $inquilino['fecha_inicio'] ?>" id="date-input-ingreso" disabled></td>
                                                 <td><input class="form-control" type="date" name="fechaFin" value="<?php echo $inquilino['fecha_fin'] ?>" id="date-input-ingreso" disabled></td>
-                                                <td><input type="checkbox" name="serInternet" <?php if (isset($inquilino['serv_internet']) && $inquilino['serv_internet'] == "1") echo "checked"; ?> disabled></td>
-                                                <td><input type="checkbox" name="serCable" <?php if (isset($inquilino['serv_cable']) && $inquilino['serv_cable'] == "1") echo "checked"; ?> disabled></td>
+                                                <td><input type="checkbox" name="serInternet" <?php if (isset($inquilino['serv_internet']) && $inquilino['serv_internet'] == "1") echo "checked"; ?> value="<?php echo $inquilino['serv_internet'] ?>" disabled></td>
+                                                <td><input type="checkbox" name="serCable" <?php if (isset($inquilino['serv_cable']) && $inquilino['serv_cable'] == "1") echo "checked"; ?> value="<?php echo $inquilino['serv_cable'] ?>"disabled></td>
                                             </tr>                                           
                                         </tbody>
                                     </table>
@@ -292,6 +288,6 @@
 
     </script>
 
-</body
+</body>
 
 </html>
