@@ -97,20 +97,20 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inq_nombre">Nombres</label>
-                                                <input type="text" class="form-control" id="inq_nombre" name="inq_nombre" value="<?php echo $inquilino['nombre'] ?>" disabled>
+                                                <input type="text" class="form-control " id="inq_nombre" name="inq_nombre" value="<?php echo $inquilino['nombre'] ?>" disabled>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_apellido">Apellidos</label>
-                                                <input type="text" class="form-control" id="inq_apellido" name="inq_apellido" value="<?php echo $inquilino['apellido'] ?>" disabled>
+                                                <input type="text" class="form-control " id="inq_apellido" name="inq_apellido" value="<?php echo $inquilino['apellido'] ?>" disabled>
                                             </div>
 
                                             <div class="form-group col-md-6">
                                                 <label for="inq_dni">DNI</label>
-                                                <input type="number" class="form-control" id="inq_dni" name="inq_dni" value="<?php echo $inquilino['dni'] ?>" disabled>
+                                                <input type="number" class="form-control " id="inq_dni" name="inq_dni" value="<?php echo $inquilino['dni'] ?>" disabled>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_celular">Celular</label>
-                                                <input type="number" class="form-control" id="inq_celular" name="inq_celular" value="<?php echo $inquilino['celular'] ?>" disabled>
+                                                <input type="number" class="form-control" id="inq_celular" name="inq_celular" value="<?php echo $inquilino['celular'] ?>" pattern="[9][0-9]{8}" title="Se requiere 9 digitos y el primero que sea 9" disabled>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_email">Email</label>
@@ -183,7 +183,7 @@
                                         
                                         <tbody>
                                             <tr>
-                                                <td><input class="form-control" type="date" name="fechaInicio" value="<?php echo $inquilino['fecha_inicio'] ?>" id="date-input-ingreso" disabled></td>
+                                                <td><input class="form-control " type="date" name="fechaInicio" value="<?php echo $inquilino['fecha_inicio'] ?>" id="date-input-ingreso" disabled></td>
                                                 <td><input class="form-control" type="date" name="fechaFin" value="<?php echo $inquilino['fecha_fin'] ?>" id="date-input-ingreso" disabled></td>
                                                 <td><input type="checkbox" name="serInternet" <?php if (isset($inquilino['serv_internet']) && $inquilino['serv_internet'] == "1") echo "checked"; ?> value="<?php echo $inquilino['serv_internet'] ?>" disabled></td>
                                                 <td><input type="checkbox" name="serCable" <?php if (isset($inquilino['serv_cable']) && $inquilino['serv_cable'] == "1") echo "checked"; ?> value="<?php echo $inquilino['serv_cable'] ?>"disabled></td>
@@ -262,7 +262,7 @@
             $(".btn-editar").click(function() {
                 $('form input').prop("disabled", false);
                 $('form textarea').prop("disabled", false);
-                $('.form-habitacion input').prop("disabled", true);
+                $('.form-habitacion input').prop("disabled", true);           
                 $('.btn-actualizar').prop("disabled", false);
                 $('.inputfoto').prop("disabled", false); 
             });
@@ -285,6 +285,8 @@
         var image=document.getElementById('foto_inq');
         image.src= URL.createObjectURL(event.target.files[0]);
     }
+
+   
 
     </script>
 
