@@ -16,5 +16,5 @@
             } while ($conexion->next_result());
         }
 
-        header("Refresh:1; url=listadeinquilino.php");
+        header( 'Location: http://localhost/myflasts_isil/' ) ;
 

@@ -12,6 +12,10 @@
 
     $hoy = $year . '-' . $month . '-' . $day;
 
+
+
+
+     
 ?>
 
 
@@ -71,6 +75,11 @@
                            <div class="row">
                                 <div class="col-md-10">
                                     <div class="row">
+                                        <div class="form-group col-md-6" style="position: relative;padding-right: 120px;">
+                                            <label for="inq_dni">DNI</label>
+                                            <input type="text" class="form-control" id="inq_dni" name="inq_dni" placeholder="Ingresa DNI"required>
+                                            <button class="btn btn-primary" style="position: absolute;right: 12px;bottom: 0;height: 38px;padding: 0 21px;" onclick="reniec()">Validar</button>
+                                        </div>
                                        <div class="form-group col-md-6">
                                             <label for="inq_nombre">Nombres</label>
                                             <input type="text" class="form-control" id="inq_nombre" name="inq_nombre" placeholder="Ingresa nombres" required>
@@ -79,10 +88,7 @@
                                             <label for="inq_apellido">Apellidos</label>
                                             <input type="text" class="form-control" id="inq_apellido" name="inq_apellido" placeholder="Ingresa apellidos"required>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inq_dni">DNI</label>
-                                            <input type="text" class="form-control" id="inq_dni" name="inq_dni" placeholder="Ingresa DNI"required>
-                                        </div>
+
                                         <div class="form-group col-md-6">
                                             <label for="inq_celular">Celular</label>
                                             <input type="text" class="form-control" id="inq_celular" name="inq_celular" placeholder="Ingresa celular"required>
@@ -255,9 +261,35 @@
 
     <script>
     function CargarFoto(){
-        var image=document.getElementById('foto_inq');
-        image.src= URL.createObjectURL(event.target.files[0]);
+        var image = document.getElementById('foto_inq');
+        image.src = URL.createObjectURL(event.target.files[0]);
     }
+    </script>
+    <script>
+        function reniec(){
+
+            var val_dni = $('#inq_dni').val();
+            var success = $.ajax({
+              url: "validar_dni.php",
+              method: "POST",
+              data: { dni : val_dni },
+              dataType: "json"
+            });
+             
+            success.done(function( data ) {
+               $.each(data, function(i, reniec){
+                    $('#inq_nombre').val(reniec.name);
+                    $('#inq_apellido').val(reniec.fathers_lastname + " " + reniec.mothers_lastname);
+                });                    
+            });
+            
+            success.fail(function( jqXHR, status ) {
+              alert( "success failed: " + status );
+            });
+
+        }
+
+        
     </script>
 
  
