@@ -91,7 +91,7 @@
 
                                         <div class="form-group col-md-6">
                                             <label for="inq_celular">Celular</label>
-                                            <input type="text" class="form-control" id="inq_celular" name="inq_celular" placeholder="Ingresa celular"required>
+                                            <input type="text" class="form-control" id="inq_celular" name="inq_celular" placeholder="Ingresa celular" pattern="[9][0-9]{8}" title="Se requiere 9 digitos y el primero que sea 9"required>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inq_email">Email</label>
@@ -264,6 +264,8 @@
         var image = document.getElementById('foto_inq');
         image.src = URL.createObjectURL(event.target.files[0]);
     }
+
+   
     </script>
     <script>
         function reniec(){

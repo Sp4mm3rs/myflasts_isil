@@ -64,7 +64,6 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3 titlesearch" >
                                 <h6 class="titlelist m-0 font-weight-bold text-primary">Lista de habitaciones</h6>
-
                                 <form 
                                     class="buscarinputh">
                                     <div class="input-group">

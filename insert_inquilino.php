@@ -43,7 +43,6 @@
                 $i++;
             } while ($conexion->next_result());
         }
-
         header( 'Location: http://localhost/myflasts_isil/');
 
     
