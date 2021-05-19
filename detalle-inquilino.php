@@ -91,7 +91,7 @@
                             <div class="card-header py-3 titlesearch" >
                                 <h6 class="m-0 font-weight-bold text-primary">Detalle inquilino</h6>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body form-inqulino">
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="form-row">
@@ -169,7 +169,7 @@
                             <div class="card-header py-3 titlesearch">
                                 <h6 class="m-0 font-weight-bold text-primary">Fecha y Servicios</h6>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body form-fec-serv">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
@@ -183,7 +183,7 @@
                                         
                                         <tbody>
                                             <tr>
-                                                <td><input class="form-control " type="date" name="fechaInicio" value="<?php echo $inquilino['fecha_inicio'] ?>" id="date-input-ingreso" disabled></td>
+                                                <td><input class="form-control " type="date" id="fechaInicio" name="fechaInicio" value="<?php echo $inquilino['fecha_inicio'] ?>" id="date-input-ingreso" disabled></td>
                                                 <td><input class="form-control" type="date" name="fechaFin" value="<?php echo $inquilino['fecha_fin'] ?>" id="date-input-ingreso" disabled></td>
                                                 <td><input type="checkbox" name="serInternet" <?php if (isset($inquilino['serv_internet']) && $inquilino['serv_internet'] == "1") echo "checked"; ?> value="<?php echo $inquilino['serv_internet'] ?>" disabled></td>
                                                 <td><input type="checkbox" name="serCable" <?php if (isset($inquilino['serv_cable']) && $inquilino['serv_cable'] == "1") echo "checked"; ?> value="<?php echo $inquilino['serv_cable'] ?>"disabled></td>
@@ -262,9 +262,13 @@
             $(".btn-editar").click(function() {
                 $('form input').prop("disabled", false);
                 $('form textarea').prop("disabled", false);
+                $('.form-inqulino #inq_nombre').prop("disabled", true);
+                $('.form-inqulino #inq_apellido').prop("disabled", true);
+                $('.form-inqulino #inq_dni').prop("disabled", true);
+                $('.form-fec-serv #fechaInicio').prop("disabled", true);
                 $('.form-habitacion input').prop("disabled", true);           
                 $('.btn-actualizar').prop("disabled", false);
-                $('.inputfoto').prop("disabled", false); 
+                $('#actfoto').prop("disabled", true); 
             });
 
             $(".btn-actualizar").click(function() {
