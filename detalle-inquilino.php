@@ -125,7 +125,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_celular">Celular</label>
-                                                <input type="number" class="form-control" id="inq_celular" name="inq_celular" value="<?php echo $inquilino['celular'] ?>" pattern="[9][0-9]{8}" title="Se requiere 9 digitos y el primero que sea 9" disabled>
+                                                <input type="number" class="form-control" id="inq_celular" name="inq_celular" value="<?php echo $inquilino['celular'] ?>" pattern="[9][0-9]{8}" title="Se requiere 9 digitos y el primero que sea 9" disabled required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_email">Email</label>
