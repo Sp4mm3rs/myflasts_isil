@@ -33,6 +33,21 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <style type="text/css">
+            
+            label.error {
+                font-size: 16px;
+                color: #ff0000;
+            }
+            input.error {
+                width: 100%;
+                height: auto;
+                font-size: initial;
+                background: #f1a3a3;
+            }
+
+    </style>
+
 </head>
 <?php 
     foreach ($resultado as $inquilino) {
@@ -114,7 +129,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_email">Email</label>
-                                                <input type="email" class="form-control" id="inq_email" name="inq_email" value="<?php echo $inquilino['correo'] ?>" disabled>
+                                                <input type="email" class="form-control" id="inq_email" name="inq_email" value="<?php echo $inquilino['correo'] ?>"  required disabled>
                                                 
                                             </div>
                                             <div class="form-group col-md-6">
@@ -255,6 +270,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
     <script type="text/javascript">
         
@@ -268,7 +284,11 @@
             });
 
             $(".btn-actualizar").click(function() {
-                $(".form-actualizar").submit();
+
+                if ($(".form-actualizar").validate()) {
+                    $(".form-actualizar").submit();
+                }
+
             });
 
         });
