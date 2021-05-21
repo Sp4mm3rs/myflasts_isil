@@ -53,7 +53,7 @@
                 </div>
             </li>
 
-            <!-- <li class="nav-item">
+             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-habitacion"
                     aria-expanded="true" aria-controls="menu-habitacion">
                     
@@ -63,12 +63,12 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="listadehabitaciones.php">Lista de Habitaciones</a>
-                        <a class="collapse-item" href="ingresar-habitacion.php">Ingresar Habitacion</a>
+                        
                     </div>
                 </div>
             </li>
 
-            <li class="nav-item">
+           <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-servicio"
                     aria-expanded="true" aria-controls="menu-servicio">                   
                     <span class="opciones">Servicio</span>
