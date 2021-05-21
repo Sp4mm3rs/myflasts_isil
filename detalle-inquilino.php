@@ -121,11 +121,11 @@
 
                                             <div class="form-group col-md-6">
                                                 <label for="inq_dni">DNI</label>
-                                                <input type="number" class="form-control " id="inq_dni" name="inq_dni" value="<?php echo $inquilino['dni'] ?>" readonly disabled>
+                                                <input type="text" class="form-control " id="inq_dni" name="inq_dni" value="<?php echo $inquilino['dni'] ?>" readonly disabled>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_celular">Celular</label>
-                                                <input type="number" class="form-control" id="inq_celular" name="inq_celular" value="<?php echo $inquilino['celular'] ?>" pattern="[9][0-9]{8}" title="Se requiere 9 digitos y el primero que sea 9" disabled required>
+                                                <input type="text" class="form-control" id="inq_celular" name="inq_celular" value="<?php echo $inquilino['celular'] ?>" pattern="[9][0-9]{8}" title="Se requiere 9 digitos y el primero que sea 9" disabled required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_email">Email</label>
@@ -134,7 +134,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inq_cantidad">Cantidad inquilinos</label>
-                                                <input type="number" class="form-control" id="inq_cantidad" name="inq_cantidad" value="<?php echo $inquilino['cant_inquilino'] ?>" disabled>
+                                                <input type="text" class="form-control" id="inq_cantidad" name="inq_cantidad" value="<?php echo $inquilino['cant_inquilino'] ?>" disabled>
                                             </div>
                                             <div class="form-group col-md-12">
                                                 <label for="exampleFormControlTextarea1">Observaciones</label>
