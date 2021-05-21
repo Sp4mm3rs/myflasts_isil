@@ -53,7 +53,7 @@
                 </div>
             </li>
 
-            <!-- <li class="nav-item">
+             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-habitacion"
                     aria-expanded="true" aria-controls="menu-habitacion">
                     
@@ -68,7 +68,7 @@
                 </div>
             </li>
 
-            <li class="nav-item">
+           <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-servicio"
                     aria-expanded="true" aria-controls="menu-servicio">                   
                     <span class="opciones">Servicio</span>
