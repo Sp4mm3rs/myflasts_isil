@@ -73,13 +73,13 @@
                                             <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
                                             </button>
-                                        </div>
+                                        </div>                                      
+                                        
                                     </div>
                                                                     
                                 </form>
-                                <button type="button" id="adhab" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                            Agregar Habitación
-                                </button>   
+                                <button type="button" id="adhab" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Agregar Habitación</button> 
+                                                                         
                             </div>
                            
                                                    
@@ -96,6 +96,8 @@
                                                 <th>Fecha termino contrato</th>
                                                 <th>Precio</th>
                                                 <th>Estado</th>
+                                                <th></th>
+
                                             </tr>
                                         </thead>
                                        
@@ -131,6 +133,9 @@
                                                 <?php }else { ?>
                                                 <td>Ocupado</td>
                                                 <?php } ?>
+                                                <td class="text-center">
+                                                    <button type="button" id="editarhab" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal1">Editar Precio</button> 
+                                                </td>
                                             </tr>
                                         
                                             <?php 
@@ -150,6 +155,7 @@
                         
 
                         <!-- Modal -->
+                        <!-- Agregar Habitacoón Modal -->                        
                         <div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog" role="document">
                               <div class="modal-content">
@@ -175,15 +181,10 @@
                                              <label for="hab_nro">Nro. Habitación</label>
                                              <select id="hab_nro" name="hab_nro" class="form-control">
                                                 <option selected>Seleccionar</option>
-                                                <option>101</option>
-                                                <option>102</option>
-                                                <option>103</option>
-                                                <option>201</option>
-                                                <option>202</option>
-                                                <option>203</option>
-                                                <option>301</option>
-                                                <option>302</option>
-                                                <option>303</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
                                              </select>
                                           </div>
                                           <div class="form-group col-md-12">
@@ -195,6 +196,58 @@
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                  </div>
+                                    </form>
+                                 </div>
+                                 
+                              </div>
+                           </div>
+                        </div>
+
+                        <!-- Editar Habitacoón Modal -->                       
+                        <div class="modal fade " id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                           <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Editar habitación</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </div>
+                                 <div class="modal-body">
+                                    <form class="habitacion" action="insert_habitacion.php" method="POST">
+                                       <div class="form-group row">
+                                          <div class="form-group col-md-12">
+                                             <label for="hab_piso">Nro. Piso</label>
+                                             <select id="hab_piso" name="hab_piso" class="form-control">
+                                                <option selected>Seleccionar</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                             </select>
+                                          </div>
+                                          <div class="form-group col-md-12">
+                                             <label for="hab_nro">Nro. Habitación</label>
+                                             <select id="hab_nro" name="hab_nro" class="form-control">
+                                                <option selected>Seleccionar</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                             </select>
+                                          </div>
+                                          <div class="form-group col-md-12">
+                                             <label for="hab_precio">Precio habitación</label>
+                                             <input type="number" class="form-control" id="hab_precio" name="hab_precio" placeholder="Monto actual" disabled>
+                                          </div>
+                                          <div class="form-group col-md-12">
+                                             <label for="hab_nuevo_precio">Nuevo precio habitación</label>
+                                             <input type="number" class="form-control" id="hab_nuevo_precio" name="hab_nuevo_precio" placeholder="Ingresar nuevo monto">
+                                          </div>
+                                       </div>
+                                       <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-info">Editar</button>
+                                        </div>
                                     </form>
                                  </div>
                                  

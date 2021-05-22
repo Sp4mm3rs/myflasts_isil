@@ -57,30 +57,30 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-habitacion"
                     aria-expanded="true" aria-controls="menu-habitacion">
                     
-                    <span class="opciones">Habitacion</span>
+                    <span class="opciones">Habitaciones</span>
                 </a>
                 <div id="menu-habitacion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                         <a class="collapse-item" href="listadehabitaciones.php">Lista de Habitaciones</a>
                         
                     </div>
                 </div>
             </li>
 
-           <!-- <li class="nav-item">
+           <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-servicio"
                     aria-expanded="true" aria-controls="menu-servicio">                   
-                    <span class="opciones">Servicio</span>
+                    <span class="opciones">Servicios</span>
                 </a>
                 <div id="menu-servicio" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
                         <a class="collapse-item" href="#">Lista de Servicios</a>
                         <a class="collapse-item" href="#">Ingresar Servicio</a>
                     </div>
                 </div>
-            </li> -->
+            </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <!-- <li class="nav-item">
