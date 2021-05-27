@@ -4,9 +4,11 @@
 //     $consulta = "SELECT * FROM inquilinos inq
 //                         INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
 // ";
-   $consulta = "SELECT * FROM habitaciones";
-   $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-    
+  $consulta = "SELECT * FROM habitaciones";
+  $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+  $con_inquilino = "SELECT * FROM inquilinos";
+  $res_inquilino = mysqli_query( $conexion, $con_inquilino ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+
 ?>
 
 <!DOCTYPE html>
@@ -100,49 +102,37 @@
 
                                             </tr>
                                         </thead>
-                                       
                                         <tbody>
                                             <?php 
-
-                                            foreach ($resultado as $habitacion) {
-
-                                                $con_inquilino = "SELECT * FROM inquilinos";
-                                                $res_inquilino = mysqli_query( $conexion, $con_inquilino ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-
-                                                foreach ($res_inquilino as $inquilino) {
+                                              foreach ($resultado as $habitacion) {
                                             ?>
-                                            <tr>
+                                            <tr class="item-habitacion">
                                                 <td><?php echo $habitacion['nro_habitacion'] ?></td>
                                                 <td><?php echo $habitacion['nro_piso'] ?></td>
-
-                                                <?php 
-                                                if ($inquilino['id_inq'] == $habitacion['id_inquilino']) {
-                                                   ?>
-                                                    <td><?php echo $inquilino['nombre'] ?> <?php echo $inquilino['apellido'] ?></td>
-                                                   <?php
-                                                }else{ ?>
-                                                    <td></td>
-                                                <?php }
-                                                ?>
+                                                <td><?php
+                                                        foreach ($res_inquilino as $inquilino) {
+                                                          if ($inquilino['id_inq'] == $habitacion['id_inquilino']){
+                                                           echo $inquilino['nombre'] . " " . $inquilino['apellido'];
+                                                          }
+                                                        }
+                                                 ?></td>
                                                 <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "Tiene"; ?></td>
                                                 <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "Tiene"; ?></td>
                                                 <td><?php echo $habitacion['fecha_fin'] ?></td>
                                                 <td><?php echo $habitacion['precio'] ?></td>
-                                                <?php if (isset($habitacion['id_inquilino']) && $habitacion['id_inquilino'] == "0"){ ?>
-                                                <td>Disponible</td>
-                                                <?php }else { ?>
-                                                <td>Ocupado</td>
-                                                <?php } ?>
+                                                <td><?php
+                                                        if (isset($habitacion['id_inquilino'])){
+                                                          echo "Ocupado";
+                                                        }else{
+                                                          echo "Disponible";
+                                                        }
+                                                 ?></td>
                                                 <td class="text-center">
-                                                    <button type="button" id="editarhab" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal1">Editar Precio</button> 
+                                                    <button type="button" id="editarhab" class="btn btn-outline-info btn-edit-habitacion" data-toggle="modal" data-target="#exampleModal1">Editar Precio</button> 
                                                 </td>
                                             </tr>
-                                        
                                             <?php 
-
-                                                }
                                             } 
-
                                             ?>
                                         </tbody>
                                     </table>
@@ -214,6 +204,7 @@
                                     </button>
                                  </div>
                                  <div class="modal-body">
+                                 
                                     <form class="habitacion" action="insert_habitacion.php" method="POST">
                                        <div class="form-group row">
                                           <div class="form-group col-md-12">
@@ -314,6 +305,20 @@
             }
             }
     }   }
+
+    </script>
+
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+          $('#tablehab .item-habitacion').each(function(){
+
+            $(this).find('button').click(function(){
+              console.log("Hola");
+            });
+          });
+           
+        });
 
     </script>
 

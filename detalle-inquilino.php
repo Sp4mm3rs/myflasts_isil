@@ -38,6 +38,7 @@
             label.error {
                 font-size: 16px;
                 color: #ff0000;
+                width: 100%;
             }
             input.error {
                 width: 100%;
