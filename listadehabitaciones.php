@@ -217,25 +217,6 @@
                                     <form class="habitacion" action="insert_habitacion.php" method="POST">
                                        <div class="form-group row">
                                           <div class="form-group col-md-12">
-                                             <label for="hab_piso">Nro. Piso</label>
-                                             <select id="hab_piso" name="hab_piso" class="form-control">
-                                                <option selected>Seleccionar</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                             </select>
-                                          </div>
-                                          <div class="form-group col-md-12">
-                                             <label for="hab_nro">Nro. Habitación</label>
-                                             <select id="hab_nro" name="hab_nro" class="form-control">
-                                                <option selected>Seleccionar</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                             </select>
-                                          </div>
-                                          <div class="form-group col-md-12">
                                              <label for="hab_precio">Precio habitación</label>
                                              <input type="number" class="form-control" id="hab_precio" name="hab_precio" placeholder="Monto actual" disabled>
                                           </div>
