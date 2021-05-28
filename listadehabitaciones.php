@@ -4,8 +4,9 @@
 //     $consulta = "SELECT * FROM inquilinos inq
 //                         INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
 // ";
-  $consulta = "SELECT * FROM habitaciones";
+  $consulta = "SELECT * FROM habitaciones hab";
   $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+  
   $con_inquilino = "SELECT * FROM inquilinos";
   $res_inquilino = mysqli_query( $conexion, $con_inquilino ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
@@ -205,12 +206,18 @@
                                  </div>
                                  <div class="modal-body">
                                  
-                                    <form class="habitacion" action="insert_habitacion.php" method="POST">
+                                    <form class="habitacion" action="actualizar-habitacion.php" method="POST">
                                        <div class="form-group row">
-                                          <div class="form-group col-md-12">
-                                             <label for="hab_precio">Precio habitación</label>
-                                             <input type="number" class="form-control" id="hab_precio" name="hab_precio" placeholder="Monto actual" disabled>
+                                          <?php 
+                                              foreach ($resultado as $habitacion) {
+                                            ?><div class="form-group col-md-12">
+                                          
+                                             <label for="hab_precio">Precio habitación actual</label>
+                                             <input type="number" class="form-control" id="hab_precio" name="hab_precio" value="<?php echo $habitacion['precio'] ?>" disabled>
                                           </div>
+                                          <?php 
+                                            } 
+                                            ?>
                                           <div class="form-group col-md-12">
                                              <label for="hab_nuevo_precio">Nuevo precio habitación</label>
                                              <input type="number" class="form-control" id="hab_nuevo_precio" name="hab_nuevo_precio" placeholder="Ingresar nuevo monto">
