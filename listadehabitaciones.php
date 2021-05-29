@@ -120,7 +120,16 @@
                                                 <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "Tiene"; ?></td>
                                                 <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "Tiene"; ?></td>
                                                 <td><?php echo $habitacion['fecha_fin'] ?></td>
-                                                <td><?php echo $habitacion['precio'] ?></td>
+                                                <td><?php $adicional=0;
+                                           
+                                               if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") $adicional+=30;
+                                               if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") $adicional+=30;    
+
+                                                echo $habitacion['precio'] +$adicional; 
+                                                          
+                                                          
+                                                          
+                                                ?></td>
                                                 <td><?php
                                                         if (isset($habitacion['id_inquilino'])){
                                                           echo "Ocupado";
