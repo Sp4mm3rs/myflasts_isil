@@ -125,9 +125,9 @@
                                                if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") $adicional+=30;
                                                if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") $adicional+=30;    
 
-                                                echo $habitacion['precio'] +$adicional; 
+                                                $precio_final = $habitacion['precio'] + $adicional; 
                                                           
-                                                          
+                                                 echo "S/" . number_format($precio_final, 2, '.', ' ');         
                                                           
                                                 ?></td>
                                                 <td><?php
@@ -138,7 +138,7 @@
                                                         }
                                                  ?></td>
                                                 <td class="text-center">
-                                                    <button type="button" id="editarhab" class="btn btn-outline-info btn-edit-habitacion" data-toggle="modal" data-target="#exampleModal1">Editar Precio</button> 
+                                                    <button type="button" id="<?php echo $habitacion['id_hab'] ?>" class="btn btn-outline-info btn-edit-habitacion" data-toggle="modal" data-target="#exampleModal1">Editar Precio</button> 
                                                 </td>
                                             </tr>
                                             <?php 
@@ -217,16 +217,13 @@
                                  
                                     <form class="habitacion" action="actualizar-habitacion.php" method="POST">
                                        <div class="form-group row">
-                                          <?php 
-                                              foreach ($resultado as $habitacion) {
-                                            ?><div class="form-group col-md-12">
+                                          <div class="form-group col-md-12">
                                           
                                              <label for="hab_precio">Precio habitación actual</label>
-                                             <input type="number" class="form-control" id="hab_precio" name="hab_precio" value="<?php echo $habitacion['precio'] ?>" disabled>
+                                             <input type="number" class="form-control" id="precio_habitacion" name="hab_precio" value="" disabled>
+                                             <input type="number" class="form-control" id="hab_id_precio" name="hab_id_precio" value="" hidden>
                                           </div>
-                                          <?php 
-                                            } 
-                                            ?>
+
                                           <div class="form-group col-md-12">
                                              <label for="hab_nuevo_precio">Nuevo precio habitación</label>
                                              <input type="number" class="form-control" id="hab_nuevo_precio" name="hab_nuevo_precio" placeholder="Ingresar nuevo monto">
@@ -328,12 +325,21 @@
         $( document ).ready(function() {
 
           $('#tablehab .item-habitacion').each(function(){
-
-            $(this).find('button').click(function(){
-              console.log("Hola");
-            });
           });
-           
+           $(document).on('click', '.btn-edit-habitacion', function(){  
+               var id_habitacion = $(this).attr("id"); 
+               $.ajax({  
+                    url:"precio_hab.php",  
+                    method:"POST",  
+                    data:{id_habitacion:id_habitacion},  
+                    dataType:"json",  
+                    success:function(data){  
+                        $('#precio_habitacion').val(data.precio);  
+                        $('#hab_id_precio').val(data.id_hab);  
+                    }  
+               });  
+             });
+
         });
 
     </script>
