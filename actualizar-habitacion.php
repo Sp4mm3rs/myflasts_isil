@@ -1,8 +1,8 @@
 <?php
     include 'config/conection.php';
 
-   echo $get_hab = $_POST['hab_id_precio'];
-   echo  $get_precio = $_POST['hab_nuevo_precio'];
+    $get_hab = $_POST['hab_id_precio'];
+    $get_precio = $_POST['hab_nuevo_precio'];
 
     $update_inq = "UPDATE habitaciones SET precio = $get_precio WHERE id_hab = $get_hab";
     $resultado = mysqli_query($conexion, $update_inq ) or die ( "Algo ha ido mal en la consulta a la base de datos");
