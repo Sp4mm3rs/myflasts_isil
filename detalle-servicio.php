@@ -3,6 +3,11 @@
     $consulta = "SELECT * FROM servicios serv";
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
+    $month = date('m');
+    $day = date('d');
+    $year = date('Y');
+
+    $hoy = $year . '-' . $month . '-' . $day;
 
     
 ?>
@@ -67,7 +72,7 @@
                             </div>                       
                             <div class="card-body maincontent">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="table-pendiente" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th>Servicio</th>
@@ -85,11 +90,11 @@
                                             foreach ($resultado as $registro) {   
                                           
                                             ?>
-                                            <tr class="item" id="<?php echo $registro['id'] ?>">
+                                            <tr class="item-pendiente" id="<?php echo $registro['id'] ?>">
                                                 <td><?php echo $registro['tipo_servicio'] ?></td>
                                                 <td><?php echo $registro['monto'] ?></td>
                                                 <td><?php echo $registro['fec_vencimiento'] ?></td>
-                                                <td class="text-center"><a class="btn btn-outline-warning" data-toggle="modal" data-target="#modalserv_estado" href="">Ver</a></td>
+                                                <td class="text-center"><a id="<?php echo $registro['id'] ?>" class="btn btn-outline-warning btn-estado-serv" data-toggle="modal" data-target="#modalserv_estado" href="">Ver</a></td>
                                                
                                             </tr>
                                             <?php } 
@@ -198,20 +203,22 @@
                                 
 
                                  <div class="modal-body">
-                                    <form class="serviciopagado">
+                                    <form class="serviciopagado" action="pagar-servicio.php" method="POST">
                                        <div class="form-group row">
                                           <div class="form-group col-md-12">
                                              <label >Tipo de servicio</label>       
-                                             <input class="form-control" type="text" disabled value="">                                    
+                                             <input class="form-control" type="text" id="tipo_serv" name="serv-tipo" disabled value="">  
+                                             <input type="number" class="form-control" id="serv_id_precio" name="serv_id_precio" value="" hidden>                                  
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label >Fec. de pago</label >                                   
-                                            <input id="fec_apgo" name="fec_pago"class="form-control" type="date">
+                                            <input id="fec_apgo" name="fec_pago"class="form-control" value="<?php echo $hoy; ?>" type="date">
 
                                           </div>
                                           <div class="form-group col-md-12">
-                                             <label >Monto</label>
-                                             <input type="text" class="form-control" disabled value="">
+                                             <label >Monto</label>                                            
+                                             <input type="number" class="form-control" id="precio_servicio" name="serv_precio" value="" disabled>
+                                             <input type="number" class="form-control" id="serv_id_precio" name="serv_id_precio" value="" hidden>
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label >Estado</label>
@@ -290,6 +297,29 @@
     <script src="js/sb-admin-2.min.js"></script>
     <script>
     
+    </script>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+
+          $('#table-pendiente .item-pendiente').each(function(){
+          });
+           $(document).on('click', '.btn-estado-serv', function(){  
+               var id_serv = $(this).attr("id"); 
+               $.ajax({  
+                    url:"estado-serv.php",  
+                    method:"POST",  
+                    data:{id_serv:id_serv},  
+                    dataType:"json",  
+                    success:function(data){  
+                        $('#tipo_serv').val(data.tipo_servicio)
+                        $('#precio_servicio').val(data.monto);  
+                        $('#serv_id_precio').val(data.id);  
+                    }  
+               });  
+             });
+
+        });
+
     </script>
 
 </body>
