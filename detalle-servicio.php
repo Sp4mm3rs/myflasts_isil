@@ -3,6 +3,9 @@
     $consulta = "SELECT * FROM servicios serv";
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
+    $con_serv_pagado = "SELECT * FROM servicios_pagados";
+    $res_serv_pagado = mysqli_query( $conexion, $con_serv_pagado ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+
     $month = date('m');
     $day = date('d');
     $year = date('Y');
@@ -125,12 +128,20 @@
                                         </thead>                                      
                                         <tbody>
                                                 
-                                            <tr>
-                                                <td>f</td>
-                                                <td>123</td>
-                                                <td>ds</td>
-                                                <td>sa</td>
-                                           </tr> 
+                                                <?php 
+
+                                                foreach ($res_serv_pagado as $serv_pagado) {   
+
+                                                ?>
+                                                <tr class="item-pendiente" id="<?php echo $serv_pagado['id'] ?>">
+                                                    <td><?php echo $serv_pagado['tipo_serv'] ?></td>
+                                                    <td><?php echo $serv_pagado['monto'] ?></td>
+                                                    <td></td>
+                                                    <td><?php echo $serv_pagado['fec_pago'] ?></td>
+                                                
+                                                </tr>
+                                                <?php } 
+                                                ?>
 
                                         </tbody>
                                     </table>
@@ -207,17 +218,17 @@
                                        <div class="form-group row">
                                           <div class="form-group col-md-12">
                                              <label >Tipo de servicio</label>       
-                                             <input class="form-control" type="text" id="tipo_serv" name="serv-tipo" disabled value="">  
+                                             <input class="form-control" type="text" id="tipo_serv" name="serv-tipo"  value="" readonly>  
                                              <input type="number" class="form-control" id="serv_id_precio" name="serv_id_precio" value="" hidden>                                  
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label >Fec. de pago</label >                                   
-                                            <input id="fec_apgo" name="fec_pago"class="form-control" value="<?php echo $hoy; ?>" type="date">
+                                            <input id="fec_pago" name="fec_pago"class="form-control" value="<?php echo $hoy; ?>" type="date">
 
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label >Monto</label>                                            
-                                             <input type="number" class="form-control" id="precio_servicio" name="serv_precio" value="" disabled>
+                                             <input type="number" class="form-control" id="precio_servicio" name="serv_precio" value="" readonly>
                                              <input type="number" class="form-control" id="serv_id_precio" name="serv_id_precio" value="" hidden>
                                           </div>
                                           <div class="form-group col-md-12">
