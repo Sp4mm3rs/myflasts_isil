@@ -89,7 +89,7 @@
                                                 <td><?php echo $registro['tipo_servicio'] ?></td>
                                                 <td><?php echo $registro['monto'] ?></td>
                                                 <td><?php echo $registro['fec_vencimiento'] ?></td>
-                                                <td class="text-center"><a class="btn btn-outline-warning" data-toggle="modal" data-target="#modalserv_estado" href="">Ver</a></td>
+                                                <td class="text-center"><a id="<?php echo $registro['id'] class="btn btn-outline-warning" data-toggle="modal" data-target="#modalserv_estado" href="">Ver</a></td>
                                                
                                             </tr>
                                             <?php } 
@@ -136,7 +136,7 @@
 
                          
 
-                        <!-- Modal -->
+                        <!-- Modal Ingresar -->
                         <div class="modal fade " id="modalservicio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                            <div class="modal-dialog" role="document">
                               <div class="modal-content">
@@ -181,7 +181,7 @@
                         </div>
 
                                                 
-                        <!-- Modal2 -->
+                        <!-- Modal Pagar -->
                         <div class="modal fade " id="modalserv_estado" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         
                        
