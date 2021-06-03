@@ -136,7 +136,7 @@
                                                 <tr class="item-pendiente" id="<?php echo $serv_pagado['id'] ?>">
                                                     <td><?php echo $serv_pagado['tipo_serv'] ?></td>
                                                     <td><?php echo $serv_pagado['monto'] ?></td>
-                                                    <td></td>
+                                                    <td><?php echo $serv_pagado['fec_venc'] ?></td>
                                                     <td><?php echo $serv_pagado['fec_pago'] ?></td>
                                                 
                                                 </tr>
@@ -177,8 +177,6 @@
                                           <div class="form-group col-md-12">
                                              <label for="serv_f">Fec. de vencimiento</label>                                   
                                                 <input class="form-control" type="date"  name="serv_fec" id="date-input-venc">
-                                            
-                                             </select>
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label for="serv_m">Monto</label>
@@ -222,7 +220,12 @@
                                              <input type="number" class="form-control" id="serv_id_precio" name="serv_id_precio" value="" hidden>                                  
                                           </div>
                                           <div class="form-group col-md-12">
-                                             <label >Fec. de pago</label >                                   
+                                             <label >Fecha de vencimiento</label>                                   
+                                                <input class="form-control" type="date"  name="fec_serv" id="fec_serv" readonly>
+                                                <input type="date" class="form-control" id="serv_id_precio" name="serv_id_precio" value="" hidden>
+                                          </div>
+                                          <div class="form-group col-md-12">
+                                             <label >Fecha de pago</label >                                   
                                             <input id="fec_pago" name="fec_pago"class="form-control" value="<?php echo $hoy; ?>" type="date">
 
                                           </div>
@@ -322,7 +325,8 @@
                     data:{id_serv:id_serv},  
                     dataType:"json",  
                     success:function(data){  
-                        $('#tipo_serv').val(data.tipo_servicio)
+                        $('#tipo_serv').val(data.tipo_servicio);
+                        $('#fec_serv').val(data.fec_vencimiento);
                         $('#precio_servicio').val(data.monto);  
                         $('#serv_id_precio').val(data.id);  
                     }  
