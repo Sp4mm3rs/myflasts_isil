@@ -3,7 +3,7 @@
     $consulta = "SELECT * FROM servicios serv";
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
-    $con_serv_pagado = "SELECT * FROM servicios_pagados";
+    $con_serv_pagado = "SELECT * FROM servicios_pagados ORDER BY id DESC LIMIT 3";
     $res_serv_pagado = mysqli_query( $conexion, $con_serv_pagado ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $month = date('m');
@@ -217,12 +217,12 @@
                                           <div class="form-group col-md-12">
                                              <label >Tipo de servicio</label>       
                                              <input class="form-control" type="text" id="tipo_serv" name="serv-tipo"  value="" readonly>  
-                                             <input type="number" class="form-control" id="serv_id_precio" name="serv_id_precio" value="" hidden>                                  
+                                             <input type="number" class="form-control" id="serv_id_precio" name="serv_id_tipo" value="" >                                  
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label >Fecha de vencimiento</label>                                   
                                                 <input class="form-control" type="date"  name="fec_serv" id="fec_serv" readonly>
-                                                <input type="date" class="form-control" id="serv_id_precio" name="serv_id_precio" value="" hidden>
+                                                <input type="date" class="form-control" id="serv_id_precio" name="serv_id_fec" value="" hidden>
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label >Fecha de pago</label >                                   
@@ -232,7 +232,7 @@
                                           <div class="form-group col-md-12">
                                              <label >Monto</label>                                            
                                              <input type="number" class="form-control" id="precio_servicio" name="serv_precio" value="" readonly>
-                                             <input type="number" class="form-control" id="serv_id_precio" name="serv_id_precio" value="" hidden>
+                                             <input type="number" class="form-control" id="serv_id_precio" name="serv_id_prec" value="" hidden>
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label >Estado</label>
