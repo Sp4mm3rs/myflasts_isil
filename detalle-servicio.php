@@ -217,7 +217,7 @@
                                           <div class="form-group col-md-12">
                                              <label >Tipo de servicio</label>       
                                              <input class="form-control" type="text" id="tipo_serv" name="serv-tipo"  value="" readonly>  
-                                             <input type="number" class="form-control" id="serv_id_precio" name="serv_id_tipo" value="" >                                  
+                                             <input type="number" class="form-control" id="serv_id_precio" name="serv_id_tipo" value=""  hidden>                                  
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label >Fecha de vencimiento</label>                                   

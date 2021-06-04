@@ -76,8 +76,22 @@
                 <div id="menu-servicio" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                        
-                        <a class="collapse-item" href="detalle-servicio.php">Lista de Servicios</a>
+                        <a class="collapse-item" href="detalle-servicio.php">Lista de Servicios</a>                       
+                    </div>
+                </div>
+            </li> 
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-historial"
+                    aria-expanded="true" aria-controls="menu-historial">                   
+                    <span class="opciones">Historiales</span>
+                </a>
+                <div id="menu-historial" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
                        
+                        <a class="collapse-item" href="#">Historial de Inquilinos</a>
+                        <a class="collapse-item" href="historial-servicio.php">Historial de Servicios</a>
+                                               
                     </div>
                 </div>
             </li> 
