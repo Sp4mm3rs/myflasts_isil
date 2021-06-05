@@ -69,7 +69,7 @@
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
                                 <h6 class="titleservicio m-0 font-weight-bold text-primary">Gastos de servicios</h6>   
-                              
+                                <a class="btn btn-primary">Descargar reporte</a>
                             </div>   
                             
                             <div class="card-body maincontent">
@@ -93,7 +93,10 @@
                                                 ?>
                                                 <tr class="item-pendiente" id="<?php echo $serv_pagado['id'] ?>">
                                                     <td><?php echo $serv_pagado['tipo_serv'] ?></td>
-                                                    <td><?php echo $serv_pagado['monto'] ?></td>
+                                                    <td><?php 
+                                                        $pago = $serv_pagado['monto'];
+                                                        echo "S/" . number_format($pago, 2, '.', ' '); 
+                                                    ?></td>
                                                     <td><?php echo $serv_pagado['fec_venc'] ?></td>
                                                     <td><?php echo $serv_pagado['fec_pago'] ?></td>
                                                 
