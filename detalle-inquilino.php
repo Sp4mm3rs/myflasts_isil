@@ -95,7 +95,7 @@
                                     <button class="btn btn-outline-success btn-actualizar" disabled>Actualizar</button>
                                 </div>
                                 <div class="col-md-3 d-flex justify-content-around">
-                                    <td><a class="btn btn-outline-danger" href="delete-inquilino.php?inq=<?php echo $inquilino['id_inq'] ?>&hab=<?php echo $inquilino['id_hab'] ?>">Finalizar contrato</a></td>      
+                                    <td><a class="btn btn-outline-danger" href="" data-toggle="modal" data-target="#modal_obs_inquilino" >Finalizar contrato</a></td>      
                                 </div>
                             </div>
                        </div>
@@ -214,6 +214,47 @@
                             }
                         ?>
                     </form>    
+
+
+                    <!-- Modal eliminar inquilino -->
+                    <div class="modal fade " id="modal_obs_inquilino" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                      
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title" id="exampleModalLabel">Eliminar inquilino</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                                                              
+                              <div class="modal-body">
+                                 <form class="serviciopagado" action="delete-inquilino.php" method="POST">
+                                    <div class="form-group row">
+                                                              
+                                       <div class="form-group col-md-12">
+                                            <label for="obs_inq">Observacion de inquilino</label>
+                                            <select id="obs_inq" name="obs_inq" class="form-control" required>
+                                                <option selected>Seleccionar</option >
+                                                <option value="1">Excelente</option>
+                                                <option value="2">Bueno</option>
+                                                <option value="3">Regular</option>
+                                                <option value="4">Malo</option>
+                                            </select>
+                                        </div> 
+                           
+                                    </div>                                      
+                                         <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-primary">Eliminar</button>
+                                        </div>
+                                 </form>
+                              </div>
+                              
+                              
+                           </div>
+                        </div>
+                     </div>
                     
                 </div>
                 <!-- /.container-fluid -->

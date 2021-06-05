@@ -89,7 +89,7 @@
                 <div id="menu-historial" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                        
-                        <a class="collapse-item" href="#">Historial de Inquilinos</a>
+                        <a class="collapse-item" href="historial-inquilinos.php">Historial de Inquilinos</a>
                         <a class="collapse-item" href="historial-servicio.php">Historial de Servicios</a>
                                                
                     </div>
