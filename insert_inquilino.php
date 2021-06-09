@@ -25,8 +25,10 @@
         $get_inicio = date('Y-m-d',strtotime($_POST['fechaInicio']));
         $get_fin = date('Y-m-d',strtotime($_POST['fechaFin']));
 
-        $get_internet = isset($_POST['serInternet']) ? 1 : 0;
-        $get_cable = isset($_POST['serCable']) ? 1 : 0;
+        $precio_final=0;
+
+        $get_internet = isset($_POST['serInternet']) ? (1 AND $precio_final+=30) : 0;
+        $get_cable = isset($_POST['serCable']) ? (1 AND $precio_final+=30) : 0;
 
 
         for ( $i = 0; $i < sizeof($get_habitacion); $i++) {  
@@ -35,7 +37,7 @@
             $info_inquilino = array("INSERT INTO inquilinos (dni, nombre, apellido, celular, correo, observaciones,cant_inquilino,foto) VALUES ('$get_dni', '$get_nombre', '$get_apellido', '$get_celular', '$get_email', '$get_observacion','$get_cant','$folder')", 
 
 
-            "UPDATE habitaciones SET id_inquilino = (SELECT id_inq FROM inquilinos WHERE dni = $get_dni), fecha_inicio = '$get_inicio', fecha_fin = '$get_fin', serv_internet = $get_internet, serv_cable = $get_cable WHERE id_hab = $get_habitacion[$i]");
+            "UPDATE habitaciones SET id_inquilino = (SELECT id_inq FROM inquilinos WHERE dni = $get_dni), fecha_inicio = '$get_inicio', fecha_fin = '$get_fin', precio_final= precio+$precio_final , serv_internet = $get_internet, serv_cable = $get_cable WHERE id_hab = $get_habitacion[$i]");
         }
         if ($conexion->multi_query(implode(';', $info_inquilino))) {
             $i = 0;

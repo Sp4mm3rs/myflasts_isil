@@ -13,8 +13,9 @@
         $get_inicio = $_POST['fechaInicio'];
         $get_fin = $_POST['fechaFin'];
 
-        $get_internet = isset($_POST['serInternet']) ? 1 : 0;
-        $get_cable = isset($_POST['serCable']) ? 1 : 0;
+        $precio_final=0;
+        $get_internet = isset($_POST['serInternet']) ? (1 AND $precio_final+=30) : 0;
+        $get_cable = isset($_POST['serCable']) ? (1 AND $precio_final+=30) : 0;
 
        $get_inq = $_GET['inq'];
        $get_hab = $_GET['hab'];
@@ -39,7 +40,7 @@
                     SET nombre = '$get_nombre', apellido = '$get_apellido', dni = '$get_dni', celular = '$get_celular', 
                     correo = '$get_email', observaciones = '$get_observacion',cant_inquilino = '$get_cantidad', foto = '$folder' 
                     WHERE id_inq = $get_inq",
-                    "UPDATE habitaciones SET serv_internet = '$get_internet', serv_cable = '$get_cable', fecha_inicio = '$get_inicio', fecha_fin = '$get_fin'
+                    "UPDATE habitaciones SET serv_internet = '$get_internet', serv_cable = '$get_cable',precio_final= precio+$precio_final , fecha_inicio = '$get_inicio', fecha_fin = '$get_fin'
                     WHERE id_hab = $get_hab");
 
 

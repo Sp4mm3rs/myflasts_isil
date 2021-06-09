@@ -22,7 +22,7 @@ foreach ($resultado as $inquilino) {
 	$apellido = $inquilino["apellido"];
 	$celular = $inquilino["celular"];
 	$correo = $inquilino["correo"];
-	$precio = $inquilino["precio"];
+	$precio = $inquilino["precio_final"];
 	$fecha_inicio = $inquilino["fecha_inicio"];
 	$fecha_fin = $inquilino["fecha_fin"];
 	$nro_habitacion = $inquilino["nro_habitacion"];
