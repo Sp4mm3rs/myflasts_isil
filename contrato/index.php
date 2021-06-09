@@ -29,7 +29,7 @@ foreach ($resultado as $inquilino) {
 	$nro_piso = $inquilino["nro_piso"];
 }
 
-$mpdf = new \Mpdf\Mpdf(['tempDir' => '/tmp', 'mode' => 'utf-8']);
+$mpdf = new \Mpdf\Mpdf(['tempDir' => __DIR__ . '/tmp', 'mode' => 'utf-8']);
 $mpdf->SetDisplayMode('100');
 $mpdf->SetAuthor('Contrato de inquilino: '.$nombre.' '.$apellido.'');
 	$mpdf->SetTitle('Contrato de inquilino: '.$nombre.' '.$apellido.'');

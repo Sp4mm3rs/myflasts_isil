@@ -1,13 +1,20 @@
 <?php
     include 'config/conection.php';
+
+    $consulta = "SELECT * FROM historial_inquilino hi
+                INNER JOIN inquilinos i ON i.id_inq = hi.id_inquilino
+                INNER JOIN habitaciones h ON h.id_hab = hi.id_habitacion
+                ";
+                
+    $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
     
+foreach ($resultado as $key) {
 
-   /* $sql_inq = "SELECT * FROM inquilinos ORDER BY id DESC";
-    $resultado = mysqli_query( $conexion, $sql_inq ) or die ( "Algo ha ido mal en la consulta a la base de datos");*/
+    echo "<pre>";
+    echo print_r($key);
+    echo "</pre>";
+}
 
-  
-
-    
 ?>
 
 
@@ -81,11 +88,26 @@
                                                 <th>Tiempo arrendado</th>
                                                 <th>Total</th>
                                                 <th>Reputacion</th>
-                                               
                                             </tr>
                                         </thead>                                      
                                         <tbody>
-                                             <tr></tr>
+                                                
+                                                <?php 
+                                                    foreach ($resultado as $res) {   
+                                                ?>
+                                                    <tr class="item-pendiente" id="<?php echo $res['id'] ?>">
+                                                        <td><?php echo $res['nombre'] ?> <?php echo $res['apellido'] ?></td>
+                                                        <td>Nro. </td>
+                                                        <td>Nro. </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td><?php echo $res['reputacion'] ?></td>
+                                                    </tr>
+                                                <?php } 
+                                                ?>
+
                                         </tbody>
                                     </table>
                                 </div>

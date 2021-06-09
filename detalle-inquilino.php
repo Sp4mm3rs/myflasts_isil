@@ -230,16 +230,19 @@
                                                               
                               <div class="modal-body">
                                  <form class="serviciopagado" action="delete-inquilino.php" method="POST">
+
+                                 <input type="number" name="id_inquilino" value="<?php echo $inquilino['id_inq'] ?>" hidden> 
+                                 <input type="number" name="id_habitacion" value="<?php echo $inquilino['id_hab'] ?>" hidden> 
                                     <div class="form-group row">
                                                               
                                        <div class="form-group col-md-12">
                                             <label for="obs_inq">Observacion de inquilino</label>
                                             <select id="obs_inq" name="obs_inq" class="form-control" required>
                                                 <option selected>Seleccionar</option >
-                                                <option value="1">Excelente</option>
-                                                <option value="2">Bueno</option>
-                                                <option value="3">Regular</option>
-                                                <option value="4">Malo</option>
+                                                <option value="Excelente">Excelente</option>
+                                                <option value="Bueno">Bueno</option>
+                                                <option value="Regular">Regular</option>
+                                                <option value="Malo">Malo</option>
                                             </select>
                                         </div> 
                            
