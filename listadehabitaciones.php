@@ -117,8 +117,8 @@
                                                           }
                                                         }
                                                  ?></td>
-                                                <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "Tiene"; ?></td>
-                                                <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "Tiene"; ?></td>
+                                                <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "$/30.00"; ?></td>
+                                                <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "$/30.00"; ?></td>
                                                 <td><?php echo $habitacion['fecha_fin'] ?></td>
                                                 <td><?php $adicional=0;
                                            
