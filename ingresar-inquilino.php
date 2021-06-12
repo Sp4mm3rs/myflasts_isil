@@ -186,11 +186,11 @@
                                 <div class="card-body">
                                     <div class="form-check">
                                       <input class="form-check-input" name="serInternet" type="checkbox" value="1" id="ser_internet">
-                                      <label class="form-check-label" for="ser_internet">Internet</label>
+                                      <label class="form-check-label" for="ser_internet">Internet ($/30.00 adicional)</label>
                                     </div>
                                     <div class="form-check">
                                       <input class="form-check-input" name="serCable" type="checkbox" value="1" id="ser_cable">
-                                      <label class="form-check-label" for="ser_cable">Cable</label>
+                                      <label class="form-check-label" for="ser_cable">Cable ($/30.00 adicional)</label>
                                     </div>
                                </div>
                             </div>       
