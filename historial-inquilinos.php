@@ -29,6 +29,26 @@
 
 ?>
 
+<?php
+        $datos =calcularTiempo('2021-01-30', '2021-06-30');
+        echo   $datos[11] ," dias de contrato";
+
+    function calcularTiempo($fechainicio, $fechafin){
+
+        $datetime1 = date_create($fechainicio);
+        $datetime2 = date_create($fechafin);
+        $interval = date_diff($datetime1, $datetime2);
+
+        $tiempo = array();
+
+        foreach ($interval as $valor){
+            $tiempo[] =$valor;
+        }
+        return $tiempo;
+        
+    }
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">
