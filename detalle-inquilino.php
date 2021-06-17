@@ -46,7 +46,13 @@
                 font-size: initial;
                 background: #f1a3a3;
             }
-
+            .card-body.form-inqulino img {
+                width: 100%;
+                height: 275px;
+                object-fit: cover;
+                border-radius: 10px;
+                box-shadow: 1px 4px 4px 0px #000;
+            }
     </style>
 
 </head>

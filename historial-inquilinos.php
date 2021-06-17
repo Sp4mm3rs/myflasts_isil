@@ -1,19 +1,31 @@
 <?php
     include 'config/conection.php';
 
-    $consulta = "SELECT * FROM historial_inquilino hi
+    $consulta = "SELECT 
+                hi.id AS id,
+                hi.nro_habitacion AS habitacion,
+                hi.nro_piso AS piso,
+                hi.precio_habitacion AS precio,
+                hi.reputacion AS reputacion,
+                hi.fecha_inicio AS inicio,
+                hi.fecha_fin AS fin,
+                i.nombre AS nombre,
+                i.apellido AS apellido
+                
+                FROM historial_inquilino hi
                 INNER JOIN inquilinos i ON i.id_inq = hi.id_inquilino
-                INNER JOIN habitaciones h ON h.id_hab = hi.id_habitacion
+                WHERE i.estado = 1
                 ";
                 
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
     
-foreach ($resultado as $key) {
-
-    echo "<pre>";
-    echo print_r($key);
-    echo "</pre>";
-}
+        foreach ($resultado as $key) {
+            $date1 = new DateTime($key['inicio']);
+            $date2 = new DateTime($key['fin']);
+            $tiempo_completo = $date1->diff($date2)->format('%m Meses y %d días');;
+            $mes = $date1->diff($date2)->format('%m');;
+            
+        }
 
 ?>
 
@@ -97,12 +109,12 @@ foreach ($resultado as $key) {
                                                 ?>
                                                     <tr class="item-pendiente" id="<?php echo $res['id'] ?>">
                                                         <td><?php echo $res['nombre'] ?> <?php echo $res['apellido'] ?></td>
-                                                        <td>Nro. </td>
-                                                        <td>Nro. </td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <td>Nro. <?php echo $res['habitacion'] ?></td>
+                                                        <td>Nro. <?php echo $res['piso'] ?></td>
+                                                        <td><?php echo $res['inicio'] ?></td>
+                                                        <td><?php echo $res['fin'] ?></td>
+                                                        <td><?php echo $mes . " Meses" ?></td>
+                                                        <td><?php echo "S/ " .$res['precio'] * $mes?> </td>
                                                         <td><?php echo $res['reputacion'] ?></td>
                                                     </tr>
                                                 <?php } 

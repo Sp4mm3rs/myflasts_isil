@@ -3,6 +3,7 @@
     
     $consulta = "SELECT * FROM inquilinos inq
                 INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
+                WHERE inq.estado = 0
     ";
 
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");

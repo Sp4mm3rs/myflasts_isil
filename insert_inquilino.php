@@ -2,8 +2,7 @@
     include 'config/conection.php';
 
     
-
-    if (isset($_POST['rInquilino'])) {    
+if (isset($_POST['rInquilino'])) {    
 
         $filename=$_FILES["fotoacargar"]["name"];
         $tempname=$_FILES["fotoacargar"]["tmp_name"];
@@ -35,8 +34,6 @@
             
 
             $info_inquilino = array("INSERT INTO inquilinos (dni, nombre, apellido, celular, correo, observaciones,cant_inquilino,foto) VALUES ('$get_dni', '$get_nombre', '$get_apellido', '$get_celular', '$get_email', '$get_observacion','$get_cant','$folder')", 
-
-
             "UPDATE habitaciones SET id_inquilino = (SELECT id_inq FROM inquilinos WHERE dni = $get_dni), fecha_inicio = '$get_inicio', fecha_fin = '$get_fin', precio_final= precio+$precio_final , serv_internet = $get_internet, serv_cable = $get_cable WHERE id_hab = $get_habitacion[$i]");
         }
         if ($conexion->multi_query(implode(';', $info_inquilino))) {
@@ -46,7 +43,6 @@
             } while ($conexion->next_result());
         }
         header( 'Location: http://localhost/myflasts_isil/');
-
     
         
        
