@@ -22,16 +22,20 @@
         foreach ($resultado as $key) {
             $date1 = new DateTime($key['inicio']);
             $date2 = new DateTime($key['fin']);
-            $tiempo_completo = $date1->diff($date2)->format('%m Meses y %d días');;
-            $mes = $date1->diff($date2)->format('%m');;
+            $tiempo_completo = $date1->diff($date2)->format('%m Meses y %d días');
+            $mes = $date1->diff($date2)->format('%m');
             
+            echo "<pre>";
+            echo print_r($key);
+            echo "</pre>";
+
         }
 
 ?>
 
 <?php
-        $datos =calcularTiempo('2021-01-30', '2021-06-30');
-        echo   $datos[11] ," dias de contrato";
+    $datos = calcularTiempo('2021-01-30', '2021-06-30');
+    echo $datos[11] ," dias de contrato";
 
     function calcularTiempo($fechainicio, $fechafin){
 
@@ -42,7 +46,7 @@
         $tiempo = array();
 
         foreach ($interval as $valor){
-            $tiempo[] =$valor;
+            $tiempo[] = $valor;
         }
         return $tiempo;
         

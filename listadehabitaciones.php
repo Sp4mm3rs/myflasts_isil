@@ -176,20 +176,13 @@
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                                <?php 
-                                                foreach ($resultado as $hab) {
+                                               <!--  <?php 
+                                                    foreach ($resultado as $hab) {
                                                 ?>
-                                                <option><?php echo $hab['nro_piso'] ?></option>
+                                                    <option><?php echo $hab['nro_piso'] ?></option>
                                                 <?php 
-                                                } 
-                                                ?>
+                                                    } 
+                                                ?> -->
 
                                              </select>
                                           </div>
@@ -198,23 +191,19 @@
                                              <select id="hab_nro" name="hab_nro" class="form-control">
                                                 
                                                 <option selected>Seleccionar</option>
-                                     <option>1</option>
+                                                <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
                                                 <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                                <?php 
-                                                foreach ($resultado as $habitacion) {
+
+
+                                               <!--  <?php 
+                                                    foreach ($resultado as $habitacion) {
                                                 ?>
-                                                <option><?php echo $habitacion['nro_habitacion'] ?></option>
+                                                    <option><?php echo $habitacion['nro_habitacion'] ?></option>
                                                 <?php 
-                                                } 
-                                                ?>
+                                                    } 
+                                                ?> -->
 
                                              </select>
                                           </div>

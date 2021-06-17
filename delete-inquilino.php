@@ -13,17 +13,17 @@
 
         foreach ($resultado as $habitacion) {
 
-            $inicio = date('Y-m-d',strtotime($habitacion['fecha_inicio']));
-            $fin = date('Y-m-d',strtotime($habitacion['fecha_fin']));
-            $precio = $habitacion['precio_final'];
-            $habitacion = $habitacion['nro_habitacion'];
-            $piso = $habitacion['nro_piso'];
-
+           echo $inicio = date('Y-m-d',strtotime($habitacion['fecha_inicio']));
+           echo $fin = date('Y-m-d',strtotime($habitacion['fecha_fin']));
+           echo $precio = $habitacion['precio_final'];
+           echo $piso = $habitacion['nro_piso'];
+           echo $habitacion = $habitacion['nro_habitacion'];
+           
             $statements = array("UPDATE habitaciones 
                                 SET id_inquilino = NULL, id_inquilino = NULL, serv_internet = NULL, serv_cable = NULL, fecha_inicio = NULL, fecha_fin = NULL, precio_final = NULL
                                 WHERE habitaciones.id_hab = $get_hab", 
                                 "UPDATE inquilinos SET estado = 1 WHERE id_inq = $get_inq",
-                                "INSERT INTO historial_inquilino (id_inquilino, id_habitacion, reputacion, precio_habitacion, fecha_inicio, fecha_fin, nro_habitacion, nro_piso) VALUES ($get_inq, $get_hab, '$get_obs', $precio, '$inicio', '$fin',$habitacion , $piso)");
+                                "INSERT INTO historial_inquilino (id_inquilino, id_habitacion, reputacion, precio_habitacion, fecha_inicio, fecha_fin, nro_habitacion, nro_piso) VALUES ($get_inq, $get_hab, '$get_obs', $precio, '$inicio', '$fin',$habitacion, $piso)");
             if ($conexion->multi_query(implode(';', $statements))) {
                 $i = 0;
                 do {
