@@ -2,7 +2,7 @@
     include 'config/conection.php';
 
 
-    $sql_habitaciones = "SELECT * FROM habitaciones WHERE id_inquilino IS NULL";
+    $sql_habitaciones = "SELECT * FROM habitaciones WHERE id_inquilino IS NULL AND estado =0";
     $res_habitaciones = mysqli_query( $conexion, $sql_habitaciones ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $month = date('m');
