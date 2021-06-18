@@ -248,8 +248,8 @@
                                  
                                     <form class="habitacion" action="actualizar-habitacion.php" method="POST">
                                        <div class="form-group row">
-                                          <div class="form-group col-md-12">
-                                          
+                                          <div class="form-group col-md-12">                                      
+                                    
                                              <label for="hab_precio">Precio habitación actual</label>
                                              <input type="number" class="form-control" id="precio_habitacion" name="hab_precio" value="" disabled>
                                              <input type="number" class="form-control" id="hab_id_precio" name="hab_id_precio" value="" hidden>
@@ -259,6 +259,24 @@
                                              <label for="hab_nuevo_precio">Nuevo precio habitación</label>
                                              <input type="number" class="form-control" id="hab_nuevo_precio" name="hab_nuevo_precio" placeholder="Ingresar nuevo monto">
                                           </div>
+                                          
+                                          <div class="form-group col-md-12">
+                                            <label for="hab_nuevo_estado">Estado de habitación:</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="hab_nuevo_estado" name="hab_nuevo_estado">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    Mantenimento
+                                                </label>
+                                            </div>
+                                             <!-- 
+                                             <select id="hab_nuevo_estado" name="hab_nuevo_estado" class="form-control">
+                                                <option selected>Seleccionar</option>
+                                                <option>Disponible</option>
+                                                <option>Mantenimiento</option>
+                                                <option>Internet</option>
+                                             </select> -->
+                                          </div>
+
                                        </div>
                                        <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

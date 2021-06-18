@@ -5,6 +5,9 @@
     $get_nro = $_POST['hab_nro'];
     $get_precio = $_POST['hab_precio'];
 
+    if (isset($habitacion['id_inquilino'])){
+      
+   }
     $sql = "INSERT INTO habitaciones (nro_habitacion, precio, nro_piso) VALUES ($get_nro, $get_precio, $get_piso)";
 
     // echo $sql;
