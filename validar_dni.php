@@ -33,7 +33,7 @@
 
 <?php
 
-$document = 46339565; 
+$document = $_POST['dni']; 
 
 $curl = curl_init();
 
