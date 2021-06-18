@@ -371,6 +371,7 @@
                     success:function(data){  
                         $('#precio_habitacion').val(data.precio);  
                         $('#hab_id_precio').val(data.id_hab);  
+                        $('#hab_nuevo_precio').val(data.precio);  
                     }  
                });  
              });

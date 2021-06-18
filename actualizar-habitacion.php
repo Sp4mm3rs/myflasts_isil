@@ -8,8 +8,7 @@
     
     if($get_estado=="Mantenimiento"){
        $mant=1;
-    }
-    else{
+    }else{
        $mant;
     }
     
