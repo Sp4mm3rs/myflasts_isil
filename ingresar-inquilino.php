@@ -2,7 +2,7 @@
     include 'config/conection.php';
 
 
-    $sql_habitaciones = "SELECT * FROM habitaciones WHERE id_inquilino IS NULL AND estado =0";
+    $sql_habitaciones = "SELECT * FROM habitaciones WHERE id_inquilino IS NULL AND estado =0 ORDER BY nro_piso ASC";
     $res_habitaciones = mysqli_query( $conexion, $sql_habitaciones ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $month = date('m');
@@ -77,11 +77,11 @@
                                         </div>
                                        <div class="form-group col-md-6">
                                             <label for="inq_nombre">Nombres</label>
-                                            <input type="text" class="form-control" id="inq_nombre" name="inq_nombre" placeholder="Ingresa nombres" required>
+                                            <input type="text" class="form-control" id="inq_nombre" name="inq_nombre" placeholder="Ingresa nombres" required readonly>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inq_apellido">Apellidos</label>
-                                            <input type="text" class="form-control" id="inq_apellido" name="inq_apellido" placeholder="Ingresa apellidos"required>
+                                            <input type="text" class="form-control" id="inq_apellido" name="inq_apellido" placeholder="Ingresa apellidos"required readonly>
                                         </div>
 
                                         <div class="form-group col-md-6">

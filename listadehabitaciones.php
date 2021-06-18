@@ -4,7 +4,7 @@
 //     $consulta = "SELECT * FROM inquilinos inq
 //                         INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
 // ";
-  $consulta = "SELECT * FROM habitaciones hab";
+  $consulta = "SELECT * FROM habitaciones hab ORDER BY nro_piso ASC";
   $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
   
   $con_inquilino = "SELECT * FROM inquilinos";
@@ -108,8 +108,8 @@
                                               foreach ($resultado as $habitacion) {
                                             ?>
                                             <tr class="item-habitacion">
-                                                <td><?php echo $habitacion['nro_habitacion'] ?></td>
-                                                <td><?php echo $habitacion['nro_piso'] ?></td>
+                                                <td>Nro. <?php echo $habitacion['nro_habitacion'] ?></td>
+                                                <td>Nro. <?php echo $habitacion['nro_piso'] ?></td>
                                                 <td><?php
                                                         foreach ($res_inquilino as $inquilino) {
                                                           if ($inquilino['id_inq'] == $habitacion['id_inquilino']){
@@ -117,8 +117,8 @@
                                                           }
                                                         }
                                                  ?></td>
-                                                <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "$/30.00"; ?></td>
-                                                <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "$/30.00"; ?></td>
+                                                <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "S/30.00"; ?></td>
+                                                <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "S/30.00"; ?></td>
                                                 <td><?php echo $habitacion['fecha_fin'] ?></td>
                                                 <td><?php $adicional=0;
                                            
@@ -137,8 +137,8 @@
                                                           }
                                                          
                                                         else{
-                                                            if (isset($habitacion['estado'])=="1"){
-                                                                echo "En Mantenimiento";
+                                                            if (isset($habitacion['estado']) && $habitacion['estado']=="1"){
+                                                                echo "En mantenimiento";
                                                               }
                                                               else{                                                               
                                                                       echo "Disponible";                                                                 
@@ -148,8 +148,9 @@
                                                         
                                                  ?></td>
                                                 <td class="text-center">
-                                                    <button type="button" id="<?php echo $habitacion['id_hab'] ?>" class="btn btn-outline-info btn-edit-habitacion" data-toggle="modal" data-target="#exampleModal1">Editar Precio</button> 
+                                                    <button type="button" id="<?php echo $habitacion['id_hab'] ?>" class="btn btn-outline-info btn-edit-habitacion" data-toggle="modal" data-target="#exampleModal1">Editar</button> 
                                                 </td>
+                                                
                                             </tr>
                                             <?php 
                                             } 
@@ -178,19 +179,8 @@
                                  <div class="modal-body">
                                     <form class="habitacion" action="insert_habitacion.php" method="POST">
                                        <div class="form-group row">
-                                          <div class="form-group col-md-12">
-                                             <label for="hab_piso">Nro. Piso</label>
-                                             <select id="hab_piso" name="hab_piso" class="form-control">
-                                             
-                                                <option selected>Seleccionar</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                        
-                                             </select>
-                                          </div>
-                                          <div class="form-group col-md-12">
-                                             <label for="hab_nro">Nro. Habitación</label>
+                                           <div class="form-group col-md-12">
+                                             <label for="hab_nro">Habitación</label>
                                              <select id="hab_nro" name="hab_nro" class="form-control">
                                                 
                                                 <option selected>Seleccionar</option>
@@ -201,6 +191,19 @@
 
                                              </select>
                                           </div>
+
+                                          <div class="form-group col-md-12">
+                                             <label for="hab_piso">Piso</label>
+                                             <select id="hab_piso" name="hab_piso" class="form-control">
+                                             
+                                                <option selected>Seleccionar</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                        
+                                             </select>
+                                          </div>
+                                          
                                           <div class="form-group col-md-12">
                                              <label for="hab_precio">Precio habitación</label>
                                              <input type="number" class="form-control" id="hab_precio" name="hab_precio" placeholder="Ingresar monto" required>
@@ -231,12 +234,7 @@
                                  
                                     <form class="habitacion" action="actualizar-habitacion.php" method="POST">
                                        <div class="form-group row">
-<<<<<<< HEAD
-                                          <div class="form-group col-md-12">                                      
-                                    
-=======
                                           <div class="form-group col-md-12">                           
->>>>>>> c554670ff241e347664fae4c296fea0da98f0737
                                              <label for="hab_precio">Precio habitación actual</label>
                                              <input type="number" class="form-control" id="precio_habitacion" name="hab_precio" value="" disabled>
                                              <input type="number" class="form-control" id="hab_id_precio" name="hab_id_precio" value="" hidden>
@@ -249,11 +247,16 @@
                                           </div>
 
                                           <div class="form-group col-md-12">
-                                             <label for="hab_estado">Mantenimiento</label>
+                                             <label for="hab_estado">Estado</label>
+                                             <!-- <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="hab_estado" id="hab_estado" value="1">                                             
+                                                <label class="form-check-label" for="defaultCheck1">Mantenimiento</label>
+                                             </div>    -->
+                                             
                                              <select name="hab_estado" id="hab_estado"class="form-control">
-                                             <option selected>Elegir</option>
-                                             <option >Si</option>
-                                             <option >No</option>
+                                                <!-- <option selected>Elegir</option> -->
+                                                <option selected>Disponible</option>   
+                                                <option >Mantenimiento</option>
                                              </select>
                                             
                                           </div>
