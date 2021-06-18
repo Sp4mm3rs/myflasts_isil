@@ -19,38 +19,27 @@
                 
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
     
-        foreach ($resultado as $key) {
-            $date1 = new DateTime($key['inicio']);
-            $date2 = new DateTime($key['fin']);
-            $tiempo_completo = $date1->diff($date2)->format('%m Meses y %d días');
-            $mes = $date1->diff($date2)->format('%m');
-            
-            echo "<pre>";
-            echo print_r($key);
-            echo "</pre>";
-
-        }
 
 ?>
 
 <?php
-    $datos = calcularTiempo('2021-01-30', '2021-06-30');
-    echo $datos[11] ," dias de contrato";
+    // $datos = calcularTiempo('2021-01-30', '2021-06-30');
+    // echo $datos[11] ," dias de contrato";
 
-    function calcularTiempo($fechainicio, $fechafin){
+    // function calcularTiempo($fechainicio, $fechafin){
 
-        $datetime1 = date_create($fechainicio);
-        $datetime2 = date_create($fechafin);
-        $interval = date_diff($datetime1, $datetime2);
+    //     $datetime1 = date_create($fechainicio);
+    //     $datetime2 = date_create($fechafin);
+    //     $interval = date_diff($datetime1, $datetime2);
 
-        $tiempo = array();
+    //     $tiempo = array();
 
-        foreach ($interval as $valor){
-            $tiempo[] = $valor;
-        }
-        return $tiempo;
+    //     foreach ($interval as $valor){
+    //         $tiempo[] = $valor;
+    //     }
+    //     return $tiempo;
         
-    }
+    // }
 ?>
 
 
@@ -129,7 +118,20 @@
                                         <tbody>
                                                 
                                                 <?php 
-                                                    foreach ($resultado as $res) {   
+                                                    foreach ($resultado as $res) {  
+                
+                                                    $start    = new DateTime($res['inicio']);
+                                                    $start->modify('first day of this month');
+                                                    $end      = new DateTime($res['fin']);
+                                                    $end->modify('first day of next month');
+                                                    $interval = DateInterval::createFromDateString('1 month');
+                                                    $period   = new DatePeriod($start, $interval, $end);
+
+
+                                                    $i = 0;
+                                                    foreach ($period as $dt) {
+                                                        $num_meses = $i++;
+                                                    }
                                                 ?>
                                                     <tr class="item-pendiente" id="<?php echo $res['id'] ?>">
                                                         <td><?php echo $res['nombre'] ?> <?php echo $res['apellido'] ?></td>
@@ -137,8 +139,8 @@
                                                         <td>Nro. <?php echo $res['piso'] ?></td>
                                                         <td><?php echo $res['inicio'] ?></td>
                                                         <td><?php echo $res['fin'] ?></td>
-                                                        <td><?php echo $mes . " Meses" ?></td>
-                                                        <td><?php echo "S/ " .$res['precio'] * $mes?> </td>
+                                                        <td><?php echo $num_meses . " Meses"?></td>
+                                                        <td><?php echo "S/ " .  number_format($res['precio'] * $num_meses,2,'.','')?> </td>
                                                         <td><?php echo $res['reputacion'] ?></td>
                                                     </tr>
                                                 <?php } 
