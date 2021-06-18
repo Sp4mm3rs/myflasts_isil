@@ -8,6 +8,7 @@
     $mes = date('m',strtotime($_POST['serv_fec']));
     $ano = date('Y',strtotime($_POST['serv_fec']));
 
+
     $sql_ano = "SELECT YEAR(fec_vencimiento) AS mes_servicio FROM servicios WHERE YEAR(fec_vencimiento) = '$ano'";
 
     $res_ano = mysqli_query($conexion, $sql_ano);
@@ -33,15 +34,16 @@
                         }
                         mysql_close($conexion);
                     }
+
         }else{
             $sql = "INSERT INTO servicios (tipo_servicio, fec_vencimiento, monto) VALUES ('$tipo', '$fecha', $monto)";
-            $resultado = mysqli_query($conexion, $sql ) or die ( "Algo ha ido mal en la consulta a la base de datos");  
-            if ($resultado) {
-                header( 'Location: http://localhost/myflasts_isil/detalle-servicio.php' ) ;
-            }else{
-                echo "No ha sido registrado";
-            }
-            mysql_close($conexion);
+                $resultado = mysqli_query($conexion, $sql ) or die ( "Algo ha ido mal en la consulta a la base de datos");  
+                if ($resultado) {
+                    header( 'Location: http://localhost/myflasts_isil/detalle-servicio.php' ) ;
+                }else{
+                    echo "No ha sido registrado";
+                }
+                mysql_close($conexion);
         }
 
     }else{

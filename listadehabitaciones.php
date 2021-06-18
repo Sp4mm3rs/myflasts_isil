@@ -130,12 +130,22 @@
                                                  echo "S/" . number_format($precio_final, 2, '.', ' ');         
                                                           
                                                 ?></td>
-                                                <td><?php
-                                                        if (isset($habitacion['id_inquilino'])){
-                                                          echo "Ocupado";
-                                                        }else{
-                                                          echo "Disponible";
+                                                <td ><?php
+                                                       
+                                                         if (isset($habitacion['id_inquilino'])){
+                                                            echo "Ocupado";
+                                                          }
+                                                         
+                                                        else{
+                                                            if (isset($habitacion['estado'])=="1"){
+                                                                echo "En Mantenimiento";
+                                                              }
+                                                              else{                                                               
+                                                                      echo "Disponible";                                                                 
+                                                              }
+                                                              
                                                         }
+                                                        
                                                  ?></td>
                                                 <td class="text-center">
                                                     <button type="button" id="<?php echo $habitacion['id_hab'] ?>" class="btn btn-outline-info btn-edit-habitacion" data-toggle="modal" data-target="#exampleModal1">Editar Precio</button> 
@@ -176,21 +186,7 @@
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                                <?php 
-                                                foreach ($resultado as $hab) {
-                                                ?>
-                                                <option><?php echo $hab['nro_piso'] ?></option>
-                                                <?php 
-                                                } 
-                                                ?>
-
+                                        
                                              </select>
                                           </div>
                                           <div class="form-group col-md-12">
@@ -198,29 +194,16 @@
                                              <select id="hab_nro" name="hab_nro" class="form-control">
                                                 
                                                 <option selected>Seleccionar</option>
-                                     <option>1</option>
+                                                <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
                                                 <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                                <?php 
-                                                foreach ($resultado as $habitacion) {
-                                                ?>
-                                                <option><?php echo $habitacion['nro_habitacion'] ?></option>
-                                                <?php 
-                                                } 
-                                                ?>
 
                                              </select>
                                           </div>
                                           <div class="form-group col-md-12">
                                              <label for="hab_precio">Precio habitación</label>
-                                             <input type="number" class="form-control" id="hab_precio" name="hab_precio" placeholder="Ingresar monto">
+                                             <input type="number" class="form-control" id="hab_precio" name="hab_precio" placeholder="Ingresar monto" required>
                                           </div>
                                        </div>
                                        <div class="modal-footer">
@@ -248,36 +231,36 @@
                                  
                                     <form class="habitacion" action="actualizar-habitacion.php" method="POST">
                                        <div class="form-group row">
+<<<<<<< HEAD
                                           <div class="form-group col-md-12">                                      
                                     
+=======
+                                          <div class="form-group col-md-12">                           
+>>>>>>> c554670ff241e347664fae4c296fea0da98f0737
                                              <label for="hab_precio">Precio habitación actual</label>
                                              <input type="number" class="form-control" id="precio_habitacion" name="hab_precio" value="" disabled>
                                              <input type="number" class="form-control" id="hab_id_precio" name="hab_id_precio" value="" hidden>
                                           </div>
 
                                           <div class="form-group col-md-12">
-                                             <label for="hab_nuevo_precio">Nuevo precio habitación</label>
-                                             <input type="number" class="form-control" id="hab_nuevo_precio" name="hab_nuevo_precio" placeholder="Ingresar nuevo monto">
+                                             <label for="hab_nuevo_precio">Nuevo precio</label>
+
+                                             <input type="number" class="form-control" id="hab_nuevo_precio" name="hab_nuevo_precio" placeholder="Ingresar nuevo monto" required>
                                           </div>
-                                          
+
                                           <div class="form-group col-md-12">
-                                            <label for="hab_nuevo_estado">Estado de habitación:</label>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="hab_nuevo_estado" name="hab_nuevo_estado">
-                                                <label class="form-check-label" for="defaultCheck1">
-                                                    Mantenimento
-                                                </label>
-                                            </div>
-                                             <!-- 
-                                             <select id="hab_nuevo_estado" name="hab_nuevo_estado" class="form-control">
-                                                <option selected>Seleccionar</option>
-                                                <option>Disponible</option>
-                                                <option>Mantenimiento</option>
-                                                <option>Internet</option>
-                                             </select> -->
+                                             <label for="hab_estado">Mantenimiento</label>
+                                             <select name="hab_estado" id="hab_estado"class="form-control">
+                                             <option selected>Elegir</option>
+                                             <option >Si</option>
+                                             <option >No</option>
+                                             </select>
+                                            
                                           </div>
 
                                        </div>
+
+
                                        <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                             <button type="submit" class="btn btn-info">Editar</button>
@@ -392,6 +375,8 @@
         });
 
     </script>
+
+    
 
 </body>
 

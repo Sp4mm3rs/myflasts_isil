@@ -2,19 +2,14 @@
     include 'config/conection.php';
 
 
-    $sql_habitaciones = "SELECT * FROM habitaciones WHERE id_inquilino IS NULL";
+    $sql_habitaciones = "SELECT * FROM habitaciones WHERE id_inquilino IS NULL AND estado =0";
     $res_habitaciones = mysqli_query( $conexion, $sql_habitaciones ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
-    // Fecha de hoy
     $month = date('m');
     $day = date('d');
     $year = date('Y');
 
     $hoy = $year . '-' . $month . '-' . $day;
-
-
-
-
      
 ?>
 
@@ -280,8 +275,8 @@
              
             success.done(function( data ) {
                $.each(data, function(i, reniec){
-                    $('#inq_nombre').val(reniec.name);
-                    $('#inq_apellido').val(reniec.fathers_lastname + " " + reniec.mothers_lastname);
+                    $('#inq_nombre').val(reniec.nombres);
+                    $('#inq_apellido').val(reniec.apellido_paterno + " " + reniec.apellido_materno);
                 });                    
             });
             
