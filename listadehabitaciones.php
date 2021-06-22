@@ -100,6 +100,7 @@
                                                 <th>Precio</th>
                                                 <th>Estado</th>
                                                 <th></th>
+                                                <th>Detalle Mantenimiento</th>
 
                                             </tr>
                                         </thead>
@@ -150,6 +151,8 @@
                                                 <td class="text-center">
                                                     <button type="button" id="<?php echo $habitacion['id_hab'] ?>" class="btn btn-outline-info btn-edit-habitacion" data-toggle="modal" data-target="#exampleModal1">Editar</button> 
                                                 </td>
+
+                                                <td></td>
                                                 
                                             </tr>
                                             <?php 
@@ -256,9 +259,11 @@
                                              <select name="hab_estado" id="hab_estado"class="form-control">
                                                 <!-- <option selected>Elegir</option> -->
                                                 <option selected>Disponible</option>   
-                                                <option >Mantenimiento</option>
+                                                <option  >Mantenimiento</option>
                                              </select>
-                                            
+                                             <br>
+                                             <h6 id="t_m">Razón y tiempo de duracion</h6>
+                                             <textarea class="form-control" name="" id="mant_det" cols="30" rows="5" required></textarea>
                                           </div>
 
                                        </div>
@@ -380,6 +385,20 @@
 
     </script>
 
+    <script type="text/javascript">
+    $("#t_m").hide();
+    $("#mant_det").hide();
+    $("#hab_estado").change(function(){
+        var value=$("#hab_estado").val();
+        if(value=="Mantenimiento"){
+            $("#t_m").show();
+            $("#mant_det").show();
+        }else{
+            $("#t_m").hide();
+            $("#mant_det").hide();
+        }
+    });
+    </script>
     
 
 </body>
