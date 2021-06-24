@@ -75,8 +75,8 @@
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Historial</h6>   
-                              
+                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Inquilinos pasados</h6>   
+                                <a class="btn btn-primary">Descargar reporte</a>
                             </div>   
                             
                             <div class="card-body maincontent">
@@ -84,14 +84,14 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Inquilino</th>
-                                                <th>Habitacion</th>
-                                                <th>Piso</th>
-                                                <th>Fecha de inicio</th>
-                                                <th>Fecha fin</th>
-                                                <th>Tiempo arrendado</th>
-                                                <th>Total</th>
-                                                <th>Reputacion</th>
+                                                <th class="text-center">Inquilino</th>
+                                                <th class="text-center">Habitacion</th>
+                                                <th class="text-center">Piso</th>
+                                                <th class="text-center">Fecha de inicio</th>
+                                                <th class="text-center">Fecha fin</th>
+                                                <th class="text-center">Tiempo arrendado</th>
+                                                <th class="text-center">Total</th>
+                                                <th class="text-center">Reputacion</th>
                                             </tr>
                                         </thead>                                      
                                         <tbody>

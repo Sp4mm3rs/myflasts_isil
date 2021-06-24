@@ -91,16 +91,16 @@
                                     <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Habitación</th>
-                                                <th>Piso</th>
-                                                <th>Inquilino</th>
-                                                <th>Cable</th>
-                                                <th>Internet</th>
-                                                <th>Fecha termino contrato</th>
-                                                <th>Precio</th>
-                                                <th>Estado</th>
+                                                <th class="text-center">Habitación</th>
+                                                <th class="text-center">Piso</th>
+                                                <th class="text-center">Inquilino</th>
+                                                <th class="text-center">Cable</th>
+                                                <th class="text-center">Internet</th>
+                                                <th class="text-center">Fecha termino contrato</th>
+                                                <th class="text-center">Precio</th>
+                                                <th class="text-center">Estado</th>
                                                 <th></th>
-                                                <th>Detalle Mantenimiento</th>
+                                                <th class="text-center">Detalle Mantenimiento</th>
 
                                             </tr>
                                         </thead>

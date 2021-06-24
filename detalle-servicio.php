@@ -78,10 +78,10 @@
                                     <table class="table table-bordered" id="table-pendiente" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Servicio</th>
-                                                <th>Monto</th>
-                                                <th>Vencimiento</th>
-                                                <th>Estado</th>
+                                                <th class="text-center">Servicio</th>
+                                                <th class="text-center">Monto</th>
+                                                <th class="text-center">Vencimiento</th>
+                                                <th class="text-center">Estado</th>
                                                
                                             </tr>
                                         </thead>
@@ -122,10 +122,10 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Servicio</th>
-                                                <th>Monto</th>
-                                                <th>Vencimiento de recibo</th>
-                                                <th>Fecha de pago</th>
+                                                <th class="text-center">Servicio</th>
+                                                <th class="text-center">Monto</th>
+                                                <th class="text-center">Vencimiento de recibo</th>
+                                                <th class="text-center">Fecha de pago</th>
                                                
                                             </tr>
                                         </thead>                                      

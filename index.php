@@ -86,14 +86,14 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>DNI</th>
-                                                <th>Inquilino</th>
-                                                <th>Habitacion</th>
-                                                <th>Celular</th>
-                                                <th>Fecha Inicio</th>
-                                                <th>Fecha Fin</th>
-                                                <th>Contrato</th>
-                                                <th>Detalle</th>
+                                                <th class="text-center">DNI</th>
+                                                <th class="text-center">Inquilino</th>
+                                                <th class="text-center">Habitacion</th>
+                                                <th class="text-center">Celular</th>
+                                                <th class="text-center">Fecha Inicio</th>
+                                                <th class="text-center">Fecha Fin</th>
+                                                <th class="text-center">Contrato</th>
+                                                <th class="text-center">Detalle</th>
                                             </tr>
                                         </thead>
                                        
