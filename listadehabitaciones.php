@@ -265,7 +265,7 @@
                                              
                                              <select name="hab_estado" id="hab_estado"class="form-control">
                                                 <!-- <option selected>Elegir</option> -->
-                                                <option selected>Cambiar estado</option>   
+                                                <option selected>Cambiar</option>   
                                                 <option  >Mantenimiento</option>
                                              </select>
                                              <br>
