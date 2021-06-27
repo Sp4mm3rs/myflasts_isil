@@ -28,6 +28,8 @@
 
     <title>Detalle de servicios - My Flats</title>
 
+    
+
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -69,12 +71,13 @@
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
                                 <h6 class="titleservicio m-0 font-weight-bold text-primary">Gastos de servicios</h6>   
-                                <a class="btn btn-primary">Descargar reporte</a>
+                                <a class="btn btn-primary" onclick="exportExl()">Descargar reporte</a>
+                                
                             </div>   
                             
                             <div class="card-body maincontent">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" name="dataTable" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th class="text-center">Servicio</th>
@@ -166,10 +169,21 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="dist/tableToExcel.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     
+    <script >
+    function exportExl(){
+        TableToExcel.convert(document.getElementById("dataTable"), {
+        name: "HistorialdeServicios.xlsx",
+        sheet: {
+            name: "Sheet 1"
+            }
+            });
+    }
+    </script>
 
 </body>
 

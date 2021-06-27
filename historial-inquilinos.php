@@ -76,7 +76,7 @@
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
                                 <h6 class="titleservicio m-0 font-weight-bold text-primary">Inquilinos pasados</h6>   
-                                <a class="btn btn-primary">Descargar reporte</a>
+                                <a class="btn btn-primary" onclick="exportExl()">Descargar reporte</a>
                             </div>   
                             
                             <div class="card-body maincontent">
@@ -188,6 +188,18 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script type="text/javascript" src="dist/tableToExcel.js"></script>
+
+    <script >
+    function exportExl(){
+        TableToExcel.convert(document.getElementById("dataTable"), {
+        name: "HistorialdeInquilinos.xlsx",
+        sheet: {
+            name: "Sheet 1"
+            }
+            });
+    }
+    </script>
     
 
 </body>
