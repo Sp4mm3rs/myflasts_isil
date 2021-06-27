@@ -6,10 +6,13 @@
     WHERE inq.estado = 0 
     ORDER BY id_inq DESC
     ";   
+    
+     
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
-    $con_ingreso_inq = "SELECT SUM() FROM inquilinos inq WHERE inq.estado = 0";    
-    $res_ingreso_inq = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    $con_ingreso = "SELECT SUM(precio_final) as ingreso_total FROM inquilinos inq
+    INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq";
+    $res_ingreso = mysqli_query( $conexion, $con_ingreso ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $consulta_serv = "SELECT SUM(monto) as mtotal FROM servicios";  
     $resultado_serv = mysqli_query( $conexion, $consulta_serv ) or die ( "Algo ha ido mal en la consulta a la base de datos");
@@ -132,7 +135,11 @@
                                                 INGRESO MENSUAL</div>
                                         </div>
                                         <div class="h4 mb-0 font-weight-bold text-gray-800">
-
+                                            <?php
+                                                $fila = $res_ingreso->fetch_assoc();
+                                                $total_ingreso = $fila['ingreso_total'];
+                                                echo "S/. " . number_format($total_ingreso, 2, '.', ' ');         
+                                            ?>
                                         </div>
 
                                         <!-- <div class="col-auto">
