@@ -97,7 +97,7 @@
                                                 <td><?php echo $registro['tipo_servicio'] ?></td>
                                                 <td><?php 
                                                     $pago = $registro['monto'];
-                                                    echo "S/" . number_format($pago, 2, '.', ' ');
+                                                    echo "S/. " . number_format($pago, 2, '.', ' ');
                                                 ?></td>
                                                 <td><?php echo $registro['fec_vencimiento'] ?></td>
                                                 <td class="text-center"><a id="<?php echo $registro['id'] ?>" class="btn btn-outline-warning btn-estado-serv" data-toggle="modal" data-target="#modalserv_estado" href="">Ver</a></td>
@@ -140,7 +140,7 @@
                                                     <td><?php echo $serv_pagado['tipo_serv'] ?></td>
                                                     <td><?php 
                                                         $pago_serv = $serv_pagado['monto'];
-                                                        echo "S/" . number_format($pago_serv, 2, '.', ' ');
+                                                        echo "S/. " . number_format($pago_serv, 2, '.', ' ');
                                                     ?></td>
                                                     <td><?php echo $serv_pagado['fec_venc'] ?></td>
                                                     <td><?php echo $serv_pagado['fec_pago'] ?></td>

@@ -95,7 +95,7 @@
                                                     <td><?php echo $serv_pagado['tipo_serv'] ?></td>
                                                     <td><?php 
                                                         $pago = $serv_pagado['monto'];
-                                                        echo "S/" . number_format($pago, 2, '.', ' '); 
+                                                        echo "S/. " . number_format($pago, 2, '.', ' '); 
                                                     ?></td>
                                                     <td><?php echo $serv_pagado['fec_venc'] ?></td>
                                                     <td><?php echo $serv_pagado['fec_pago'] ?></td>

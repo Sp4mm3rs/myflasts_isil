@@ -1,5 +1,14 @@
 <?php
-    
+    include 'config/conection.php';
+
+    $consulta = "SELECT * FROM inquilinos inq WHERE inq.estado = 0";    
+    $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+
+    $con_ingreso_inq = "SELECT SUM() FROM inquilinos inq WHERE inq.estado = 0";    
+    $res_ingreso_inq = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+
+    $consulta_serv = "SELECT SUM(monto) as mtotal FROM servicios";  
+    $resultado_serv = mysqli_query( $conexion, $consulta_serv ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 ?>
 
 
@@ -62,7 +71,12 @@
                                             <div class="text-lg font-weight-bold text-warning text-uppercase ">
                                                 TOTAL INQUILINOS</div>
                                         </div>
-                                        <div class="h4 mb-0 font-weight-bold text-gray-800">10</div>
+                                        <div class="h4 mb-0 font-weight-bold text-gray-800">
+                                            <?php
+                                                $num_inq = mysqli_num_rows($resultado);
+                                                echo $num_inq;
+                                            ?>
+                                        </div>
 
                                         <!-- <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -84,9 +98,14 @@
                                             <div class="text-lg font-weight-bold text-success text-uppercase ">
                                                 PAGO DE SERVICIOS</div>
                                             <div class="text-sm mb-0 font-weight-bold text-gray-800">Pendiente mensual</div>
-   
                                         </div>
-                                        <div class="h4 mb-0 font-weight-bold text-gray-800">S/.650.00</div>
+                                        <div class="h4 mb-0 font-weight-bold text-gray-800">
+                                            <?php
+                                                $fila = $resultado_serv->fetch_assoc();
+                                                $total_monto = $fila['mtotal'];
+                                                echo "S/. " . number_format($total_monto, 2, '.', ' ');         
+                                            ?>
+                                        </div>
 
                                         <!-- <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -108,7 +127,9 @@
                                             <div class="text-lg font-weight-bold text-info text-uppercase ">
                                                 INGRESO MENSUAL</div>
                                         </div>
-                                        <div class="h4 mb-0 font-weight-bold text-gray-800">S/. 2700.00</div>
+                                        <div class="h4 mb-0 font-weight-bold text-gray-800">
+
+                                        </div>
 
                                         <!-- <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

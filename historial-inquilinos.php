@@ -117,7 +117,7 @@
                                                     <td><?php echo $res['inicio'] ?></td>
                                                     <td><?php echo $res['fin'] ?></td>
                                                     <td><?php echo $num_meses . " Meses"?></td>
-                                                    <td><?php echo "S/ " .  number_format($res['precio'] * $num_meses,2,'.','')?> </td>
+                                                    <td><?php echo "S/. " .  number_format($res['precio'] * $num_meses,2,'.','')?> </td>
                                                     <td><?php echo $res['reputacion'] ?></td>
                                                 </tr>
                                             <?php } 

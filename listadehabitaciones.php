@@ -118,8 +118,8 @@
                                                           }
                                                         }
                                                  ?></td>
-                                                <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "S/30.00"; ?></td>
-                                                <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "S/30.00"; ?></td>
+                                                <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "S/. 30.00"; ?></td>
+                                                <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "S/. 30.00"; ?></td>
                                                 <td><?php echo $habitacion['fecha_fin'] ?></td>
                                                 <td><?php $adicional=0;
                                            
@@ -128,7 +128,7 @@
 
                                                 $precio_final = $habitacion['precio'] + $adicional; 
                                                           
-                                                 echo "S/" . number_format($precio_final, 2, '.', ' ');         
+                                                 echo "S/. " . number_format($precio_final, 2, '.', ' ');         
                                                           
                                                 ?></td>
                                                 <td ><?php
