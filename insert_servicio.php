@@ -28,7 +28,7 @@
                         $sql = "INSERT INTO servicios (tipo_servicio, fec_vencimiento, monto) VALUES ('$tipo', '$fecha', $monto)";
                         $resultado = mysqli_query($conexion, $sql ) or die ( "Algo ha ido mal en la consulta a la base de datos");  
                         if ($resultado) {
-                            header( 'Location: http://localhost/myflasts_isil/detalle-servicio.php' ) ;
+                            header( 'Location: http://localhost/myflats_isil/detalle-servicio.php' ) ;
                         }else{
                             echo "No ha sido registrado";
                         }
@@ -39,7 +39,7 @@
             $sql = "INSERT INTO servicios (tipo_servicio, fec_vencimiento, monto) VALUES ('$tipo', '$fecha', $monto)";
                 $resultado = mysqli_query($conexion, $sql ) or die ( "Algo ha ido mal en la consulta a la base de datos");  
                 if ($resultado) {
-                    header( 'Location: http://localhost/myflasts_isil/detalle-servicio.php' ) ;
+                    header( 'Location: http://localhost/myflats_isil/detalle-servicio.php' ) ;
                 }else{
                     echo "No ha sido registrado";
                 }
@@ -50,7 +50,7 @@
         $sql = "INSERT INTO servicios (tipo_servicio, fec_vencimiento, monto) VALUES ('$tipo', '$fecha', $monto)";
         $resultado = mysqli_query($conexion, $sql ) or die ( "Algo ha ido mal en la consulta a la base de datos");  
         if ($resultado) {
-            header( 'Location: http://localhost/myflasts_isil/detalle-servicio.php' ) ;
+            header( 'Location: http://localhost/myflats_isil/detalle-servicio.php' ) ;
         }else{
             echo "No ha sido registrado";
         }

@@ -32,4 +32,4 @@
             }
 
         }
-        header( 'Location: http://localhost/myflasts_isil/' ) ;
+        header( 'Location: http://localhost/myflats_isil/' ) ;

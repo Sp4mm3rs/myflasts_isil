@@ -61,7 +61,7 @@
                 <div id="menu-inquilino" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                        <a class="collapse-item" href="http://localhost/myflasts_isil/">Lista de inquilinos</a>
+                        <a class="collapse-item" href="http://localhost/myflats_isil/">Lista de inquilinos</a>
                         <a class="collapse-item" href="ingresar-inquilino.php">Ingresar inquilino</a>
                     </div>
                 </div>

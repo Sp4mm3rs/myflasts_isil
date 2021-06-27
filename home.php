@@ -1,7 +1,11 @@
 <?php
     include 'config/conection.php';
 
-    $consulta = "SELECT * FROM inquilinos inq WHERE inq.estado = 0";    
+    $consulta = "SELECT * FROM inquilinos inq
+    INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
+    WHERE inq.estado = 0 
+    ORDER BY id_inq DESC
+    ";   
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $con_ingreso_inq = "SELECT SUM() FROM inquilinos inq WHERE inq.estado = 0";    
@@ -230,19 +234,23 @@
                                                 <th class="text-center">DNI</th>
                                                 <th class="text-center">Fecha de ingreso</th>
                                                 <th class="text-center">Celular</th>
-                                                <th></th>
+                                                <th class="text-center"> Detalle</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="item-habitacion">
-                                                <td>Inquilino 1</td>
-                                                <td>74975421</td>
-                                                <td>25/04/2021</td>
-                                                <td>959774147</td>
-                                                <td class="text-center">
-                                                    <button type="button" id="btn-detalle" class="btn btn-info btn-detalle">Detalle</button> 
-                                                </td>                                                
+                                        <?php 
+
+                                        foreach ($resultado as $inquilino) {   
+                                          ?> 
+                                           <tr class="item" id="<?php echo $inquilino['dni'] ?>">
+                                                
+                                                <td><?php echo $inquilino['nombre'] ?> <?php echo $inquilino['apellido'] ?></td>
+                                                <td><?php echo $inquilino['dni'] ?></td>                                              
+                                                <td><?php echo $inquilino['fecha_inicio'] ?></td>
+                                                <td><?php echo $inquilino['celular'] ?></td>                                           
+                                                <td class="text-center"><a class="btn btn-outline-warning" href="detalle-inquilino.php?dni=<?php echo $inquilino['dni'] ?>">Ver</a></td>
                                             </tr>
+                                            <?php } ?>       
                                         </tbody>
                                     </table>
                                 </div>

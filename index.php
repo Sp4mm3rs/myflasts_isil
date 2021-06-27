@@ -105,7 +105,8 @@
 
                                             // echo "<pre>";                                             
                                             // echo print_r($registro);                                             
-                                            // echo "</pre>";                                             
+                                            // echo "</pre>";                
+                                                                         
                                             ?>
                                             <tr class="item" id="<?php echo $registro['dni'] ?>">
                                                 <td><?php echo $registro['dni'] ?></td>
