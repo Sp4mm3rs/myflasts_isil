@@ -91,16 +91,16 @@
                                     <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Habitación</th>
-                                                <th>Piso</th>
-                                                <th>Inquilino</th>
-                                                <th>Cable</th>
-                                                <th>Internet</th>
-                                                <th>Fecha termino contrato</th>
-                                                <th>Precio</th>
-                                                <th>Estado</th>
+                                                <th class="text-center">Habitación</th>
+                                                <th class="text-center">Piso</th>
+                                                <th class="text-center">Inquilino</th>
+                                                <th class="text-center">Cable</th>
+                                                <th class="text-center">Internet</th>
+                                                <th class="text-center">Fecha termino contrato</th>
+                                                <th class="text-center">Precio</th>
+                                                <th class="text-center">Estado</th>
                                                 <th></th>
-                                                <th>Detalle Mantenimiento</th>
+                                                <th class="text-center">Detalle Mantenimiento</th>
 
                                             </tr>
                                         </thead>
@@ -118,8 +118,8 @@
                                                           }
                                                         }
                                                  ?></td>
-                                                <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "S/30.00"; ?></td>
-                                                <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "S/30.00"; ?></td>
+                                                <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "S/. 30.00"; ?></td>
+                                                <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "S/. 30.00"; ?></td>
                                                 <td><?php echo $habitacion['fecha_fin'] ?></td>
                                                 <td><?php $adicional=0;
                                            
@@ -128,7 +128,7 @@
 
                                                 $precio_final = $habitacion['precio'] + $adicional; 
                                                           
-                                                 echo "S/" . number_format($precio_final, 2, '.', ' ');         
+                                                 echo "S/. " . number_format($precio_final, 2, '.', ' ');         
                                                           
                                                 ?></td>
                                                 <td ><?php
@@ -265,7 +265,7 @@
                                              
                                              <select name="hab_estado" id="hab_estado"class="form-control">
                                                 <!-- <option selected>Elegir</option> -->
-                                                <option selected>Cambiar estado</option>   
+                                                <option selected>Cambiar</option>   
                                                 <option  >Mantenimiento</option>
                                              </select>
                                              <br>

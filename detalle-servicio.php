@@ -78,10 +78,10 @@
                                     <table class="table table-bordered" id="table-pendiente" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Servicio</th>
-                                                <th>Monto</th>
-                                                <th>Vencimiento</th>
-                                                <th>Estado</th>
+                                                <th class="text-center">Servicio</th>
+                                                <th class="text-center">Monto</th>
+                                                <th class="text-center">Vencimiento</th>
+                                                <th class="text-center">Estado</th>
                                                
                                             </tr>
                                         </thead>
@@ -97,7 +97,7 @@
                                                 <td><?php echo $registro['tipo_servicio'] ?></td>
                                                 <td><?php 
                                                     $pago = $registro['monto'];
-                                                    echo "S/" . number_format($pago, 2, '.', ' ');
+                                                    echo "S/. " . number_format($pago, 2, '.', ' ');
                                                 ?></td>
                                                 <td><?php echo $registro['fec_vencimiento'] ?></td>
                                                 <td class="text-center"><a id="<?php echo $registro['id'] ?>" class="btn btn-outline-warning btn-estado-serv" data-toggle="modal" data-target="#modalserv_estado" href="">Ver</a></td>
@@ -122,10 +122,10 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Servicio</th>
-                                                <th>Monto</th>
-                                                <th>Vencimiento de recibo</th>
-                                                <th>Fecha de pago</th>
+                                                <th class="text-center">Servicio</th>
+                                                <th class="text-center">Monto</th>
+                                                <th class="text-center">Vencimiento de recibo</th>
+                                                <th class="text-center">Fecha de pago</th>
                                                
                                             </tr>
                                         </thead>                                      
@@ -140,7 +140,7 @@
                                                     <td><?php echo $serv_pagado['tipo_serv'] ?></td>
                                                     <td><?php 
                                                         $pago_serv = $serv_pagado['monto'];
-                                                        echo "S/" . number_format($pago_serv, 2, '.', ' ');
+                                                        echo "S/. " . number_format($pago_serv, 2, '.', ' ');
                                                     ?></td>
                                                     <td><?php echo $serv_pagado['fec_venc'] ?></td>
                                                     <td><?php echo $serv_pagado['fec_pago'] ?></td>

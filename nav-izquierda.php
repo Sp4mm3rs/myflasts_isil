@@ -37,6 +37,20 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#menu-inicio"
+                    aria-expanded="true" aria-controls="menu-inicio">                   
+                    <span class="opciones">Inicio</span>
+                </a>
+                <div id="menu-inicio" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                       
+                        <a class="collapse-item" href="home.php">Dashboard</a>
+                                               
+                    </div>
+                </div>
+            </li> 
+            
+            <li class="nav-item">
 
                 <a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#menu-inquilino"
                     aria-expanded="true" aria-controls="menu-inquilino">
@@ -47,7 +61,7 @@
                 <div id="menu-inquilino" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                        <a class="collapse-item" href="http://localhost/myflasts_isil/">Lista de inquilinos</a>
+                        <a class="collapse-item" href="http://localhost/myflats_isil/">Lista de inquilinos</a>
                         <a class="collapse-item" href="ingresar-inquilino.php">Ingresar inquilino</a>
                     </div>
                 </div>
@@ -95,6 +109,8 @@
                     </div>
                 </div>
             </li> 
+
+            
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <!-- <li class="nav-item">

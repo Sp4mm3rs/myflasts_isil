@@ -42,10 +42,10 @@ if (isset($_POST['rInquilino'])) {
                 $i++;
             } while ($conexion->next_result());
         }
-        header( 'Location: http://localhost:8080/myflasts_isil/');
+
+        header( 'Location: http://localhost/myflats_isil/');
     
         
-       
        
 }
  

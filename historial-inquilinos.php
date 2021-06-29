@@ -75,8 +75,8 @@
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Historial</h6>   
-                              
+                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Inquilinos pasados</h6>   
+                                <a class="btn btn-primary" onclick="exportExl()">Descargar reporte</a>
                             </div>   
                             
                             <div class="card-body maincontent">
@@ -84,14 +84,14 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Inquilino</th>
-                                                <th>Habitacion</th>
-                                                <th>Piso</th>
-                                                <th>Fecha de inicio</th>
-                                                <th>Fecha fin</th>
-                                                <th>Tiempo arrendado</th>
-                                                <th>Total</th>
-                                                <th>Reputacion</th>
+                                                <th class="text-center">Inquilino</th>
+                                                <th class="text-center">Habitacion</th>
+                                                <th class="text-center">Piso</th>
+                                                <th class="text-center">Fecha de inicio</th>
+                                                <th class="text-center">Fecha fin</th>
+                                                <th class="text-center">Tiempo arrendado</th>
+                                                <th class="text-center">Total</th>
+                                                <th class="text-center">Reputacion</th>
                                             </tr>
                                         </thead>                                      
                                         <tbody>
@@ -117,7 +117,7 @@
                                                     <td><?php echo $res['inicio'] ?></td>
                                                     <td><?php echo $res['fin'] ?></td>
                                                     <td><?php echo $num_meses . " Meses"?></td>
-                                                    <td><?php echo "S/ " .  number_format($res['precio'] * $num_meses,2,'.','')?> </td>
+                                                    <td><?php echo "S/. " .  number_format($res['precio'] * $num_meses,2,'.','')?> </td>
                                                     <td><?php echo $res['reputacion'] ?></td>
                                                 </tr>
                                             <?php } 
@@ -188,6 +188,18 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script type="text/javascript" src="dist/tableToExcel.js"></script>
+
+    <script >
+    function exportExl(){
+        TableToExcel.convert(document.getElementById("dataTable"), {
+        name: "HistorialdeInquilinos.xlsx",
+        sheet: {
+            name: "Sheet 1"
+            }
+            });
+    }
+    </script>
     
 
 </body>

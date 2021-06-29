@@ -19,7 +19,7 @@
                } while ($conexion->next_result());
            }        
              
-       header( 'Location: http://localhost/myflasts_isil/detalle-servicio.php' ) ;
+       header( 'Location: http://localhost/myflats_isil/detalle-servicio.php' ) ;
     
     
 
