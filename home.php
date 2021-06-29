@@ -4,7 +4,7 @@
     $consulta = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
     WHERE inq.estado = 0 
-    ORDER BY id_inq DESC
+    ORDER BY id_inq DESC LIMIT 2
     ";   
     
      
