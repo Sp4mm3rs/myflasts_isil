@@ -7,6 +7,12 @@
     WHERE dni = $dni
     ";
 
+        $month = date('m');
+    $day = date('d');
+    $year = date('Y');
+
+    $hoy = $year . '-' . $month . '-' . $day;
+
 $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
    
 ?>
@@ -72,7 +78,7 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                     <table class="table table-bordered" id="table-pendiente" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th class="text-center">Fecha de pago</th>
+                                                <th class="text-center">Fecha de vencimiento</th>
                                                 <th class="text-center">Monto</th>
                                                 <th class="text-center">Observacion</th>
                                                 <th class="text-center">Accion</th>
@@ -92,22 +98,22 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                                         $pago_restante= $mensualidad/30 * $days;
 
                                                         for ($i=0; $i<$months+2;$i++) {
-                                                        $fecha_pago = date('Y-m-d', strtotime("+$i months", strtotime($registro['fecha_inicio']))); 
+                                                        $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($registro['fecha_inicio']))); 
                                                         if($i==$months+1){
-                                                            $fecha_pago= $registro['fecha_fin'];
+                                                            $fecha_venc= $registro['fecha_fin'];
                                                             $mensualidad=$pago_restante;
                                                         }
 
                                                 ?>
 
-                                                <tr class="item-pendiente" id="<?php echo $registro['id'] ?>">
-                                                    <td><?php echo $fecha_pago ?></td>
-                                                    <td><?php 
+                                                <tr class="item-pendiente" id="<?php echo $registro['dni'] ?>">
+                                                    <td ><?php echo $fecha_venc ?></td>
+                                                    <td class="montoapagar"><?php 
                                                         
-                                                        echo "S/. " . number_format($mensualidad, 2, '.', ' ');
+                                                        echo "S/ " . number_format($mensualidad, 2, '.', ' ');
                                                     ?></td>
-                                                    <td></td>
-                                                    <td class="text-center"><a id="" class="btn btn-outline-warning" data-toggle="modal" data-target="#modal_pago" href="">Ver</a></td>
+                                                    <td class="obs"></td>
+                                                    <td class="text-center"><a id="" class="btn btn-outline-warning btn_pago" data-toggle="modal" data-target="#modal_pago" href="">Ver</a></td>
                                                 
                                                 </tr>
                                                 <?php 
@@ -138,23 +144,37 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                     <div class="form-group row">           
                                         <div class="form-group col-md-12">                           
                                             <label for="hab_precio">Fecha de pago</label>
-                                            <input type="number" class="form-control" id="fecha_pago" name="fecha_pago" value="" disabled>
+                                            <input type="date" class="form-control fecp" id="fecha_pago" name="fecha_pago" value="<?php echo $hoy; ?>" disabled >
                                                                                                       
                                                               
                                              <label for="hab_precio">Monto</label>
-                                             <input type="number" class="form-control" id="monto_pago" name="fecha_pago" value="" disabled> 
+                                             <input type="number" class="form-control" id="monto_pago" name="monto_pago" value="" disabled> 
                                              
                                              <br>
-                                             <h6 id="t_m">Observacion</h6>
-                                             <textarea class="form-control" name="obs_pago" id="obs_pago" cols="30" rows="3" required></textarea>
-
+                                             <label for="Forma de pago"></label>
+                                             <select class="form-control" name="form_pago" id="form_pago">
+                                             <option selected>Elegir</option>
+                                             <option >Contado</option>
+                                             <option >Deposito</option>
+                                             </select>
+                                               
+                                                <br>
+                                                <div class="form-group">
+                                                     <img id="foto_v" src="img/default.jpg" width="180px" height="100px" class="img-fluid foto_v" alt="Responsive image">
+                                                </div>
+                                                <div class="custom-file">
+                                                    <label id="ele_foto" class="ele_foto" for="fotov">Seleccionar foto</label>
+                                                    <input type="file" name="fotoacargar" value="" class="custom-file-input fotov" id="fotov" onchange="CargarFoto()" required>                                                                                                        
+                                                </div>
+                                             
+                                             
                                         </div>
 
 
                                     </div>                                     
                                     <div class="modal-footer">
                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary">Archivar como pagado</button>
+                                        <button type="submit" class="btn btn-primary btn-archivar">Archivar como pagado</button>
                                     </div>
                                  </form>
                               </div>                                                        
@@ -219,8 +239,50 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-    
 
+    <script>
+    function CargarFoto(){
+        var image = document.getElementById('foto_v');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    } 
+    </script>                                          
+
+
+
+    <script type="text/javascript">
+        $(".btn_pago").click(function(){
+            var $row = $(this).closest("tr");            
+            var $monto = $row.find(".montoapagar").text().replace(/[^0-9.]/g,'');
+            var $obs_table = $row.find(".obs");
+                  
+            $("#monto_pago").val($monto);
+
+            $(".btn-archivar").click(function(){
+                var $fotov = $("#foto_v").attr("src");
+            
+                document.body.appendChild($fotov);       
+            });
+    
+        });
+    </script>
+
+    <script type="text/javascript">
+        $("#foto_v").hide();
+        $("#ele_foto").hide();
+        $("#fotov").hide();
+        $("#form_pago").change(function(){
+            var value=$("#form_pago").val();
+            if(value=="Deposito"){
+                $("#foto_v").show();
+                $("#ele_foto").show();
+                $("#fotov").show();
+            }else{
+                $("#foto_v").hide();
+                $("#ele_foto").hide();
+                $("#fotov").hide();
+            }
+        });
+    </script>
 </body>
 
 </html>

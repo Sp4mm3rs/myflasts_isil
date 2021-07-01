@@ -1,1 +1,1 @@
-D:\xxamp\php\php.exe -f D:\xxamp\htdocs\myflats_isil\cronmant.php
+D:\xxamp\php\php.exe -f D:\xxamp\htdocs\myflats_isil\cronpagos.php

@@ -270,22 +270,20 @@
                             </div>                               
                             <div class="card-body maincontent">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="tableprox" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th class="text-center">Inquilino</th>
-                                                <th class="text-center">DNI</th>
                                                 <th class="text-center">Fecha de vencimiento</th>
-                                                <th class="text-center">Celular</th>
+                                                <th class="text-center">Monto</th>                                   
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="item-habitacion">
                                                 <td>Inquilino 1</td>
-                                                <td>74975421</td>
                                                 <td>25/04/2021</td>
-                                                <td>959774147</td>
+                                                <td>344</td>
                                                 <td class="text-center">
                                                     <button type="button" id="btn-detalle" class="btn btn-danger btn-detalle">Enviar alerta</button> 
                                                 </td>                                                
@@ -302,7 +300,7 @@
                             </div>                               
                             <div class="card-body maincontent">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="tablevenc" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th class="text-center">Inquilino</th>
