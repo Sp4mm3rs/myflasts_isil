@@ -94,6 +94,7 @@
                                                 <th class="text-center">Fecha Fin</th>
                                                 <th class="text-center">Contrato</th>
                                                 <th class="text-center">Detalle</th>
+                                                <th class="text-center">Pagos</th>
                                             </tr>
                                         </thead>
                                        
@@ -117,6 +118,7 @@
                                                 <td><?php echo $registro['fecha_fin'] ?></td>
                                                 <td class="text-center"><a class="btn btn-outline-info" href="contrato/?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
                                                 <td class="text-center"><a class="btn btn-outline-warning" href="detalle-inquilino.php?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
+                                                <td class="text-center"><a class="btn btn-outline-warning" href="pagos-inquilino.php?dni=<?php echo $registro['dni'] ?>">Ver</a></td>
                                             </tr>
                                             <?php } ?>
                                         </tbody>
