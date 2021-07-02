@@ -131,7 +131,9 @@
                                                  echo "S/. " . number_format($precio_final, 2, '.', ' ');         
                                                           
                                                 ?></td>
-                                                <td ><?php
+                                                <td >
+                                                <p id="hab_estado_tabla">
+                                                <?php
                                                        
                                                          if (isset($habitacion['id_inquilino'])){
                                                             echo "Ocupado";
@@ -147,8 +149,10 @@
                                                               
                                                         }
                                                         
-                                                 ?></td>
-                                                <td class="text-center">
+                                                 ?>
+                                                </p>
+                                                </td>
+                                                <td id="" class="text-center">
                                                     <button type="button" id="<?php echo $habitacion['id_hab'] ?>" class="btn btn-outline-info btn-edit-habitacion" data-toggle="modal" data-target="#exampleModal1">Editar</button> 
                                                 </td>
 
@@ -270,7 +274,7 @@
                                              </select>
                                              <br>
                                              <h6 id="t_m">Razón del matenimiento</h6>
-                                             <textarea class="form-control" name="mant_det" id="mant_det" cols="30" rows="3" required></textarea>
+                                             <textarea class="form-control" name="mant_det" id="mant_det" cols="30" rows="3"></textarea>
                                              <label id="l_mant" for="fec_mant">Fecha termino del mantenimiento</label>
                                              <input class="form-control" id="fec_mant" name="fec_mant"  type="date">
                                           </div>
@@ -403,9 +407,12 @@
         var value=$("#hab_estado").val();
         if(value=="Mantenimiento"){
             $("#l_mant").show();
+            $("#fec_mant").prop('required', true);
             $("#fec_mant").show();
             $("#t_m").show();
+            $("#mant_det").prop('required', true);
             $("#mant_det").show();
+           
         }else{
             $("#l_mant").hide();
             $("#fec_mant").hide();
@@ -415,6 +422,24 @@
     });
     </script>
     
+    
+    <script type="text/javascript">
+  
+        // let p = document.querySelector("#hab_estado_tabla");
+        // let button = document.querySelector(".btn-edit-habitacion");
+        // button.disabled = true;
+        // p.addEventListener("change", stateHandle);
+        // function stateHandle() {
+        // if (document.querySelector("#hab_estado_tabla").value !== "Ocupado") {
+        //     button.disabled = false; 
+        // } else {
+        //     button.disabled = true;
+        // }
+        // }
+        
+
+    </script>
+
 
 </body>
 
