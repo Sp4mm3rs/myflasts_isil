@@ -3,12 +3,14 @@
 
     $consulta = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
-    WHERE inq.estado = 0 
-    ORDER BY id_inq DESC LIMIT 2
-    ";   
-    
-     
+    WHERE inq.estado = 0";   
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+
+    $consulta_inq = "SELECT * FROM inquilinos inq
+    INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
+    WHERE inq.estado = 0 
+    ORDER BY id_inq DESC LIMIT 2";  
+    $resultado_inq = mysqli_query( $conexion, $consulta_inq ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $con_ingreso = "SELECT SUM(precio_final) as ingreso_total FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq";
@@ -247,7 +249,7 @@
                                         <tbody>
                                         <?php 
 
-                                        foreach ($resultado as $inquilino) {   
+                                        foreach ($resultado_inq as $inquilino) {   
                                           ?> 
                                            <tr class="item" id="<?php echo $inquilino['dni'] ?>">
                                                 
