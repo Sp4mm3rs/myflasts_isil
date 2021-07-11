@@ -87,8 +87,14 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                         </thead>
                                        
                                         <tbody>
-                                             <?php                                              
+                                             <?php  
+                                                    $conteo = 0;                                            
                                                     foreach($resultado as $registro){
+                                                        $conteo+1 ;
+                                                        echo "<pre>";
+                                                        echo print_r($registro);
+                                                        echo "</pre>";
+
                                                         $mensualidad = $registro['precio_final'];
                                                         $fecini = new dateTime($registro['fecha_inicio']);
                                                         $fecfinal= new dateTime($registro['fecha_fin']);
@@ -106,14 +112,14 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
 
                                                 ?>
 
-                                                <tr class="item-pendiente" id="<?php echo $registro['dni'] ?>">
+                                                <tr class="item-pendiente" id="<?php echo $conteo ?>">
                                                     <td ><?php echo $fecha_venc ?></td>
                                                     <td class="montoapagar"><?php 
                                                         
                                                         echo "S/ " . number_format($mensualidad, 2, '.', ' ');
                                                     ?></td>
                                                     <td class="obs"></td>
-                                                    <td class="text-center"><a id="" class="btn btn-outline-warning btn_pago" data-toggle="modal" data-target="#modal_pago" href="">Ver</a></td>
+                                                    <td class="text-center"><a id="" class="btn btn-outline-warning btn_pago" data-toggle="modal" data-target="#modal_pago" href="">Registrar</a></td>
                                                 
                                                 </tr>
                                                 <?php 
@@ -174,7 +180,7 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                     </div>                                     
                                     <div class="modal-footer">
                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary btn-archivar">Archivar como pagado</button>
+                                        <button id="archivo_pago" type="submit" class="btn btn-primary btn-archivar">Archivar como pagado</button>
                                     </div>
                                  </form>
                               </div>                                                        
@@ -262,8 +268,28 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
             
                 document.body.appendChild($fotov);       
             });
-    
+            
         });
+
+
+
+        $(document).on('click', '#archivo_pago', function(){  
+               var id_serv = $('.item-pendiente').attr("id"); 
+
+               console.log(id_serv);
+               // $.ajax({  
+               //      url:"estado-serv.php",  
+               //      method:"POST",  
+               //      data:{id_serv:id_serv},  
+               //      dataType:"json",  
+               //      success:function(data){  
+               //          $('#tipo_serv').val(data.tipo_servicio);
+               //          $('#fec_serv').val(data.fec_vencimiento);
+               //          $('#precio_servicio').val(data.monto);  
+               //          $('#serv_id_precio').val(data.id);  
+               //      }  
+               // });  
+             });
     </script>
 
     <script type="text/javascript">
