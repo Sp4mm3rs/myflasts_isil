@@ -310,23 +310,7 @@
                                             <?php 
                                             
                                             foreach($resultado2 as $proxpagos){
-
-
-
-
-
-$firstDate = $proxpagos['fecha_inicio'];
-$secondDate = $proxpagos['fecha_fin'];
-$dateDifference = abs(strtotime($secondDate) - strtotime($firstDate));
-
-$years  = floor($dateDifference / (365 * 60 * 60 * 24));
-$months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-$days   = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
-
-echo $years." year,  ".$months." months and ".$days." days";
-
-
-
+                                                
                                                 $mensualidad = $proxpagos['precio_final'];
                                                  $fecini = new dateTime($proxpagos['fecha_inicio']);
                                                 $fecfinal= new dateTime($proxpagos['fecha_fin']);
@@ -338,16 +322,19 @@ echo $years." year,  ".$months." months and ".$days." days";
 
                                                 //$arrayfec=[];
                                                 
+                                                $today= new dateTime($hoy);
+                                               
                                                 $pago_restante= $mensualidad/30 * $days;
 
                                                 for ($i=0; $i<$months+1;$i++) {
                                                     $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
-                                                    //$arrayfec[] =$fecha_venc;
+                                                   
                                                     $fec = new dateTime($fecha_venc);
                                                     $interval2=date_diff($today,$fec);
-                                                    $da=$interval2->format("%a days");
 
-                                                    if( $today<$fec and $da<2 or $today==$fec ){
+                                                    $diasobra=$interval2->format("%a");
+
+                                                    if( $today<$fec and $diasobra<3 or $today==$fec ){
                                                    
                                                         if($i==$months){                                                 
                                                             $mensualidad=$pago_restante;
