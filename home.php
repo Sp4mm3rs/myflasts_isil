@@ -238,7 +238,7 @@
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Inquilinos recientes</h6>   
+                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Ultimos inquilinos</h6>   
                             </div>   
                             
                             <div class="card-body maincontent">
@@ -296,7 +296,9 @@
                                                  $fecini = new dateTime($proxpagos['fecha_inicio']);
                                                 $fecfinal= new dateTime($proxpagos['fecha_fin']);
                                                 $interval = date_diff($fecini,$fecfinal);
-                                                $months=$interval->m;
+                                               
+                                                $months=$interval->format("%m")+ 12*$interval->format("%y");
+                                                
                                                 $days=$interval->d;
                                                 
                                                 $today= new dateTime($hoy);
@@ -347,7 +349,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center">Inquilino</th>
-                                                <th class="text-center">DNI</th>
+                                                
                                                 <th class="text-center">Fecha de vencimiento</th>
                                                 <th class="text-center">Celular</th>
                                                 <th class="text-center">Días atrasados</th>
@@ -355,16 +357,55 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+
+
+                                        <?php 
+                                            
+                                            foreach($resultado2 as $proxpagos){
+                                                $mensualidad = $proxpagos['precio_final'];
+                                                 $fecini = new dateTime($proxpagos['fecha_inicio']);
+                                                $fecfinal= new dateTime($proxpagos['fecha_fin']);
+                                                $interval = date_diff($fecini,$fecfinal);
+                                                $months=$interval->format("%m")+ 12*$interval->format("%y");
+                                                
+                                                $days=$interval->d;
+                                                
+                                                $today= new dateTime($hoy);
+                                               
+                                                $pago_restante= $mensualidad/30 * $days;
+
+                                                for ($i=0; $i<$months+1;$i++) {
+                                                    $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
+                                                   
+                                                    $fec = new dateTime($fecha_venc);
+                                                    $interval2=date_diff($today,$fec);
+
+                                                    $diasobra=$interval2->format("%a");
+
+                                                    if( $today>$fec and $diasobra<30){
+                                                   
+                                                        if($i==$months){                                                 
+                                                            $mensualidad=$pago_restante;
+                                                        }
+                                                                                          
+                                            ?>
+
                                             <tr class="item-habitacion">
-                                                <td>Inquilino 1</td>
-                                                <td>74975421</td>
-                                                <td>25/04/2021</td>
-                                                <td>959774147</td>
-                                                <td>3 días</td>
+                                                <td><?php echo $proxpagos['nombre'] ?></td>
+                                                
+                                                <td><?php echo $fecha_venc ?></td>
+                                                <td><?php echo $proxpagos['celular'] ?></td>
+                                                <td><?php echo $diasobra?></td>
                                                 <td class="text-center">
                                                     <button type="button" id="btn-detalle" class="btn btn-success btn-detalle">Contactar</button> 
                                                 </td>                                                
                                             </tr>
+
+                                            <?php
+                                              }
+                                            }
+                                        }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
