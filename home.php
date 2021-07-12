@@ -24,11 +24,11 @@
     $consulta_chart_01 = "SELECT count(id_inquilino) as cOcupados, count(case when estado = '0' then 1 else null end) as cDisponibles  FROM habitaciones";
     $resultado_chart_01 = mysqli_query( $conexion, $consulta_chart_01 ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
-    foreach ($resultado_chart_01 as $asds => $value) {
-        echo "<pre>";
-        echo print_r($value['cDisponibles']);
-        echo "</pre>";
-    }
+    // foreach ($resultado_chart_01 as $asds => $value) {
+    //     echo "<pre>";
+    //     echo print_r($value['cDisponibles']);
+    //     echo "</pre>";
+    // }
 
 
 ?>
