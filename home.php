@@ -345,15 +345,7 @@
                                             ?>
                                             <tr class="item-habitacion">
                                                 <td><?php echo $proxpagos['nombre'] ?></td>
-
-
-                                                <?php 
-                                                // $dt = new DateTime( '2017-01-15' );
-                                                // $dt->modify( 'first day of next month' );
-                                                // echo $dt->format( 'd-m-Y' );
-                                                ?>
-
-                                                <td><?php echo $da; ?></td>
+                                                <td><?php echo $fecha_venc; ?></td>
                                                 <td><?php echo "S/ " . number_format($mensualidad, 2, '.', ' '); ?></td>
                                                 <td class="text-center">
                                                     <button type="button" id="btn-detalle" class="btn btn-danger btn-detalle">Enviar alerta</button> 
