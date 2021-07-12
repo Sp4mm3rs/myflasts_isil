@@ -7,7 +7,7 @@
     WHERE dni = $dni
     ";
 
-        $month = date('m');
+    $month = date('m');
     $day = date('d');
     $year = date('Y');
 
@@ -92,15 +92,15 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                                         $mensualidad = $registro['precio_final'];
                                                         $fecini = new dateTime($registro['fecha_inicio']);
                                                         $fecfinal= new dateTime($registro['fecha_fin']);
-                                                        $interval = $fecini->diff($fecfinal);
+                                                        $interval = date_diff($fecini,$fecfinal);
                                                         $months=$interval->m;
                                                         $days=$interval->d;
+                                                        
                                                         $pago_restante= $mensualidad/30 * $days;
 
-                                                        for ($i=0; $i<$months+2;$i++) {
+                                                        for ($i=0; $i<$months+1;$i++) {
                                                         $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($registro['fecha_inicio']))); 
-                                                        if($i==$months+1){
-                                                            $fecha_venc= $registro['fecha_fin'];
+                                                        if($i==$months){                                                 
                                                             $mensualidad=$pago_restante;
                                                         }
 
@@ -112,7 +112,7 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                                         
                                                         echo "S/ " . number_format($mensualidad, 2, '.', ' ');
                                                     ?></td>
-                                                    <td class="obs"></td>
+                                                    <td class="obs"> <img id="imgv" src="" alt=""></td>
                                                     <td class="text-center"><a id="" class="btn btn-outline-warning btn_pago" data-toggle="modal" data-target="#modal_pago" href="">Ver</a></td>
                                                 
                                                 </tr>
@@ -140,7 +140,7 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                               </div>
                                                               
                               <div class="modal-body">
-                                 <form class="" action="##.php" method="POST">
+                                 <form class="" action="##.php" enctype="multipart/form-data" method="POST">
                                     <div class="form-group row">           
                                         <div class="form-group col-md-12">                           
                                             <label for="hab_precio">Fecha de pago</label>
@@ -164,9 +164,8 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                                 </div>
                                                 <div class="custom-file">
                                                     <label id="ele_foto" class="ele_foto" for="fotov">Seleccionar foto</label>
-                                                    <input type="file" name="fotoacargar" value="" class="custom-file-input fotov" id="fotov" onchange="CargarFoto()" required>                                                                                                        
-                                                </div>
-                                             
+                                                    <input type="file" name="fotcargar" value="" class="custom-file-input fotov" id="fotov" onchange="CargarFoto()" required>                                                                                                        
+                                                </div>                                         
                                              
                                         </div>
 
@@ -174,7 +173,7 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                     </div>                                     
                                     <div class="modal-footer">
                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                        <button type="submit" class="btn btn-primary btn-archivar">Archivar como pagado</button>
+                                        <button type="submit" name="btnarch" class="btn btn-primary btn-archivar">Archivar como pagado</button>
                                     </div>
                                  </form>
                               </div>                                                        
@@ -259,8 +258,13 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
 
             $(".btn-archivar").click(function(){
                 var $fotov = $("#foto_v").attr("src");
-            
-                document.body.appendChild($fotov);       
+                
+
+                var $src=window.webkitURL.createObjectURL($fotov);
+                
+                $("#imgv").attr("src",$src);
+                
+                      
             });
     
         });
