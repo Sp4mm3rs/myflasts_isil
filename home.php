@@ -14,6 +14,12 @@
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
     $resultado2= mysqli_query($conexion,$consulta) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
+    $consulta_inq = "SELECT * FROM inquilinos inq
+    INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
+    WHERE inq.estado = 0 
+    ORDER BY id_inq DESC LIMIT 2";  
+    $resultado_inq = mysqli_query( $conexion, $consulta_inq ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+
     $con_ingreso = "SELECT SUM(precio_final) as ingreso_total FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq";
     $res_ingreso = mysqli_query( $conexion, $con_ingreso ) or die ( "Algo ha ido mal en la consulta a la base de datos");
@@ -202,7 +208,7 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-info">Habitaciones</h6>
-                                    <!-- <div class="dropdown no-arrow">
+                                    <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -215,7 +221,7 @@
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="#">Something else here</a>
                                         </div>
-                                    </div> -->
+                                    </div>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -223,12 +229,19 @@
                                         <canvas id="myPieChart"></canvas>
                                     </div>
                                     <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle text-success"></i> Disponibles
-                                        </span>
-                                        <span class="mr-2">
+                                        <?php 
+                                         foreach ($resultado_chart_01 as $asds => $value) {
+                                         ?>
+                                           
+
+                                        <span class="mr-2" id="ocupados" data-count="<?php echo $value['cDisponibles'] ?>">
                                             <i class="fas fa-circle text-danger"></i> Ocupadas
                                         </span>
+                                         <span class="mr-2" id="disponibles" data-count="<?php echo $value['cOcupados'] ?>">
+                                                <i class="fas fa-circle text-success"></i> Disponibles
+                                            </span>
+                                        <?php }?>
+
                                     </div>
                                 </div>
                             </div>
@@ -257,7 +270,7 @@
                                         <tbody>
                                         <?php 
 
-                                        foreach ($resultado as $inquilino) {   
+                                        foreach ($resultado_inq as $inquilino) {   
                                           ?> 
                                            <tr class="item" id="<?php echo $inquilino['dni'] ?>">
                                                 
@@ -432,6 +445,14 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/chart-area-demo.js"></script>
+    <script src="js/demo/chart-pie-demo.js"></script>
+    <script src="js/demo/chart-bar-demo.js"></script>
     
 
 </body>
