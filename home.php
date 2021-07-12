@@ -314,19 +314,18 @@
                                                 $days=$interval->d;
                                                 
                                                 $today= new dateTime($hoy);
-
-                                                //$arrayfec=[];
-                                                
+                                               
                                                 $pago_restante= $mensualidad/30 * $days;
 
                                                 for ($i=0; $i<$months+1;$i++) {
                                                     $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
-                                                    //$arrayfec[] =$fecha_venc;
+                                                   
                                                     $fec = new dateTime($fecha_venc);
                                                     $interval2=date_diff($today,$fec);
-                                                    $da=$interval2->format("%a days");
 
-                                                    if( $today<$fec and $da<2 or $today==$fec ){
+                                                    $diasobra=$interval2->format("%a");
+
+                                                    if( $today<$fec and $diasobra<3 or $today==$fec ){
                                                    
                                                         if($i==$months){                                                 
                                                             $mensualidad=$pago_restante;

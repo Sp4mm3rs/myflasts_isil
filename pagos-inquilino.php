@@ -91,15 +91,14 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                                     $conteo = 0;                                            
                                                     foreach($resultado as $registro){
                                                         $conteo+1 ;
-                                                        echo "<pre>";
-                                                        echo print_r($registro);
-                                                        echo "</pre>";
-
+                                                       
                                                         $mensualidad = $registro['precio_final'];
                                                         $fecini = new dateTime($registro['fecha_inicio']);
                                                         $fecfinal= new dateTime($registro['fecha_fin']);
                                                         $interval = date_diff($fecini,$fecfinal);
-                                                        $months=$interval->m;
+
+                                                        $months=$interval->format("%m")+ 12*$interval->format("%y");
+                                                        
                                                         $days=$interval->d;
                                                         
                                                         $pago_restante= $mensualidad/30 * $days;
