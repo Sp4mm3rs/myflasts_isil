@@ -17,7 +17,7 @@
     $consulta_inq = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
     WHERE inq.estado = 0 
-    ORDER BY id_inq DESC LIMIT 2";  
+    ORDER BY id_inq DESC LIMIT 4";  
     $resultado_inq = mysqli_query( $conexion, $consulta_inq ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $con_ingreso = "SELECT SUM(precio_final) as ingreso_total FROM inquilinos inq
@@ -27,28 +27,18 @@
     $consulta_serv = "SELECT SUM(monto) as mtotal FROM servicios";  
     $resultado_serv = mysqli_query( $conexion, $consulta_serv ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
-    $month = date('m');
-    $day = date('d');
-    $year = date('Y');
 
-<<<<<<< HEAD
 
     $consulta_chart_01 = "SELECT count(id_inquilino) as cOcupados, count(case when estado = '0' then 1 else null end) as cDisponibles  FROM habitaciones";
     $resultado_chart_01 = mysqli_query( $conexion, $consulta_chart_01 ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
-    // foreach ($resultado_chart_01 as $asds => $value) {
-    //     echo "<pre>";
-    //     echo print_r($value['cDisponibles']);
-    //     echo "</pre>";
-    // }
+    $month = date('m');
+    $day = date('d');
+    $year = date('Y');
 
-
-=======
     $hoy = $year . '-' . $month . '-' . $day;
->>>>>>> 6564456298f62c79eee58d0848469164b4799d64
+
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -248,10 +238,10 @@
                                          ?>
                                            
 
-                                        <span class="mr-2" id="ocupados" data-count="<?php echo $value['cDisponibles'] ?>">
+                                        <span class="mr-2" id="ocupados" data-count="<?php echo $value['cOcupados'] ?>">
                                             <i class="fas fa-circle text-danger"></i> Ocupadas
                                         </span>
-                                         <span class="mr-2" id="disponibles" data-count="<?php echo $value['cOcupados'] ?>">
+                                         <span class="mr-2" id="disponibles" data-count="<?php echo $value['cDisponibles'] ?>">
                                                 <i class="fas fa-circle text-success"></i> Disponibles
                                             </span>
                                         <?php }?>
@@ -266,7 +256,7 @@
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Inquilinos recientes</h6>   
+                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Ultimos agregados</h6>   
                             </div>   
                             
                             <div class="card-body maincontent">
@@ -320,6 +310,23 @@
                                             <?php 
                                             
                                             foreach($resultado2 as $proxpagos){
+
+
+
+
+
+$firstDate = $proxpagos['fecha_inicio'];
+$secondDate = $proxpagos['fecha_fin'];
+$dateDifference = abs(strtotime($secondDate) - strtotime($firstDate));
+
+$years  = floor($dateDifference / (365 * 60 * 60 * 24));
+$months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+$days   = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
+
+echo $years." year,  ".$months." months and ".$days." days";
+
+
+
                                                 $mensualidad = $proxpagos['precio_final'];
                                                  $fecini = new dateTime($proxpagos['fecha_inicio']);
                                                 $fecfinal= new dateTime($proxpagos['fecha_fin']);
@@ -327,7 +334,7 @@
                                                 $months=$interval->m;
                                                 $days=$interval->d;
                                                 
-                                                $today= new dateTime($hoy);
+                                                $today = new dateTime($hoy);
 
                                                 //$arrayfec=[];
                                                 
@@ -349,7 +356,15 @@
                                             ?>
                                             <tr class="item-habitacion">
                                                 <td><?php echo $proxpagos['nombre'] ?></td>
-                                                <td><?php  echo $fecha_venc; ?></td>
+
+
+                                                <?php 
+                                                // $dt = new DateTime( '2017-01-15' );
+                                                // $dt->modify( 'first day of next month' );
+                                                // echo $dt->format( 'd-m-Y' );
+                                                ?>
+
+                                                <td><?php  echo $da; ?></td>
                                                 <td><?php echo "S/ " . number_format($mensualidad, 2, '.', ' '); ?></td>
                                                 <td class="text-center">
                                                     <button type="button" id="btn-detalle" class="btn btn-danger btn-detalle">Enviar alerta</button> 
