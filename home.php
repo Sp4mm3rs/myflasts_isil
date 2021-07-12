@@ -3,8 +3,16 @@
 
     $consulta = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
-    WHERE inq.estado = 0";   
+    WHERE inq.estado = 0 
+    ORDER BY id_inq DESC LIMIT 2
+    ";  
+    
+    $consulta2 = "SELECT * FROM inquilinos inq
+    INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq WHERE inq.estado =0";
+    
+     
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    $resultado2= mysqli_query($conexion,$consulta) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $consulta_inq = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
@@ -19,7 +27,11 @@
     $consulta_serv = "SELECT SUM(monto) as mtotal FROM servicios";  
     $resultado_serv = mysqli_query( $conexion, $consulta_serv ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
+    $month = date('m');
+    $day = date('d');
+    $year = date('Y');
 
+<<<<<<< HEAD
 
     $consulta_chart_01 = "SELECT count(id_inquilino) as cOcupados, count(case when estado = '0' then 1 else null end) as cDisponibles  FROM habitaciones";
     $resultado_chart_01 = mysqli_query( $conexion, $consulta_chart_01 ) or die ( "Algo ha ido mal en la consulta a la base de datos");
@@ -31,6 +43,9 @@
     // }
 
 
+=======
+    $hoy = $year . '-' . $month . '-' . $day;
+>>>>>>> 6564456298f62c79eee58d0848469164b4799d64
 ?>
 
 
@@ -302,14 +317,49 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php 
+                                            
+                                            foreach($resultado2 as $proxpagos){
+                                                $mensualidad = $proxpagos['precio_final'];
+                                                 $fecini = new dateTime($proxpagos['fecha_inicio']);
+                                                $fecfinal= new dateTime($proxpagos['fecha_fin']);
+                                                $interval = date_diff($fecini,$fecfinal);
+                                                $months=$interval->m;
+                                                $days=$interval->d;
+                                                
+                                                $today= new dateTime($hoy);
+
+                                                //$arrayfec=[];
+                                                
+                                                $pago_restante= $mensualidad/30 * $days;
+
+                                                for ($i=0; $i<$months+1;$i++) {
+                                                    $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
+                                                    //$arrayfec[] =$fecha_venc;
+                                                    $fec = new dateTime($fecha_venc);
+                                                    $interval2=date_diff($today,$fec);
+                                                    $da=$interval2->format("%a days");
+
+                                                    if( $today<$fec and $da<2 or $today==$fec ){
+                                                   
+                                                        if($i==$months){                                                 
+                                                            $mensualidad=$pago_restante;
+                                                        }
+                                                                                          
+                                            ?>
                                             <tr class="item-habitacion">
-                                                <td>Inquilino 1</td>
-                                                <td>25/04/2021</td>
-                                                <td>344</td>
+                                                <td><?php echo $proxpagos['nombre'] ?></td>
+                                                <td><?php  echo $fecha_venc; ?></td>
+                                                <td><?php echo "S/ " . number_format($mensualidad, 2, '.', ' '); ?></td>
                                                 <td class="text-center">
                                                     <button type="button" id="btn-detalle" class="btn btn-danger btn-detalle">Enviar alerta</button> 
                                                 </td>                                                
                                             </tr>
+                                            <?php
+                                              }
+                                            }
+                                        }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
