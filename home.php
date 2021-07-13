@@ -7,10 +7,15 @@
     ORDER BY id_inq";  
     
     $consulta2 = "SELECT * FROM inquilinos inq
-    INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq WHERE inq.estado =0";
+    INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
+    
+    WHERE inq.estado =0";
+
+    $consultahisto ="SELECT dni,fechav FROM historial_pagos hp ORDER BY id DESC";
+    $resultadohisto= mysqli_query($conexion,$consultahisto) or die ("Algo ha ido mal en la consulta a la base de datos");
     
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-    $resultado2= mysqli_query($conexion,$consulta) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    $resultado2= mysqli_query($conexion,$consulta2) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $consulta_chart_01 = "SELECT count(id_inquilino) as cOcupados, count(case when estado = '0' then 1 else null end) as cDisponibles  FROM habitaciones";
     $resultado_chart_01 = mysqli_query( $conexion, $consulta_chart_01 ) or die ( "Algo ha ido mal en la consulta a la base de datos");
@@ -40,8 +45,12 @@
                         WHERE hab.id_inquilino IS NOT NULL
                         GROUP BY mes";
     $resultado_inq_mes = mysqli_query( $conexion, $consulta_inq_mes) or die ( "Algo ha ido mal en la consulta a la base de datos");
-    
 
+    $arrayh=[];
+    while($result=$resultadohisto->fetch_assoc()){
+        $arrayh[]=$result['fechav'];
+        $arrayh[]=$result['dni'];
+     }
 ?>
 
 
@@ -312,6 +321,8 @@
                                                 $pago_restante= $mensualidad/30 * $days;
 
                                                 for ($i=0; $i<$months+1;$i++) {
+                                                    $dnip = $proxpagos['dni'];
+                                                    $canp=true;
                                                     $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
                                                    
                                                     $fec = new dateTime($fecha_venc);
@@ -319,7 +330,16 @@
 
                                                     $diasobra=$interval2->format("%a");
 
-                                                    if( $today<$fec and $diasobra<3 or $today==$fec ){
+                                                    for($j=0;$j<count($arrayh);$j+=2){
+                                                        $fechadb= new dateTime($arrayh[$j]);
+                                                        
+                                                        if($fechadb==$fec and $dnip==$arrayh[$j+1] ){
+                                                             $canp=false; 
+                                                       }
+                                                       
+                                                   }
+
+                                                    if( $today<=$fec and $diasobra<3  and $canp ){
                                                    
                                                         if($i==$months){                                                 
                                                             $mensualidad=$pago_restante;
@@ -367,13 +387,17 @@
 
                                         <?php 
                                             
+                                            print_r($arrayh);
                                             foreach($resultado2 as $proxpagos){
+
                                                 $mensualidad = $proxpagos['precio_final'];
                                                  $fecini = new dateTime($proxpagos['fecha_inicio']);
                                                 $fecfinal= new dateTime($proxpagos['fecha_fin']);
                                                 $interval = date_diff($fecini,$fecfinal);
                                                 $months=$interval->format("%m")+ 12*$interval->format("%y");
                                                 
+                                                
+
                                                 $days=$interval->d;
                                                 
                                                 $today= new dateTime($hoy);
@@ -381,18 +405,30 @@
                                                 $pago_restante= $mensualidad/30 * $days;
 
                                                 for ($i=0; $i<$months+1;$i++) {
+                                                    $dni = $proxpagos['dni'];
+                                                    $canv=true;
                                                     $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
-                                                   
+                                                                                                   
                                                     $fec = new dateTime($fecha_venc);
                                                     $interval2=date_diff($today,$fec);
 
                                                     $diasobra=$interval2->format("%a");
 
-                                                    if( $today>$fec and $diasobra<30){
-                                                   
-                                                        if($i==$months){                                                 
+                                                    for($j=0;$j<count($arrayh);$j+=2){
+                                                        $fechadb= new dateTime($arrayh[$j]);
+                                                        
+                                                        if($fechadb==$fec and $dni==$arrayh[$j+1] ){
+                                                             $canv=false; 
+                                                       }
+                                                       
+                                                   }
+
+                                                    if( $today>$fec and $diasobra<15 and $canv){
+                                                         if($i==$months){                                                 
                                                             $mensualidad=$pago_restante;
                                                         }
+
+                                                     
                                                                                           
                                             ?>
 
@@ -408,7 +444,7 @@
                                             </tr>
 
                                             <?php
-                                              }
+                                             }
                                             }
                                         }
                                             ?>
