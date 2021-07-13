@@ -37,8 +37,11 @@
     $consulta_inq_mes = "SELECT COUNT(hab.id_inquilino) AS total,
                         MONTHNAME(hab.fecha_inicio) AS mes
                         FROM habitaciones hab
+                        WHERE hab.id_inquilino IS NOT NULL
                         GROUP BY mes";
     $resultado_inq_mes = mysqli_query( $conexion, $consulta_inq_mes) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    
+
 ?>
 
 
@@ -190,11 +193,15 @@
                                 <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
-                                        <?php 
+
+                                        <?php                                     
                                          foreach ($resultado_inq_mes as $inq_mes => $value) {
                                          ?>                                        
-                                        <span class="mr-2" id="inq_mes" data-count="<?php echo $value['total'] ?>"></span>
-                                        <?php }?>
+                                            <span class="mr-2" id="inq_total" data-count="<?php echo $value['total'] ?>"></span>
+                                            <span class="mr-2" id="inq_mes" data-count="<?php echo $value['mes'] ?>"></span>    
+                                            <?php echo $value['total'] ?>    
+                                            <?php echo $value['mes'] ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -218,7 +225,6 @@
                                         <?php 
                                          foreach ($resultado_chart_01 as $asds => $value) {
                                          ?>
-                                           
 
                                         <span class="mr-2" id="ocupados" data-count="<?php echo $value['cDisponibles'] ?>">
                                             <i class="fas fa-circle text-danger"></i> Ocupadas

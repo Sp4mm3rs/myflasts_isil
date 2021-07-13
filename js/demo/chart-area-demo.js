@@ -27,17 +27,20 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-var getTotal = document.getElementById("inq_mes");
-var getInqResultado = getTotal.getAttribute("data-count");
+var getMes = document.getElementById("inq_mes");
+var getMesResultado = getMes.getAttribute("data-count");
+
+var getTotal = document.getElementById("inq_total");
+var getTotalResultado = getTotal.getAttribute("data-count");
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+    labels: [getMesResultado ],
     datasets: [{
-      label: "Earnings",
+      //label: "Earnings",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
       borderColor: "rgba(78, 115, 223, 1)",
@@ -49,7 +52,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [getInqResultado],
+      data: [getTotalResultado],
     }],
   },
   options: {
@@ -81,7 +84,7 @@ var myLineChart = new Chart(ctx, {
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return number_format(value);
           }
         },
         gridLines: {
