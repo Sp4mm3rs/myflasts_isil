@@ -317,6 +317,8 @@
                                                 $pago_restante= $mensualidad/30 * $days;
 
                                                 for ($i=0; $i<$months+1;$i++) {
+                                                    $dnip = $proxpagos['dni'];
+                                                    $canp=true;
                                                     $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
                                                    
                                                     $fec = new dateTime($fecha_venc);
@@ -324,7 +326,16 @@
 
                                                     $diasobra=$interval2->format("%a");
 
-                                                    if( $today<$fec and $diasobra<3 or $today==$fec ){
+                                                    for($j=0;$j<count($arrayh);$j+=2){
+                                                        $fechadb= new dateTime($arrayh[$j]);
+                                                        
+                                                        if($fechadb==$fec and $dnip==$arrayh[$j+1] ){
+                                                             $canp=false; 
+                                                       }
+                                                       
+                                                   }
+
+                                                    if( $today<=$fec and $diasobra<3  and $canp ){
                                                    
                                                         if($i==$months){                                                 
                                                             $mensualidad=$pago_restante;
@@ -391,7 +402,7 @@
 
                                                 for ($i=0; $i<$months+1;$i++) {
                                                     $dni = $proxpagos['dni'];
-                                                    $can=true;
+                                                    $canv=true;
                                                     $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
                                                                                                    
                                                     $fec = new dateTime($fecha_venc);
@@ -403,12 +414,12 @@
                                                         $fechadb= new dateTime($arrayh[$j]);
                                                         
                                                         if($fechadb==$fec and $dni==$arrayh[$j+1] ){
-                                                             $can=false; 
+                                                             $canv=false; 
                                                        }
                                                        
                                                    }
 
-                                                    if( $today>$fec and $diasobra<15 and $can){
+                                                    if( $today>$fec and $diasobra<15 and $canv){
                                                          if($i==$months){                                                 
                                                             $mensualidad=$pago_restante;
                                                         }
