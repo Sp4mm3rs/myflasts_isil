@@ -46,6 +46,9 @@
                         GROUP BY mes";
     $resultado_inq_mes = mysqli_query( $conexion, $consulta_inq_mes) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
+    while($row = mysqli_fetch_array($resultado_inq_mes)) $array[] = $row;
+    $json = json_encode($array);
+
     $arrayh=[];
     while($result=$resultadohisto->fetch_assoc()){
         $arrayh[]=$result['fechav'];
@@ -199,17 +202,19 @@
                                    
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
+                                <div class="card-body" action="inq_json.php" method="GET">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
-
+                                        <?php echo $json?> 
                                         <?php                                     
                                          foreach ($resultado_inq_mes as $inq_mes => $value) {
                                          ?>                                        
-                                            <span class="mr-2" id="inq_total" data-count="<?php echo $value['total'] ?>"></span>
+                                            <!-- <span class="mr-2" id="inq_total" data-count="<?php echo $value['total'] ?>"></span>
                                             <span class="mr-2" id="inq_mes" data-count="<?php echo $value['mes'] ?>"></span>    
                                             <?php echo $value['total'] ?>    
-                                            <?php echo $value['mes'] ?>
+                                            <?php echo $value['mes'] ?> -->
+                                               
+
                                         <?php } ?>
                                     </div>
                                 </div>
@@ -485,24 +490,9 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+        <?php 
+            include 'logout.php';
+        ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
