@@ -1,3 +1,25 @@
+<?php
+    require_once("config/conection.php");
+    $correo = $_POST["correo"];
+    $password = $_POST["password"];
+    $rs = mysqli_query($cn,
+        "select * from usuario where correo ='".$correo."'");
+    if(mysqli_num_rows($rs)==1){
+     $row = mysqli_fetch_assoc($rs);
+    if($row["password"]==$password){
+        $res[] = array_map("utf8_encode",$row);
+        echo json_encode($res);
+    }
+    else{
+        echo "-2";
+        }
+    }
+        else{
+            echo "-1";
+        }
+    mysqli_close($cn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,31 +44,13 @@
 
     
 
+    
+
+    
+
 </head>
 
 <body class="bg-gradient-primary">
-
-<?php
-	include 'config/conection.php';
-	$correo = $_POST["correo"];
-	$password = $_POST["password"];
-	$rs = mysqli_query($cn,
-		"select * from usuario where correo='".$correo."'");
-	if(mysqli_num_rows($rs)==1){
-	    $row = mysqli_fetch_assoc($rs);
-	    if($row["password"]==$password){
-	        $res[] = array_map("utf8_encode",$row);
-	        echo json_encode($res);
-	    }
-	    else{
-	        echo "-2";
-	    }
-	}
-	else{
-		echo "-1;
-	}
-	mysqli_close($cn);
-?>
 
     <div class="container">
 
@@ -109,8 +113,6 @@
             </div>
 
         </div>
-
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

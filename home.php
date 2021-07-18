@@ -4,27 +4,11 @@
     $consulta = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
     WHERE inq.estado = 0 
-    ORDER BY id_inq";  
+    ORDER BY id_inq DESC
+    ";   
     
-    $consulta2 = "SELECT * FROM inquilinos inq
-    INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
-    
-    WHERE inq.estado =0";
-
-    $consultahisto ="SELECT dni,fechav FROM historial_pagos hp ORDER BY id DESC";
-    $resultadohisto= mysqli_query($conexion,$consultahisto) or die ("Algo ha ido mal en la consulta a la base de datos");
-    
+     
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-    $resultado2= mysqli_query($conexion,$consulta2) or die ( "Algo ha ido mal en la consulta a la base de datos");
-
-    $consulta_chart_01 = "SELECT count(id_inquilino) as cOcupados, count(case when estado = '0' then 1 else null end) as cDisponibles  FROM habitaciones";
-    $resultado_chart_01 = mysqli_query( $conexion, $consulta_chart_01 ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-
-    $consulta_inq = "SELECT * FROM inquilinos inq
-    INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
-    WHERE inq.estado = 0 
-    ORDER BY id_inq DESC LIMIT 2";  
-    $resultado_inq = mysqli_query( $conexion, $consulta_inq ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $con_ingreso = "SELECT SUM(precio_final) as ingreso_total FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq";
@@ -32,28 +16,6 @@
 
     $consulta_serv = "SELECT SUM(monto) as mtotal FROM servicios";  
     $resultado_serv = mysqli_query( $conexion, $consulta_serv ) or die ( "Algo ha ido mal en la consulta a la base de datos");
-
-    $month = date('m');
-    $day = date('d');
-    $year = date('Y');
-
-    $hoy = $year . '-' . $month . '-' . $day;
-
-    $consulta_inq_mes = "SELECT COUNT(hab.id_inquilino) AS total,
-                        MONTHNAME(hab.fecha_inicio) AS mes
-                        FROM habitaciones hab
-                        WHERE hab.id_inquilino IS NOT NULL
-                        GROUP BY mes";
-    $resultado_inq_mes = mysqli_query( $conexion, $consulta_inq_mes) or die ( "Algo ha ido mal en la consulta a la base de datos");
-
-    while($row = mysqli_fetch_array($resultado_inq_mes)) $array[] = $row;
-    $json = json_encode($array);
-
-    $arrayh=[];
-    while($result=$resultadohisto->fetch_assoc()){
-        $arrayh[]=$result['fechav'];
-        $arrayh[]=$result['dni'];
-     }
 ?>
 
 
@@ -78,6 +40,29 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+        ['Habitaciones', 'Disponiblidad'],
+        ['Ocupadas',  11],
+        ['Disponibles', 2]
+        ]);
+
+        var options = {
+        title: ''
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+    }
+</script>
+
 
 </head>
 
@@ -199,23 +184,25 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-info">Promedio de inquilinos</h6>
-                                   
+                                    <!-- <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div> -->
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body" action="inq_json.php" method="GET">
+                                <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
-                                        <?php echo $json?> 
-                                        <?php                                     
-                                         foreach ($resultado_inq_mes as $inq_mes => $value) {
-                                         ?>                                        
-                                            <!-- <span class="mr-2" id="inq_total" data-count="<?php echo $value['total'] ?>"></span>
-                                            <span class="mr-2" id="inq_mes" data-count="<?php echo $value['mes'] ?>"></span>    
-                                            <?php echo $value['total'] ?>    
-                                            <?php echo $value['mes'] ?> -->
-                                               
-
-                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -228,28 +215,35 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-info">Habitaciones</h6>
-                                    
+                                    <!-- <div class="dropdown no-arrow">
+                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div class="dropdown-header">Dropdown Header:</div>
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div> -->
+                                    <div id="piechart" style="width: 100%; height: 350px;"></div>
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
+                                <!-- <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">                                       
                                     </div>
                                     <div class="mt-4 text-center small">
-                                        <?php 
-                                         foreach ($resultado_chart_01 as $asds => $value) {
-                                         ?>
-
-                                        <span class="mr-2" id="ocupados" data-count="<?php echo $value['cDisponibles'] ?>">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle text-success"></i> Disponibles
+                                        </span>
+                                        <span class="mr-2">
                                             <i class="fas fa-circle text-danger"></i> Ocupadas
                                         </span>
-                                         <span class="mr-2" id="disponibles" data-count="<?php echo $value['cOcupados'] ?>">
-                                                <i class="fas fa-circle text-success"></i> Disponibles
-                                            </span>
-                                        <?php }?>
-
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -258,7 +252,7 @@
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Ultimos inquilinos</h6>   
+                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Inquilinos recientes</h6>   
                             </div>   
                             
                             <div class="card-body maincontent">
@@ -276,7 +270,7 @@
                                         <tbody>
                                         <?php 
 
-                                        foreach ($resultado_inq as $inquilino) {   
+                                        foreach ($resultado as $inquilino) {   
                                           ?> 
                                            <tr class="item" id="<?php echo $inquilino['dni'] ?>">
                                                 
@@ -299,71 +293,26 @@
                             </div>                               
                             <div class="card-body maincontent">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="tableprox" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th class="text-center">Inquilino</th>
+                                                <th class="text-center">DNI</th>
                                                 <th class="text-center">Fecha de vencimiento</th>
-                                                <th class="text-center">Monto</th>                                   
+                                                <th class="text-center">Celular</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                            
-                                            foreach($resultado2 as $proxpagos){
-                                                $mensualidad = $proxpagos['precio_final'];
-                                                 $fecini = new dateTime($proxpagos['fecha_inicio']);
-                                                $fecfinal= new dateTime($proxpagos['fecha_fin']);
-                                                $interval = date_diff($fecini,$fecfinal);
-                                               
-                                                $months=$interval->format("%m")+ 12*$interval->format("%y");
-                                                
-                                                $days=$interval->d;
-                                                
-                                                $today= new dateTime($hoy);
-                                               
-                                                $pago_restante= $mensualidad/30 * $days;
-
-                                                for ($i=0; $i<$months+1;$i++) {
-                                                    $dnip = $proxpagos['dni'];
-                                                    $canp=true;
-                                                    $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
-                                                   
-                                                    $fec = new dateTime($fecha_venc);
-                                                    $interval2=date_diff($today,$fec);
-
-                                                    $diasobra=$interval2->format("%a");
-
-                                                    for($j=0;$j<count($arrayh);$j+=2){
-                                                        $fechadb= new dateTime($arrayh[$j]);
-                                                        
-                                                        if($fechadb==$fec and $dnip==$arrayh[$j+1] ){
-                                                             $canp=false; 
-                                                       }
-                                                       
-                                                   }
-
-                                                    if( $today<=$fec and $diasobra<3  and $canp ){
-                                                   
-                                                        if($i==$months){                                                 
-                                                            $mensualidad=$pago_restante;
-                                                        }
-                                                                                          
-                                            ?>
                                             <tr class="item-habitacion">
-                                                <td><?php echo $proxpagos['nombre'] ?></td>
-                                                <td><?php  echo $fecha_venc; ?></td>
-                                                <td><?php echo "S/ " . number_format($mensualidad, 2, '.', ' '); ?></td>
+                                                <td>Inquilino 1</td>
+                                                <td>74975421</td>
+                                                <td>25/04/2021</td>
+                                                <td>959774147</td>
                                                 <td class="text-center">
                                                     <button type="button" id="btn-detalle" class="btn btn-danger btn-detalle">Enviar alerta</button> 
                                                 </td>                                                
                                             </tr>
-                                            <?php
-                                              }
-                                            }
-                                        }
-                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -376,11 +325,11 @@
                             </div>                               
                             <div class="card-body maincontent">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="tablevenc" width="100%" cellspacing="0">
+                                    <table class="table table-bordered" id="tablehab" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
                                                 <th class="text-center">Inquilino</th>
-                                                
+                                                <th class="text-center">DNI</th>
                                                 <th class="text-center">Fecha de vencimiento</th>
                                                 <th class="text-center">Celular</th>
                                                 <th class="text-center">Días atrasados</th>
@@ -388,71 +337,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-
-
-                                        <?php 
-                                            
-                                            print_r($arrayh);
-                                            foreach($resultado2 as $proxpagos){
-
-                                                $mensualidad = $proxpagos['precio_final'];
-                                                 $fecini = new dateTime($proxpagos['fecha_inicio']);
-                                                $fecfinal= new dateTime($proxpagos['fecha_fin']);
-                                                $interval = date_diff($fecini,$fecfinal);
-                                                $months=$interval->format("%m")+ 12*$interval->format("%y");
-                                                
-                                                
-
-                                                $days=$interval->d;
-                                                
-                                                $today= new dateTime($hoy);
-                                               
-                                                $pago_restante= $mensualidad/30 * $days;
-
-                                                for ($i=0; $i<$months+1;$i++) {
-                                                    $dni = $proxpagos['dni'];
-                                                    $canv=true;
-                                                    $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($proxpagos['fecha_inicio']))); 
-                                                                                                   
-                                                    $fec = new dateTime($fecha_venc);
-                                                    $interval2=date_diff($today,$fec);
-
-                                                    $diasobra=$interval2->format("%a");
-
-                                                    for($j=0;$j<count($arrayh);$j+=2){
-                                                        $fechadb= new dateTime($arrayh[$j]);
-                                                        
-                                                        if($fechadb==$fec and $dni==$arrayh[$j+1] ){
-                                                             $canv=false; 
-                                                       }
-                                                       
-                                                   }
-
-                                                    if( $today>$fec and $diasobra<15 and $canv){
-                                                         if($i==$months){                                                 
-                                                            $mensualidad=$pago_restante;
-                                                        }
-
-                                                     
-                                                                                          
-                                            ?>
-
                                             <tr class="item-habitacion">
-                                                <td><?php echo $proxpagos['nombre'] ?></td>
-                                                
-                                                <td><?php echo $fecha_venc ?></td>
-                                                <td><?php echo $proxpagos['celular'] ?></td>
-                                                <td><?php echo $diasobra?></td>
+                                                <td>Inquilino 1</td>
+                                                <td>74975421</td>
+                                                <td>25/04/2021</td>
+                                                <td>959774147</td>
+                                                <td>3 días</td>
                                                 <td class="text-center">
                                                     <button type="button" id="btn-detalle" class="btn btn-success btn-detalle">Contactar</button> 
                                                 </td>                                                
                                             </tr>
-
-                                            <?php
-                                             }
-                                            }
-                                        }
-                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -490,9 +384,24 @@
     </a>
 
     <!-- Logout Modal-->
-        <?php 
-            include 'logout.php';
-        ?>
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -503,14 +412,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-    <script src="js/demo/chart-bar-demo.js"></script>
     
 
 </body>
