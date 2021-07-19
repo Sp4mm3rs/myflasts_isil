@@ -6,9 +6,11 @@
     if(isset($_POST['login'])){
 
         $uname = mysqli_real_escape_string($conexion,$_POST['correo']);
-        $password = mysqli_real_escape_string($conexion,$_POST['password']);
+        $password = mysqli_real_escape_string($conexion, $_POST['password']);
 
         if ($uname != "" && $password != ""){
+
+            $password = md5($password);
 
             $sql_query = "select count(*) as cntUser from usuario where correo='".$uname."' and password='".$password."'";
             $result = mysqli_query($conexion,$sql_query);
@@ -28,5 +30,5 @@
 
     }
 
-
 ?>
+

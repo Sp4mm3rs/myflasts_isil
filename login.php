@@ -71,6 +71,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">¡Bienvenido!</h1>
                                     </div>
                                     <form class="user" method="post" action="ingreso_user.php" name="signin-form">
+                
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="correo" name="correo" aria-describedby="emailHelp"
@@ -78,7 +79,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="password" name="password" placeholder="Contraseña" required>
+                                            id="password" name="password" placeholder="Contraseña" required>
                                         </div>
                                         <!-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
