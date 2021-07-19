@@ -1,27 +1,28 @@
 <?php
-    require_once("config/conection.php");
-    $correo = $_POST["correo"];
-    $password = $_POST["password"];
-    $rs = mysqli_query($cn,
-        "select * from usuario where correo ='".$correo."'");
-    if(mysqli_num_rows($rs)==1){
-     $row = mysqli_fetch_assoc($rs);
-    if($row["password"]==$password){
-        $res[] = array_map("utf8_encode",$row);
-        echo json_encode($res);
-    }
-    else{
-        echo "-2";
-        }
-    }
-        else{
-            echo "-1";
-        }
-    mysqli_close($cn);
+    // include("config/conection.php");
+    // $correo = $_POST['correo'];
+    // $password = $_POST['password'];
+    // $rs = mysqli_query($conexion,
+    //     "select * from usuario where correo ='".$correo."'");
+    // if(mysqli_num_rows($rs)==1){
+    //  $row = mysqli_fetch_assoc($rs);
+    // if($row["password"]==$password){
+    //     $res[] = array_map("utf8_encode",$row);
+    //     echo json_encode($res);
+    // }
+    // else{
+    //     echo "-2";
+    //     }
+    // }
+    //     else{
+    //         echo "-1";
+    //     }
+    // mysqli_close($conexion);
+
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 
@@ -31,7 +32,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>My Flats - Ingresar</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -69,41 +70,42 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">¡Bienvenido!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post" action="ingreso_user.php" name="signin-form">
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Ingrese su correo electrónico...">
+                                                id="correo" name="correo" aria-describedby="emailHelp"
+                                                placeholder="Ingrese su correo electrónico..." required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Contraseña">
+                                                id="password" name="password" placeholder="Contraseña" required>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <!-- <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label> -->
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
                                             </div>
-                                        </div>
-                                        <a href="index.php" class="btn btn-primary btn-user btn-block">
+                                        </div> -->
+                                        <button type="submit" name="login" value="login">Log In</button>
+                                        <!-- <a href="index.php" name="login" value="login" class="btn btn-primary btn-user btn-block">
                                             Ingresar
                                         </a>
                                         <hr>
-                                        <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                         </a> -->
                                     </form>
-                                    <!-- <hr>
-                                    <div class="text-center">
+                                    <hr>
+                                    <!-- <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
                                     </div> -->
+                                    <div class="text-center">
+                                        <a class="small" href="register.php">¡Crear una cuenta!</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
