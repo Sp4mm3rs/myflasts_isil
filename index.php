@@ -55,12 +55,9 @@
         $arrayh[]=$result['dni'];
      }
 
+     include 'sesion.php';
 
 
-     
-
-
-     
 ?>
 
 
