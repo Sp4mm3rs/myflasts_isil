@@ -7,6 +7,8 @@
     WHERE dni = $dni
     ";
 
+    $consultahp ="SELECT foto,fechav,observaciones FROM historial_pagos WHERE dni = $dni";
+
     $month = date('m');
     $day = date('d');
     $year = date('Y');
@@ -14,7 +16,14 @@
     $hoy = $year . '-' . $month . '-' . $day;
 
 $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+$resultadohisto= mysqli_query($conexion,$consultahp) or die ("Algo ha ido mal en la consulta a la base de datos");
    
+$array1=[];
+      while($result=$resultadohisto->fetch_assoc()){
+         $array1[]=$result['fechav'];
+         $array1[]=$result['foto'];
+         $array1[]= $result['observaciones'];
+      }
 ?>
 
 
@@ -71,7 +80,14 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Pendientes a pagar</h6>                          
+                                <?php 
+                                        foreach($resultado as $nombre){
+                                            
+                                ?>
+
+                                <h6 name="name" id="name" class="titleservicio m-0 font-weight-bold text-primary"><?php echo $nombre['nombre'] ?> <?php echo $nombre['apellido'] ?></h6> 
+
+                                <?php }?>
                             </div>                       
                             <div class="card-body maincontent">
                                 <div class="table-responsive">
@@ -85,9 +101,10 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                                
                                             </tr>
                                         </thead>
-                                       
+                                        
                                         <tbody>
                                              <?php  
+                                                    print_r($array1);
                                                     $conteo = 0;                                            
                                                     foreach($resultado as $registro){
                                                         $conteo+1 ;
@@ -101,24 +118,43 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                                                         
                                                         $days=$interval->d;
                                                         
+                                                                                                                                                          
+
                                                         $pago_restante= $mensualidad/30 * $days;
 
                                                         for ($i=0; $i<$months+1;$i++) {
+                                                         $foto="";
+                                                        $observacion="";
                                                         $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($registro['fecha_inicio']))); 
                                                         if($i==$months){                                                 
                                                             $mensualidad=$pago_restante;
                                                         }
 
+                                                        for($j=0;$j<count($array1);$j+=3){
+                                                            if($array1[$j]==$fecha_venc){
+                                                                $foto=$array1[$j+1];        
+                                                                $observacion=$array1[$j+2];
+                                                            }
+                                                          
+                                                        }
+                                                        
+
                                                 ?>
 
                                                 <tr class="item-pendiente" id="<?php echo $conteo ?>">
-                                                    <td ><?php echo $fecha_venc ?></td>
+                                                    <td class="fecve"><?php echo $fecha_venc ?></td>
                                                     <td class="montoapagar"><?php 
                                                         
                                                         echo "S/ " . number_format($mensualidad, 2, '.', ' ');
                                                     ?></td>
-                                                    <td class="obs"> <img id="imgv" src="" alt=""></td>
-                                                    <td class="text-center"><a id="" class="btn btn-outline-warning btn_pago" data-toggle="modal" data-target="#modal_pago" href="">Ver</a></td>
+                                                        
+
+                                                        <td class="obs"><img src="<?php echo $foto ?>" width="200px" height="40px" alt="" class="imagenes"> <?php echo $observacion ?> </td>
+                                                       
+                                                   
+
+
+                                                   <td class="text-center"><a id="" class="btn btn-outline-warning btn_pago" data-toggle="modal" data-target="#modal_pago" href="">Ver</a></td>
                                                 
                                                 </tr>
                                                 <?php 
@@ -145,15 +181,20 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
                               </div>
                                                               
                               <div class="modal-body">
-                                 <form class="" action="##.php" enctype="multipart/form-data" method="POST">
+                                 <form class="" action="insert-pago.php" enctype="multipart/form-data" method="POST">
                                     <div class="form-group row">           
-                                        <div class="form-group col-md-12">                           
-                                            <label for="hab_precio">Fecha de pago</label>
-                                            <input type="date" class="form-control fecp" id="fecha_pago" name="fecha_pago" value="<?php echo $hoy; ?>" disabled >
-                                                                                                      
-                                                              
-                                             <label for="hab_precio">Monto</label>
-                                             <input type="number" class="form-control" id="monto_pago" name="monto_pago" value="" disabled> 
+                                        <div class="form-group col-md-12">    
+                                            
+                                              <input type="number" id="dni" name="dni" class="form-control fecp" value="<?php echo $dni ?>" hidden>  
+                                        
+                                            <label for="fecha_vto">Fecha de vencimiento</label>
+                                            <input type="date" class="form-control fecp" id="fecha_vto" name="fecha_vto" value="" readonly >
+                                            
+                                            <label for="fecha_pago">Fecha de pago</label>
+                                            <input type="date" class="form-control fecp" id="fecha_pago" name="fecha_pago" value="<?php echo $hoy; ?>" readonly >
+                                                                                                                                     
+                                             <label for="monto_pago">Monto</label>
+                                             <input type="number" class="form-control" id="monto_pago" name="monto_pago" value="" readonly> 
                                              
                                              <br>
                                              <label for="Forma de pago"></label>
@@ -257,42 +298,12 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
         $(".btn_pago").click(function(){
             var $row = $(this).closest("tr");            
             var $monto = $row.find(".montoapagar").text().replace(/[^0-9.]/g,'');
-            var $obs_table = $row.find(".obs");
+            var $fven= $row.find(".fecve").text();
                   
             $("#monto_pago").val($monto);
-
-            $(".btn-archivar").click(function(){
-                var $fotov = $("#foto_v").attr("src");
-                
-
-                var $src=window.webkitURL.createObjectURL($fotov);
-                
-                $("#imgv").attr("src",$src);
-                
-                      
-            });
-            
+            $("#fecha_vto").val($fven);       
         });
 
-
-
-        $(document).on('click', '#archivo_pago', function(){  
-               var id_serv = $('.item-pendiente').attr("id"); 
-
-               console.log(id_serv);
-               // $.ajax({  
-               //      url:"estado-serv.php",  
-               //      method:"POST",  
-               //      data:{id_serv:id_serv},  
-               //      dataType:"json",  
-               //      success:function(data){  
-               //          $('#tipo_serv').val(data.tipo_servicio);
-               //          $('#fec_serv').val(data.fec_vencimiento);
-               //          $('#precio_servicio').val(data.monto);  
-               //          $('#serv_id_precio').val(data.id);  
-               //      }  
-               // });  
-             });
     </script>
 
     <script type="text/javascript">

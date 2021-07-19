@@ -1,3 +1,25 @@
+<?php
+    require_once("config/conection.php");
+    $correo = $_POST["correo"];
+    $password = $_POST["password"];
+    $rs = mysqli_query($cn,
+        "select * from usuario where correo ='".$correo."'");
+    if(mysqli_num_rows($rs)==1){
+     $row = mysqli_fetch_assoc($rs);
+    if($row["password"]==$password){
+        $res[] = array_map("utf8_encode",$row);
+        echo json_encode($res);
+    }
+    else{
+        echo "-2";
+        }
+    }
+        else{
+            echo "-1";
+        }
+    mysqli_close($cn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +41,12 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    
+
+    
+
+    
 
 </head>
 
@@ -85,8 +113,6 @@
             </div>
 
         </div>
-
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
