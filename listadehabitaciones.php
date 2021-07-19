@@ -96,6 +96,7 @@
                                                 <th class="text-center">Inquilino</th>
                                                 <th class="text-center">Cable</th>
                                                 <th class="text-center">Internet</th>
+                                                <th class="text-center">Fecha inicio</th>
                                                 <th class="text-center">Fecha termino contrato</th>
                                                 <th class="text-center">Precio</th>
                                                 <th class="text-center">Estado</th>
@@ -120,6 +121,7 @@
                                                  ?></td>
                                                 <td><?php if (isset($habitacion['serv_cable']) && $habitacion['serv_cable'] == "1") echo "S/. 30.00"; ?></td>
                                                 <td><?php if (isset($habitacion['serv_internet']) && $habitacion['serv_internet'] == "1") echo "S/. 30.00"; ?></td>
+                                                <td><?php echo $habitacion['fecha_inicio'] ?></td>
                                                 <td><?php echo $habitacion['fecha_fin'] ?></td>
                                                 <td><?php $adicional=0;
                                            

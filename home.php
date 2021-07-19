@@ -4,15 +4,16 @@
     $consulta = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
     WHERE inq.estado = 0 
-    ORDER BY id_inq DESC LIMIT 2
-    ";  
+    ORDER BY id_inq";  
     
     $consulta2 = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq WHERE inq.estado =0";
     
-     
     $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
     $resultado2= mysqli_query($conexion,$consulta) or die ( "Algo ha ido mal en la consulta a la base de datos");
+
+    $consulta_chart_01 = "SELECT count(id_inquilino) as cOcupados, count(case when estado = '0' then 1 else null end) as cDisponibles  FROM habitaciones";
+    $resultado_chart_01 = mysqli_query( $conexion, $consulta_chart_01 ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $consulta_inq = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
@@ -37,6 +38,14 @@
     $year = date('Y');
 
     $hoy = $year . '-' . $month . '-' . $day;
+
+    $consulta_inq_mes = "SELECT COUNT(hab.id_inquilino) AS total,
+                        MONTHNAME(hab.fecha_inicio) AS mes
+                        FROM habitaciones hab
+                        GROUP BY mes DESC";
+    $resultado_inq_mes = mysqli_query( $conexion, $consulta_inq_mes) or die ( "Algo ha ido mal en la consulta a la base de datos");
+?>
+
 
 ?>
 <!DOCTYPE html>
@@ -181,25 +190,21 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-info">Promedio de inquilinos</h6>
-                                    <!-- <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div> -->
+                                   
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
+                                        <?php 
+                                         foreach ($resultado_inq_mes as $inq_mes => $value) {
+
+                                            // echo "<pre>";
+                                            // echo print_r($value);
+                                            // echo "</pre>";
+                                         ?>                                        
+                                        <span class="mr-2" id="inq_mes" data-count="<?php echo $value['total'] ?>"></span>
+                                        <?php }?>
                                     </div>
                                 </div>
                             </div>
@@ -212,20 +217,7 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-info">Habitaciones</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">

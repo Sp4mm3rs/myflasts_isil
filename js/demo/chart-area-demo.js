@@ -27,12 +27,19 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
+var getTotal = document.getElementById("inq_mes");
+var getInqResultado = getTotal.getAttribute("data-count");
+
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
+<<<<<<< HEAD
     labels: ["Jan", "Feb", "Mar"],
+=======
+    labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+>>>>>>> d041b5499a4bf560cb5915b0d2f8c597af0624e3
     datasets: [{
       label: "Earnings",
       lineTension: 0.3,
@@ -46,7 +53,11 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
+<<<<<<< HEAD
       data: [0, 10000, 5000],
+=======
+      data: [getInqResultado],
+>>>>>>> d041b5499a4bf560cb5915b0d2f8c597af0624e3
     }],
   },
   options: {
