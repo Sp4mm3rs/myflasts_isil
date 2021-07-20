@@ -392,7 +392,7 @@
 
                                         <?php 
                                             
-                                            print_r($arrayh);
+                                            
                                             foreach($resultado2 as $proxpagos){
 
                                                 $mensualidad = $proxpagos['precio_final'];
@@ -444,7 +444,7 @@
                                                 <td><?php echo $proxpagos['celular'] ?></td>
                                                 <td><?php echo $diasobra?></td>
                                                 <td class="text-center">
-                                                    <button type="button" id="btn-detalle" class="btn btn-success btn-detalle">Contactar</button> 
+                                                    <button type="button" id="btn-detalle" class="btn btn-success btn-detalle">Enviar alerta</button> 
                                                 </td>                                                
                                             </tr>
 

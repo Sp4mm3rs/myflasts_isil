@@ -27,7 +27,7 @@ $monto = $_POST['monto_pago'];
         $request = "INSERT INTO historial_pagos (foto,dni,fechav,fechap,montopagado,observaciones) VALUES ('$folder',$dni,'$fechav','$fechap',$monto,'$detalle')";
         $slq= mysqli_query($conexion,$request) or die ( "Algo ha ido mal en la consulta a la base de datos");
         if ($slq) {
-            header( 'Location: http://localhost/myflats_isil/index.php' ) ;
+            header( 'Location: http://localhost/myflats_isil/listadeinquilinos.php' ) ;
         }
     }
    
@@ -35,7 +35,7 @@ $monto = $_POST['monto_pago'];
     $request2 = "INSERT INTO historial_pagos (dni,fechav,fechap,montopagado,observaciones) VALUES ($dni,'$fechav','$fechap',$monto,'$detalle')";
     $slq2= mysqli_query($conexion,$request2) or die ( "Algo ha ido mal en la consulta a la base de datos");
     if ($slq2) {
-        header( 'Location: http://localhost/myflats_isil/index.php' ) ;
+        header( 'Location: http://localhost/myflats_isil/listadeinquilinos.php' ) ;
         }
     }
 
