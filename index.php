@@ -309,7 +309,7 @@
                                                 <th class="text-center">Inquilino</th>
                                                 <th class="text-center">Fecha de vencimiento</th>
                                                 <th class="text-center">Monto</th>                                   
-                                                <th></th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -359,9 +359,7 @@
                                                 <td><?php echo $proxpagos['nombre'] ?></td>
                                                 <td><?php  echo $fecha_venc; ?></td>
                                                 <td><?php echo "S/ " . number_format($mensualidad, 2, '.', ' '); ?></td>
-                                                <td class="text-center">
-                                                    <button type="button" id="btn-detalle" class="btn btn-danger btn-detalle">Enviar alerta</button> 
-                                                </td>                                                
+                                                                                           
                                             </tr>
                                             <?php
                                               }
