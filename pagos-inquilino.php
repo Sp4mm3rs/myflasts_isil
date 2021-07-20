@@ -24,6 +24,8 @@ $array1=[];
          $array1[]=$result['foto'];
          $array1[]= $result['observaciones'];
       }
+
+      include 'sesion.php';
 ?>
 
 

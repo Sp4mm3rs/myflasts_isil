@@ -54,6 +54,10 @@
         $arrayh[]=$result['fechav'];
         $arrayh[]=$result['dni'];
      }
+
+     include 'sesion.php';
+
+
 ?>
 
 

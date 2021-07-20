@@ -10,6 +10,7 @@
   $con_inquilino = "SELECT * FROM inquilinos";
   $res_inquilino = mysqli_query( $conexion, $con_inquilino ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
+  include 'sesion.php';
 ?>
 
 <!DOCTYPE html>

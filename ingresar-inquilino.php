@@ -10,7 +10,7 @@
     $year = date('Y');
 
     $hoy = $year . '-' . $month . '-' . $day;
-     
+    include 'sesion.php';
 ?>
 
 
