@@ -26,22 +26,28 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
+async function fetchDataAsync(url) {
+    const response = await fetch('http://localhost:8080/myflats_isil/inq_json.php');
+    const data = await response.json();
 
-var getMes = document.getElementById("inq_mes");
-var getMesResultado = getMes.getAttribute("data-count");
+    data.forEach(element => console.log(element));
 
-var getTotal = document.getElementById("inq_total");
-var getTotalResultado = getTotal.getAttribute("data-count");
+}
+
+
+
+
+
+
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
-    labels: [getMesResultado ],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     datasets: [{
-      //label: "Earnings",
+      label: "Earnings",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
       borderColor: "rgba(78, 115, 223, 1)",
@@ -53,10 +59,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-
-      data: [0, 10000, 5000],
-      data: [getInqResultado],
-      data: [getTotalResultado],
+      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
     }],
   },
   options: {
@@ -88,7 +91,7 @@ var myLineChart = new Chart(ctx, {
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return number_format(value);
+            return '$' + number_format(value);
           }
         },
         gridLines: {
