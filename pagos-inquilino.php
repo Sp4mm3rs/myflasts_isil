@@ -24,6 +24,8 @@ $array1=[];
          $array1[]=$result['foto'];
          $array1[]= $result['observaciones'];
       }
+
+      include 'sesion.php';
 ?>
 
 
@@ -104,7 +106,7 @@ $array1=[];
                                         
                                         <tbody>
                                              <?php  
-                                                    print_r($array1);
+                                                    
                                                     $conteo = 0;                                            
                                                     foreach($resultado as $registro){
                                                         $conteo+1 ;
@@ -126,6 +128,10 @@ $array1=[];
                                                          $foto="";
                                                         $observacion="";
                                                         $fecha_venc = date('Y-m-d', strtotime("+$i months", strtotime($registro['fecha_inicio']))); 
+                                                        $fechf= new dateTime($fecha_venc);
+
+                                                        if($fechf == $fecfinal){break;}
+
                                                         if($i==$months){                                                 
                                                             $mensualidad=$pago_restante;
                                                         }
@@ -149,7 +155,7 @@ $array1=[];
                                                     ?></td>
                                                         
 
-                                                        <td class="obs"><img src="<?php echo $foto ?>" width="200px" height="40px" alt="" class="imagenes"> <?php echo $observacion ?> </td>
+                                                        <td class="obs"><img src="<?php echo $foto ?>" width="200px" height="40px" alt="" class="imagenes">  <?php echo $observacion ?> </td>
                                                        
                                                    
 
@@ -210,7 +216,7 @@ $array1=[];
                                                 </div>
                                                 <div class="custom-file">
                                                     <label id="ele_foto" class="ele_foto" for="fotov">Seleccionar foto</label>
-                                                    <input type="file" name="fotcargar" value="" class="custom-file-input fotov" id="fotov" onchange="CargarFoto()" required>                                                                                                        
+                                                    <input type="file" name="fotcargar" value="" class="custom-file-input fotov" id="fotov" onchange="CargarFoto()" >                                                                                                        
                                                 </div>                                         
                                              
                                         </div>
@@ -313,13 +319,15 @@ $array1=[];
         $("#form_pago").change(function(){
             var value=$("#form_pago").val();
             if(value=="Deposito"){
-                $("#foto_v").show();
+                $("#foto_v").show();              
                 $("#ele_foto").show();
                 $("#fotov").show();
+                $("#fotov").prop('required', true);
             }else{
                 $("#foto_v").hide();
                 $("#ele_foto").hide();
                 $("#fotov").hide();
+                $("#fotov").prop('required', false);
             }
         });
     </script>

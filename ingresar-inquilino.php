@@ -10,7 +10,7 @@
     $year = date('Y');
 
     $hoy = $year . '-' . $month . '-' . $day;
-     
+    include 'sesion.php';
 ?>
 
 
@@ -98,8 +98,6 @@
                                                 <option selected>Seleccionar</option >
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
                                             </select>
                                         </div>  
                                         <div class="form-group col-md-12">

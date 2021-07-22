@@ -18,10 +18,10 @@ if (isset($_POST['register'])) {
 
   // form validation: ensure that the form is correctly filled ...
   // by adding (array_push()) corresponding error unto $errors array
-  if (empty($email)) { array_push($errors, "Email is required"); }
-  if (empty($password_1)) { array_push($errors, "Password is required"); }
+  if (empty($email)) { array_push($errors, "Se debe ingresar un correo electrónico."); }
+  if (empty($password_1)) { array_push($errors, "Se debe ingresar una contraseña."); }
   if ($password_1 != $password_2) {
-    array_push($errors, "The two passwords do not match");
+    array_push($errors, "Las contraseñas no coinciden.");
   }
 
   // first check the database to make sure 
@@ -33,7 +33,7 @@ if (isset($_POST['register'])) {
   if ($user) { // if user exists
  
     if ($user['email'] === $email) {
-      array_push($errors, "email already exists");
+      array_push($errors, "El correo electrónico ya está registrado.");
     }
   }
 
@@ -45,8 +45,8 @@ if (isset($_POST['register'])) {
               VALUES('$nombre', '$apellido', '$password', '$email' )";
     mysqli_query($conexion, $query);
     $_SESSION['correo'] = $email;
-    $_SESSION['success'] = "You are now logged in";
-    header('location: index.php');
+    $_SESSION['success'] = "¡Felicidades! Ya estás registrado.";
+    header('location: login.php');
   }
 }
 

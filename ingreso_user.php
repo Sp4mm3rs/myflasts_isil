@@ -23,7 +23,7 @@
                 $_SESSION['uname'] = $uname;
                 header('Location: index.php');
             }else{
-                echo "Invalid mail and password";
+                echo "Correo electrónico o contraseña inválido.";
             }
 
         }
