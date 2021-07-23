@@ -206,20 +206,9 @@
                                    
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body" action="inq_json.php" method="GET">
+                                <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
-                                        <?php echo $json?> 
-                                        <?php                                     
-                                         foreach ($resultado_inq_mes as $inq_mes => $value) {
-                                         ?>                                        
-                                            <!-- <span class="mr-2" id="inq_total" data-count="<?php echo $value['total'] ?>"></span>
-                                            <span class="mr-2" id="inq_mes" data-count="<?php echo $value['mes'] ?>"></span>    
-                                            <?php echo $value['total'] ?>    
-                                            <?php echo $value['mes'] ?> -->
-                                               
-
-                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +251,7 @@
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Ultimos inquilinos</h6>   
+                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Últimos inquilinos</h6>   
                             </div>   
                             
                             <div class="card-body maincontent">
@@ -288,7 +277,7 @@
                                                 <td><?php echo $inquilino['dni'] ?></td>                                              
                                                 <td><?php echo $inquilino['fecha_inicio'] ?></td>
                                                 <td><?php echo $inquilino['celular'] ?></td>                                           
-                                                <td class="text-center"><a class="btn btn-outline-warning" href="detalle-inquilino.php?dni=<?php echo $inquilino['dni'] ?>">Ver</a></td>
+                                                <td class="text-center"><a class="btn btn-warning" href="detalle-inquilino.php?dni=<?php echo $inquilino['dni'] ?>">Ver</a></td>
                                             </tr>
                                             <?php } ?>       
                                         </tbody>
@@ -556,7 +545,11 @@
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
-    
+    <script type="text/javascript">
+        
+
+        
+    </script>
 
     <script type="text/javascript">
         $(".btn_msg").click(function(){

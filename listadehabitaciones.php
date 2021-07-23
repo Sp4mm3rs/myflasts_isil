@@ -162,7 +162,7 @@
                                                 <td>
                                                     <?php
                                                     if(isset($habitacion['estado'])&& $habitacion['estado']=="1"){
-                                                        echo $habitacion['det_mant']. " " .$habitacion['fec_mant'];
+                                                        echo "Razón: ".$habitacion['det_mant']. "Fecha término: " .$habitacion['fec_mant'];
                                                     }
 
                                                     ?>
@@ -278,7 +278,7 @@
                                              <br>
                                              <h6 id="t_m">Razón del matenimiento</h6>
                                              <textarea class="form-control" name="mant_det" id="mant_det" cols="30" rows="3"></textarea>
-                                             <label id="l_mant" for="fec_mant">Fecha termino del mantenimiento</label>
+                                             <label id="l_mant" for="fec_mant">Fecha término del mantenimiento</label>
                                              <input class="form-control" id="fec_mant" name="fec_mant"  type="date">
                                           </div>
 
