@@ -13,7 +13,7 @@ $result = mysqli_query($conexion, $sql) or die("Error in Selecting " . mysqli_er
 $emparray = array();
     while($row =mysqli_fetch_assoc($result))
     {
-        $emparray['Months'][] = $row;
+        $emparray[] = $row;
     }
 
 echo json_encode($emparray);

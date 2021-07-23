@@ -26,18 +26,20 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   }
   return s.join(dec);
 }
-async function fetchDataAsync(url) {
-    const response = await fetch('http://localhost:8080/myflats_isil/inq_json.php');
-    const data = await response.json();
 
-    data.forEach(element => console.log(element));
 
+async function fetchAsync () {
+  let response = await fetch('http://localhost:8080/myflats_isil/inq_json.php');
+  let data = await response.json();
+  return data;
 }
 
-
-
-
-
+fetchAsync()
+    .then(data => {
+      for (i = 0; i < data.length; i++) {
+        console.log(data[i].mes);
+      } 
+    });
 
 
 // Area Chart Example
@@ -45,7 +47,12 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: [fetchAsync()
+    .then(data => {
+      for (i = 0; i < data.length; i++) {
+        data[i].mes + ", ";
+      } 
+    })],
     datasets: [{
       label: "Earnings",
       lineTension: 0.3,
@@ -59,7 +66,13 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      data: [fetchAsync()
+    .then(data => {
+      for (i = 0; i < data.length; i++) {
+        data[i].total + ", ";
+
+      } 
+    })],
     }],
   },
   options: {
