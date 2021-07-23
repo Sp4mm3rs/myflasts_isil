@@ -206,20 +206,9 @@
                                    
                                 </div>
                                 <!-- Card Body -->
-                                <div class="card-body" action="inq_json.php" method="GET">
+                                <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
-                                        <?php echo $json?> 
-                                        <?php                                     
-                                         foreach ($resultado_inq_mes as $inq_mes => $value) {
-                                         ?>                                        
-                                            <!-- <span class="mr-2" id="inq_total" data-count="<?php echo $value['total'] ?>"></span>
-                                            <span class="mr-2" id="inq_mes" data-count="<?php echo $value['mes'] ?>"></span>    
-                                            <?php echo $value['total'] ?>    
-                                            <?php echo $value['mes'] ?> -->
-                                               
-
-                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
@@ -513,7 +502,11 @@
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
-    
+    <script type="text/javascript">
+        
+
+        
+    </script>
 
 </body>
 
