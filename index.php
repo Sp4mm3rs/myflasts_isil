@@ -262,7 +262,7 @@
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
-                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Ultimos inquilinos</h6>   
+                                <h6 class="titleservicio m-0 font-weight-bold text-primary">Últimos inquilinos</h6>   
                             </div>   
                             
                             <div class="card-body maincontent">
@@ -288,7 +288,7 @@
                                                 <td><?php echo $inquilino['dni'] ?></td>                                              
                                                 <td><?php echo $inquilino['fecha_inicio'] ?></td>
                                                 <td><?php echo $inquilino['celular'] ?></td>                                           
-                                                <td class="text-center"><a class="btn btn-outline-warning" href="detalle-inquilino.php?dni=<?php echo $inquilino['dni'] ?>">Ver</a></td>
+                                                <td class="text-center"><a class="btn btn-warning" href="detalle-inquilino.php?dni=<?php echo $inquilino['dni'] ?>">Ver</a></td>
                                             </tr>
                                             <?php } ?>       
                                         </tbody>
@@ -356,7 +356,7 @@
                                                                                           
                                             ?>
                                             <tr class="item-habitacion">
-                                                <td><?php echo $proxpagos['nombre'] ?></td>
+                                                <td><?php echo $proxpagos['nombre'] . " ". $proxpagos['apellido'] ?></td>
                                                 <td><?php  echo $fecha_venc; ?></td>
                                                 <td><?php echo "S/ " . number_format($mensualidad, 2, '.', ' '); ?></td>
                                                                                            
@@ -440,7 +440,7 @@
                                             ?>
 
                                             <tr class="item-habitacion">
-                                                <td><?php echo $proxpagos['nombre'] ?></td>
+                                                <td><?php echo $proxpagos['nombre'] . " ". $proxpagos['apellido'] ?></td>
                                                 
                                                 <td><?php echo $fecha_venc ?></td>
                                                 <td><?php echo $proxpagos['celular'] ?></td>

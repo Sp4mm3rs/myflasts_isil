@@ -160,7 +160,7 @@ $array1=[];
                                                    
 
 
-                                                   <td class="text-center"><a id="" class="btn btn-outline-warning btn_pago" data-toggle="modal" data-target="#modal_pago" href="">Ver</a></td>
+                                                   <td class="text-center"><a id="" class="btn btn-outline-success btn_pago" data-toggle="modal" data-target="#modal_pago" href="">Ver</a></td>
                                                 
                                                 </tr>
                                                 <?php 
