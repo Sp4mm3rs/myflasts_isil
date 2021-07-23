@@ -355,7 +355,7 @@
                                                         }
                                                                                           
                                             ?>
-                                            <tr class="item-habitacion">
+                                            <tr class="item-habitacion2">
                                                 <td><?php echo $proxpagos['nombre'] ?></td>
                                                 <td><?php  echo $fecha_venc; ?></td>
                                                 <td><?php echo "S/ " . number_format($mensualidad, 2, '.', ' '); ?></td>
@@ -439,14 +439,14 @@
                                                                                           
                                             ?>
 
-                                            <tr class="item-habitacion">
-                                                <td><?php echo $proxpagos['nombre'] ?></td>
+                                            <tr class="item-habitacion" id="<?php echo $proxpagos['id_inq'] ?>">
+                                                <td class="names"><?php echo $proxpagos['nombre'] ?> </td>
                                                 
                                                 <td><?php echo $fecha_venc ?></td>
                                                 <td><?php echo $proxpagos['celular'] ?></td>
                                                 <td><?php echo $diasobra?></td>
                                                 <td class="text-center">
-                                                    <button type="button" id="btn-detalle" class="btn btn-success btn-detalle">Enviar alerta</button> 
+                                                    <button type="button" class="btn btn-outline-warning btn_msg" name="btn_msg" data-toggle="modal" data-target="#modal_mensaje" >Enviar alerta</button> 
                                                 </td>                                                
                                             </tr>
 
@@ -459,7 +459,50 @@
                                     </table>
                                 </div>
                             </div>                           
-                        </div>                      
+                        </div>  
+                        
+                        
+
+
+                        <!-- Modal alerta-->
+                      <div class="modal fade " id="modal_mensaje" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                      
+                        <div class="modal-dialog" role="document">
+                           <div class="modal-content">
+                              <div class="modal-header">
+                                 <h5 class="modal-title" id="exampleModalLabel">Enviar Mensaje</h5>
+                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                                                              
+                              <div class="modal-body">
+                                <form class="" action="send-msg.php" enctype="multipart/form-data" method="POST">
+                                    <div class="form-group row">           
+                                         <div class="form-group col-md-12">    
+                                            
+                                            <input type="text" id="id_p" name="id_p" value="" >
+                                                                               
+                                            <label for="msg_name">Nombre</label>
+                                            <input type="text" class="form-control fecp" id="msg_name" name="msg_name" value="" readonly >
+                                            
+                                             <label for="txa_msg">Detalle</label>
+                                             <textarea class="form-control" name="txa_msg" id="txa_msg" cols="30" rows="3"></textarea> 
+                                                                                  
+                                             
+                                         </div>
+
+
+                                    </div>                                     
+                                    <div class="modal-footer">
+                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" id="btnmsg" name="btnmsg" class="btn btn-primary ">Enviar mensaje</button>
+                                    </div>
+                                </form>
+                              </div>                                                        
+                           </div>
+                        </div>
+                     </div>    
      
     
                     </div>
@@ -514,6 +557,18 @@
     <script src="js/demo/chart-pie-demo.js"></script>
     <script src="js/demo/chart-bar-demo.js"></script>
     
+
+    <script type="text/javascript">
+        $(".btn_msg").click(function(){
+            var $item = $(".item-habitacion").attr("id");
+            var $row = $(this).closest("tr");            
+            var $name= $row.find(".names").text();
+                  
+            $("#msg_name").val($name);
+            $("#id_p").val($item); 
+        });
+
+    </script>
 
 </body>
 
