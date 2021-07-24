@@ -1,6 +1,8 @@
 <?php
+    
     include 'config/conection.php';
-
+    
+    
     $consulta = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
     WHERE inq.estado = 0 
@@ -46,8 +48,12 @@
                         GROUP BY mes";
     $resultado_inq_mes = mysqli_query( $conexion, $consulta_inq_mes) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
+    $array=[];
     while($row = mysqli_fetch_array($resultado_inq_mes)) $array[] = $row;
-    $json = json_encode($array);
+    if($array){
+        $json = json_encode($array);
+    }
+    
 
     $arrayh=[];
     while($result=$resultadohisto->fetch_assoc()){
@@ -233,10 +239,10 @@
                                          foreach ($resultado_chart_01 as $asds => $value) {
                                          ?>
 
-                                        <span class="mr-2" id="ocupados" data-count="<?php echo $value['cDisponibles'] ?>">
+                                        <span class="mr-2" id="ocupados" data-count="<?php echo $value['cOcupados'] ?>">
                                             <i class="fas fa-circle text-danger"></i> Ocupadas
                                         </span>
-                                         <span class="mr-2" id="disponibles" data-count="<?php echo $value['cOcupados'] ?>">
+                                         <span class="mr-2" id="disponibles" data-count="<?php echo $value['cDisponibles'] ?>">
                                                 <i class="fas fa-circle text-success"></i> Disponibles
                                             </span>
                                         <?php }?>
@@ -287,7 +293,7 @@
                         </div>      
 
                         <div class="card shadow mb-4 ">
-                            <div class="card-header py-3 titlesearch ">
+                            <div class="card-header py-3 titlegreen ">
                                 <h6 class="titleservicio m-0 font-weight-bold text-primary">Próximos pagos</h6>   
                             </div>                               
                             <div class="card-body maincontent">
@@ -362,7 +368,7 @@
                         </div>
 
                         <div class="card shadow mb-4 ">
-                            <div class="card-header py-3 titlesearch ">
+                            <div class="card-header py-3 titlered ">
                                 <h6 class="titleservicio m-0 font-weight-bold text-primary">Alquiler vencido</h6>   
                             </div>                               
                             <div class="card-body maincontent">

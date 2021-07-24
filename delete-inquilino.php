@@ -20,7 +20,7 @@
            echo $habitacion = $habitacion['nro_habitacion'];
            
             $statements = array("UPDATE habitaciones 
-                                SET id_inquilino = NULL, id_inquilino = NULL, serv_internet = NULL, serv_cable = NULL, fecha_inicio = NULL, fecha_fin = NULL, precio_final = NULL, estado = "0"
+                                SET id_inquilino = NULL, id_inquilino = NULL, serv_internet = NULL, serv_cable = NULL, fecha_inicio = NULL, fecha_fin = NULL, precio_final = NULL, estado = 0
                                 WHERE habitaciones.id_hab = $get_hab", 
                                 "UPDATE inquilinos SET estado = 1 WHERE id_inq = $get_inq",
                                 "INSERT INTO historial_inquilino (id_inquilino, id_habitacion, reputacion, precio_habitacion, fecha_inicio, fecha_fin, nro_habitacion, nro_piso) VALUES ($get_inq, $get_hab, '$get_obs', $precio, '$inicio', '$fin',$habitacion, $piso)");
@@ -32,4 +32,6 @@
             }
 
         }
-        header( 'Location: http://localhost/myflats_isil/' ) ;
+        
+        include 'inq_json.php'; 
+        header( 'Location: http://localhost/myflats_isil/listadeinquilinos.php' ) ;

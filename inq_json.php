@@ -13,9 +13,15 @@ $result = mysqli_query($conexion, $sql) or die("Error in Selecting " . mysqli_er
 $emparray = array();
     while($row =mysqli_fetch_assoc($result))
     {
-        $emparray[] = $row;
+        $emparray[] = ($row);                
+        $jsondata= json_encode($emparray);
+        file_put_contents("datosinqs.json",$jsondata);
+                    
     }
+    if(empty($emparray)) {
+        file_put_contents("datosinqs.json",json_encode([]));
+       }
+    
 
-echo json_encode($emparray);
 
 

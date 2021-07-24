@@ -28,33 +28,26 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 
-async function fetchAsync () {
-  let response = await fetch('http://localhost:8080/myflats_isil/inq_json.php');
-  let data = await response.json();
-  return data;
-}
-
-fetchAsync()
-    .then(data => {
-      for (i = 0; i < data.length; i++) {
-        console.log(data[i].mes);
-      } 
-    });
 
 
-// Area Chart Example
+var xmlhttp = new XMLHttpRequest();
+var url = "http://localhost/myflats_isil/datosinqs.json";
+xmlhttp.open("GET",url,true);
+xmlhttp.send();
+xmlhttp.onreadystatechange=function(){
+  if(this.readyState==4&&this.status==200){
+    var data = JSON.parse(this.responseText);
+    var total = data.map(function(elem){return elem.total});
+    var meses = data.map(function(elem){return elem.mes});
+   
+    // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [fetchAsync()
-    .then(data => {
-      for (i = 0; i < data.length; i++) {
-        data[i].mes + ", ";
-      } 
-    })],
+    labels: meses,
     datasets: [{
-      label: "Earnings",
+      label: "Inquilinos",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
       borderColor: "rgba(78, 115, 223, 1)",
@@ -66,13 +59,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [fetchAsync()
-    .then(data => {
-      for (i = 0; i < data.length; i++) {
-        data[i].total + ", ";
-
-      } 
-    })],
+      data:total,
     }],
   },
   options: {
@@ -104,7 +91,7 @@ var myLineChart = new Chart(ctx, {
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return number_format(value);
           }
         },
         gridLines: {
@@ -136,9 +123,15 @@ var myLineChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
         }
       }
     }
   }
 });
+
+  }
+}
+
+
+

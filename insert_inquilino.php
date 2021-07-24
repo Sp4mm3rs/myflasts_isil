@@ -43,9 +43,8 @@ if (isset($_POST['rInquilino'])) {
             } while ($conexion->next_result());
         }
 
-        header( 'Location: http://localhost/myflats_isil/');
-    
-        
-       
+        include 'inq_json.php'; 
+        header( 'Location: http://localhost/myflats_isil/listadeinquilinos.php');
+             
 }
  

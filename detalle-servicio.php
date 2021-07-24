@@ -68,7 +68,7 @@
                     <div class="container-fluid">                     
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4 ">
-                            <div class="card-header py-3 titlesearch ">
+                            <div class="card-header py-3 titlered ">
                                 <h6 class="titleservicio m-0 font-weight-bold text-primary">Pendientes a pagar</h6> 
 
                                 <button type="button" id="agregarhs" class="btn btn-primary" data-toggle="modal" data-target="#modalservicio"> Agregar Servicio</button>                                
@@ -112,7 +112,7 @@
                         </div>
 
                         <div class="card shadow mb-4 ">
-                            <div class="card-header py-3 titlesearch ">
+                            <div class="card-header py-3 titlegreen ">
                                 <h6 class="titleservicio m-0 font-weight-bold text-primary">Pagados recientemente</h6>   
                               
                             </div>   
