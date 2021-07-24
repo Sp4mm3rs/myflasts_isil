@@ -3,7 +3,7 @@
     include 'config/conection.php';
     
     
-    $consulta = "SELECT * FROM inquilinos inq
+    $consultac = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
     WHERE inq.estado = 0 
     ORDER BY id_inq";  
@@ -16,7 +16,7 @@
     $consultahisto ="SELECT dni,fechav FROM historial_pagos hp ORDER BY id DESC";
     $resultadohisto= mysqli_query($conexion,$consultahisto) or die ("Algo ha ido mal en la consulta a la base de datos");
     
-    $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    $resultadoc = mysqli_query( $conexion, $consultac ) or die ( "Algo ha ido mal en la consulta a la base de datos");
     $resultado2= mysqli_query($conexion,$consulta2) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $consulta_chart_01 = "SELECT count(id_inquilino) as cOcupados, count(case when estado = '0' then 1 else null end) as cDisponibles  FROM habitaciones";
@@ -128,7 +128,7 @@
                                         </div>
                                         <div class="h4 mb-0 font-weight-bold text-gray-800">
                                             <?php
-                                                $num_inq = mysqli_num_rows($resultado);
+                                                $num_inq = mysqli_num_rows($resultadoc);
                                                 echo $num_inq;
                                             ?>
                                         </div>

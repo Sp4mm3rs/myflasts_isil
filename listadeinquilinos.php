@@ -1,12 +1,12 @@
 <?php
     include 'config/conection.php';
     
-    $consulta = "SELECT * FROM inquilinos inq
+    $consultai = "SELECT * FROM inquilinos inq
                 INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
                 WHERE inq.estado = 0
                 ORDER BY id_inq DESC";
 
-    $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    $resultadoi = mysqli_query( $conexion, $consultai ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     include 'sesion.php';
 ?>
@@ -103,7 +103,7 @@
 
                                             <?php 
 
-                                            foreach ($resultado as $registro) {   
+                                            foreach ($resultadoi as $registro) {   
 
                                             // echo "<pre>";                                             
                                             // echo print_r($registro);                                             

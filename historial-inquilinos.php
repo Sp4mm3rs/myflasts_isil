@@ -1,7 +1,7 @@
 <?php
     include 'config/conection.php';
 
-    $consulta = "SELECT 
+    $consultah = "SELECT 
                 hi.id AS id,
                 hi.nro_habitacion AS habitacion,
                 hi.nro_piso AS piso,
@@ -17,7 +17,7 @@
                 WHERE i.estado = 1
                 ";
                 
-    $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    $resultadoh = mysqli_query( $conexion, $consultah ) or die ( "Algo ha ido mal en la consulta a la base de datos");
     include 'sesion.php';
 ?>
 
@@ -96,7 +96,7 @@
                                         </thead>                                      
                                         <tbody>
                                             <?php 
-                                                foreach ($resultado as $res) {  
+                                                foreach ($resultadoh as $res) {  
             
                                                 $start    = new DateTime($res['inicio']);
                                                 $start->modify('first day of this month');

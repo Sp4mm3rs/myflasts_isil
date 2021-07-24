@@ -1,7 +1,7 @@
 <?php
     include 'config/conection.php';
-    $consulta = "SELECT * FROM servicios serv";
-    $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+    $consultad = "SELECT * FROM servicios serv";
+    $resultadod = mysqli_query( $conexion, $consultad ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 
     $con_serv_pagado = "SELECT * FROM servicios_pagados ORDER BY id DESC LIMIT 3";
     $res_serv_pagado = mysqli_query( $conexion, $con_serv_pagado ) or die ( "Algo ha ido mal en la consulta a la base de datos");
@@ -90,7 +90,7 @@
 
                                             <?php 
 
-                                            foreach ($resultado as $registro) {   
+                                            foreach ($resultadod as $registro) {   
                                           
                                             ?>
                                             <tr class="item-pendiente" id="<?php echo $registro['id'] ?>">

@@ -4,8 +4,8 @@
 //     $consulta = "SELECT * FROM inquilinos inq
 //                         INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
 // ";
-  $consulta = "SELECT * FROM habitaciones hab ORDER BY nro_piso ASC";
-  $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+  $consultahb = "SELECT * FROM habitaciones hab ORDER BY nro_piso ASC";
+  $resultadohb = mysqli_query( $conexion, $consultahb ) or die ( "Algo ha ido mal en la consulta a la base de datos");
   
   $con_inquilino = "SELECT * FROM inquilinos";
   $res_inquilino = mysqli_query( $conexion, $con_inquilino ) or die ( "Algo ha ido mal en la consulta a la base de datos");
@@ -108,7 +108,7 @@
                                         </thead>
                                         <tbody>
                                             <?php 
-                                              foreach ($resultado as $habitacion) {
+                                              foreach ($resultadohb as $habitacion) {
                                             ?>
                                             <tr class="item-habitacion">
                                                 <td>Nro. <?php echo $habitacion['nro_habitacion'] ?></td>

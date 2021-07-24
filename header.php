@@ -5,7 +5,7 @@
     
     $iduser = $_SESSION['uname'];
 
-    $sql = "SELECT id_usuario, nombre from usuario where 
+    $sql = "SELECT id_usuario, nombre FROM usuario WHERE
         correo = '$iduser'";
     $resultado = $conexion->query($sql);
     $row = $resultado->fetch_assoc();
