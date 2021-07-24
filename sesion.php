@@ -1,6 +1,7 @@
 <?php
-session_start();
-if (!$_SESSION['uname']) {
-    header("Location: login.php");
-}
+    include 'config/conection.php';
+    session_start();
+    if (isset($_SESSION['id_usuario'])) {
+        header("Location: login.php");
+    }
 ?>

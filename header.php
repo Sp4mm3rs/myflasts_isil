@@ -1,4 +1,22 @@
 <!-- Topbar -->
+
+<?php
+    include 'config/conection.php';
+    
+    $iduser = $_SESSION['uname'];
+
+    $sql = "SELECT id_usuario, nombre from usuario where 
+        correo = '$iduser'";
+    $resultado = $conexion->query($sql);
+    $row = $resultado->fetch_assoc();
+
+    
+    if (!isset($_SESSION['uname'])){
+        session_start(); 
+        header("Location: login.php");
+    }
+
+?>
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
@@ -170,7 +188,12 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Luis Prado</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <small>Bienvenid@</small>
+                                    <?php 
+                                        echo utf8_decode($row['nombre']);
+                                    ?>
+                                </span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
