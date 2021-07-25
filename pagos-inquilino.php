@@ -2,7 +2,7 @@
     include 'config/conection.php';
     $dni = $_GET['dni'];
 
-    $consulta = "SELECT * FROM inquilinos inq
+    $consultaps = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq
     WHERE dni = $dni
     ";
@@ -15,7 +15,7 @@
 
     $hoy = $year . '-' . $month . '-' . $day;
 
-$resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
+$resultadops = mysqli_query( $conexion, $consultaps ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 $resultadohisto= mysqli_query($conexion,$consultahp) or die ("Algo ha ido mal en la consulta a la base de datos");
    
 $array1=[];
@@ -83,7 +83,7 @@ $array1=[];
                         <div class="card shadow mb-4 ">
                             <div class="card-header py-3 titlesearch ">
                                 <?php 
-                                        foreach($resultado as $nombre){
+                                        foreach($resultadops as $nombre){
                                             
                                 ?>
 
@@ -108,7 +108,7 @@ $array1=[];
                                              <?php  
                                                     
                                                     $conteo = 0;                                            
-                                                    foreach($resultado as $registro){
+                                                    foreach($resultadops as $registro){
                                                         $conteo+1 ;
                                                        
                                                         $mensualidad = $registro['precio_final'];

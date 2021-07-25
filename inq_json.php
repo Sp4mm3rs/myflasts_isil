@@ -3,6 +3,7 @@
 
 
 header('Content-Type: application/json');
+$lang = mysqli_query($conexion, "SET lc_time_names = 'es_PE'");
 $sql = "SELECT COUNT(hab.id_inquilino) AS total,
              MONTHNAME(hab.fecha_inicio) AS mes
              FROM habitaciones hab
@@ -22,6 +23,6 @@ $emparray = array();
         file_put_contents("datosinqs.json",json_encode([]));
        }
     
-
+echo json_encode($emparray);
 
 
