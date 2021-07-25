@@ -203,16 +203,16 @@ $array1=[];
                                              <input type="number" class="form-control" id="monto_pago" name="monto_pago" value="" readonly> 
                                              
                                              <br>
-                                             <label for="Forma de pago"></label>
+                                             <label for="Forma de pago">Forma de pago</label>
                                              <select class="form-control" name="form_pago" id="form_pago">
                                              <option selected>Elegir</option>
                                              <option >Contado</option>
-                                             <option >Deposito</option>
+                                             <option >Depósito</option>
                                              </select>
                                                
                                                 <br>
                                                 <div class="form-group">
-                                                     <img id="foto_v" src="img/default.jpg" width="180px" height="100px" class="img-fluid foto_v" alt="Responsive image">
+                                                     <img id="foto_v" src="img/default_pago.jpg" width="180px" height="100px" class="img-fluid foto_v" alt="Responsive image">
                                                 </div>
                                                 <div class="custom-file">
                                                     <label id="ele_foto" class="ele_foto" for="fotov">Seleccionar foto</label>
@@ -318,7 +318,7 @@ $array1=[];
         $("#fotov").hide();
         $("#form_pago").change(function(){
             var value=$("#form_pago").val();
-            if(value=="Deposito"){
+            if(value=="Depósito"){
                 $("#foto_v").show();              
                 $("#ele_foto").show();
                 $("#fotov").show();

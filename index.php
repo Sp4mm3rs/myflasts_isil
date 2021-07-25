@@ -2,7 +2,6 @@
     
     include 'config/conection.php';
     
-    
     $consultac = "SELECT * FROM inquilinos inq
     INNER JOIN habitaciones hab ON hab.id_inquilino = inq.id_inq 
     WHERE inq.estado = 0 
@@ -60,9 +59,8 @@
         $arrayh[]=$result['fechav'];
         $arrayh[]=$result['dni'];
      }
-
+    
      include 'sesion.php';
-
 
 ?>
 
@@ -133,9 +131,6 @@
                                             ?>
                                         </div>
 
-                                        <!-- <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -162,9 +157,6 @@
                                             ?>
                                         </div>
 
-                                        <!-- <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -283,7 +275,7 @@
                                                 <td><?php echo $inquilino['dni'] ?></td>                                              
                                                 <td><?php echo $inquilino['fecha_inicio'] ?></td>
                                                 <td><?php echo $inquilino['celular'] ?></td>                                           
-                                                <td class="text-center"><a class="btn btn-warning" href="detalle-inquilino.php?dni=<?php echo $inquilino['dni'] ?>">Ver</a></td>
+                                                <td class="text-center"><a class="btn btn-success" href="detalle-inquilino.php?dni=<?php echo $inquilino['dni'] ?>">Ver</a></td>
                                             </tr>
                                             <?php } ?>       
                                         </tbody>
@@ -351,7 +343,7 @@
                                                                                           
                                             ?>
                                             <tr class="item-habitacion2">
-                                                <td><?php echo $proxpagos['nombre'] ?></td>
+                                                <td><?php echo $proxpagos['nombre'] . " " . $proxpagos['apellido']?></td>
                                                 <td><?php  echo $fecha_venc; ?></td>
                                                 <td><?php echo "S/ " . number_format($mensualidad, 2, '.', ' '); ?></td>
                                                                                            
@@ -435,13 +427,13 @@
                                             ?>
 
                                             <tr class="item-habitacion" id="<?php echo $proxpagos['id_inq'] ?>">
-                                                <td class="names"><?php echo $proxpagos['nombre'] ?> </td>
+                                                <td class="names"><?php echo $proxpagos['nombre'] . " " . $proxpagos['apellido'] ?> </td>
                                                 
                                                 <td><?php echo $fecha_venc ?></td>
                                                 <td><?php echo $proxpagos['celular'] ?></td>
                                                 <td><?php echo $diasobra?></td>
                                                 <td class="text-center">
-                                                    <button type="button" class="btn btn-outline-warning btn_msg" name="btn_msg" data-toggle="modal" data-target="#modal_mensaje" >Enviar alerta</button> 
+                                                    <button type="button" class="btn btn-danger btn_msg" name="btn_msg" data-toggle="modal" data-target="#modal_mensaje" >Enviar alerta</button> 
                                                 </td>                                                
                                             </tr>
 
@@ -465,7 +457,7 @@
                         <div class="modal-dialog" role="document">
                            <div class="modal-content">
                               <div class="modal-header">
-                                 <h5 class="modal-title" id="exampleModalLabel">Enviar Mensaje</h5>
+                                 <h5 class="modal-title" id="exampleModalLabel">Enviar mensaje</h5>
                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                  <span aria-hidden="true">&times;</span>
                                  </button>
@@ -476,12 +468,12 @@
                                     <div class="form-group row">           
                                          <div class="form-group col-md-12">    
                                             
-                                            <input type="text" id="id_p" name="id_p" value="" >
+                                            <input type="text" id="id_p" name="id_p" value="" hidden>
                                                                                
                                             <label for="msg_name">Nombre</label>
                                             <input type="text" class="form-control fecp" id="msg_name" name="msg_name" value="" readonly >
                                             
-                                             <label for="txa_msg">Detalle</label>
+                                             <label for="txa_msg">Mensaje</label>
                                              <textarea class="form-control" name="txa_msg" id="txa_msg" cols="30" rows="3"></textarea> 
                                                                                   
                                              
